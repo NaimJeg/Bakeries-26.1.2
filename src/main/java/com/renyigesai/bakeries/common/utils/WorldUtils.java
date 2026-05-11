@@ -1,33 +1,37 @@
 package com.renyigesai.bakeries.common.utils;//package com.renyigesai.bakeries.common.utils;
 //
-//import com.renyigesai.bakeries.BakeriesMod;
-//import net.minecraft.advancements.AdvancementHolder;
-//import net.minecraft.core.BlockPos;
-//import net.minecraft.core.SectionPos;
-//import net.minecraft.core.registries.Registries;
-//import net.minecraft.resources.ResourceKey;
-//import net.minecraft.server.level.ServerLevel;
-//import net.minecraft.server.level.ServerPlayer;
-//import net.minecraft.world.entity.player.Player;
-//import net.minecraft.world.item.ItemStack;
-//import net.minecraft.world.level.*;
-//import net.minecraft.world.level.block.entity.BlockEntity;
-//import net.minecraft.world.level.block.state.BlockState;
-//import net.minecraft.world.level.chunk.status.ChunkStatus;
-//import net.minecraft.world.level.storage.loot.LootParams;
-//import net.minecraft.world.level.storage.loot.LootTable;
-//import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
-//import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
-//import net.minecraft.world.phys.Vec3;
-//import net.neoforged.neoforge.capabilities.BlockCapability;
-//import org.jetbrains.annotations.Contract;
-//import org.jetbrains.annotations.NotNull;
-//import org.jetbrains.annotations.Nullable;
-//
-//import java.util.ArrayList;
-//import java.util.List;
-//
-//public class WorldUtils {
+import com.renyigesai.bakeries.BakeriesMod;
+import net.minecraft.advancements.AdvancementHolder;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.NonNullList;
+import net.minecraft.core.SectionPos;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.ItemStackWithSlot;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.*;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.chunk.status.ChunkStatus;
+import net.minecraft.world.level.storage.ValueInput;
+import net.minecraft.world.level.storage.ValueOutput;
+import net.minecraft.world.level.storage.loot.LootParams;
+import net.minecraft.world.level.storage.loot.LootTable;
+import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
+import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
+import net.minecraft.world.phys.Vec3;
+import net.neoforged.neoforge.capabilities.BlockCapability;
+import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class WorldUtils {
 //    /**
 //     * Gets the capability of a block at a given location if it is loaded
 //     *
@@ -149,5 +153,24 @@ package com.renyigesai.bakeries.common.utils;//package com.renyigesai.bakeries.c
 //        }
 //        return false;
 //    }
-//
-//}
+
+    public static void saveAllItems(ValueOutput output, NonNullList<ItemStack> itemStacks,String name) {
+        ValueOutput.TypedOutputList<ItemStackWithSlot> itemsOutput = output.list(name, ItemStackWithSlot.CODEC);
+
+        for (int i = 0; i < itemStacks.size(); i++) {
+            ItemStack itemStack = itemStacks.get(i);
+            if (!itemStack.isEmpty()) {
+                itemsOutput.add(new ItemStackWithSlot(i, itemStack));
+            }
+        }
+    }
+
+    public static void loadAllItems(ValueInput input, NonNullList<ItemStack> itemStacks,String name) {
+        for (ItemStackWithSlot item : input.listOrEmpty(name, ItemStackWithSlot.CODEC)) {
+            if (item.isValidInContainer(itemStacks.size())) {
+                itemStacks.set(item.slot(), item.stack());
+            }
+        }
+    }
+
+}

@@ -33,6 +33,7 @@ public abstract class BlockEntityItemRenderer<T extends BlockEntity & ItemOwner,
         this.blockModelResolver = context.blockModelResolver();
     }
 
+    /**用于准备渲染数据，在这个获取方块数据赋值给你state的参数*/
     @Override
     public void extractRenderState(T blockEntity, @NotNull S state, float partialTicks, Vec3 cameraPosition, ModelFeatureRenderer.CrumblingOverlay breakProgress) {
         BlockEntityRenderer.super.extractRenderState(blockEntity, state, partialTicks, cameraPosition, breakProgress);
@@ -63,6 +64,7 @@ public abstract class BlockEntityItemRenderer<T extends BlockEntity & ItemOwner,
 
     }
 
+    /**这里就是渲染，理解成以前的render()方法就行*/
     @Override
     public void submit(@NotNull S state, PoseStack poseStack, SubmitNodeCollector submitNodeCollector, CameraRenderState camera) {
         render(state.items,state.blockStates,state,poseStack,submitNodeCollector,camera);

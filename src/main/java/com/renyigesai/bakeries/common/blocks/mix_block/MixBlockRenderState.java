@@ -22,15 +22,6 @@ public class MixBlockRenderState extends BlockEntityRenderState {
         this.facing = Direction.NORTH;
     }
 
-    public boolean isEmpty(){
-        for (ItemStackRenderState itemStackRenderState : items) {
-            if (itemStackRenderState != null) {
-                return false;
-            }
-        }
-        return true;
-    }
-
     public int getInventoryCount() {
         int count = 0;
         for (ItemStackRenderState itemStackRenderState : items) {

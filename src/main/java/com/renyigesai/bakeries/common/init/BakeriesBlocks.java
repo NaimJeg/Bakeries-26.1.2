@@ -2,8 +2,14 @@ package com.renyigesai.bakeries.common.init;
 
 import com.renyigesai.bakeries.BakeriesMod;
 import com.renyigesai.bakeries.common.blocks.BreadBlock;
+import com.renyigesai.bakeries.common.blocks.blander.BlenderBlock;
+import com.renyigesai.bakeries.common.blocks.blander.BlenderBlockEntity;
 import com.renyigesai.bakeries.common.blocks.mix_block.MixBlock;
 import com.renyigesai.bakeries.common.blocks.mix_block.MixBlockEntity;
+import com.renyigesai.bakeries.common.blocks.tank.CheeseTankBkock;
+import com.renyigesai.bakeries.common.blocks.tank.FermentationTankBlock;
+import com.renyigesai.bakeries.common.blocks.tank.MilkTankBlock;
+import com.renyigesai.bakeries.common.blocks.tank.YeastTankBlock;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.Identifier;
@@ -23,6 +29,14 @@ public class BakeriesBlocks {
 
     public static final DeferredBlock<Block> WOOD_TRAY;
     public static final DeferredBlock<@org.jetbrains.annotations.NotNull MixBlock> MIX_BLOCK;
+    public static final DeferredBlock<Block> BLENDER;
+
+
+    /**发酵罐*/
+    public static final DeferredBlock<Block> FERMENTATION_TANK;
+    public static final DeferredBlock<Block> YEAST_TANK;
+    public static final DeferredBlock<Block> MILK_TANK;
+    public static final DeferredBlock<Block> CHEESE_TANK;
 
 
     /*面包方块*/
@@ -82,8 +96,15 @@ public class BakeriesBlocks {
 
 
     static {
+
+        FERMENTATION_TANK = BLOCKS.register("fermentation_tank",FermentationTankBlock::new);
+        YEAST_TANK = BLOCKS.register("yeast_tank",YeastTankBlock::new);
+        MILK_TANK = BLOCKS.register("milk_tank",MilkTankBlock::new);
+        CHEESE_TANK = BLOCKS.register("cheese_tank",CheeseTankBkock::new);
+
         WOOD_TRAY = BLOCKS.register("wood_tray",()-> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS).setId(ResourceKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath("bakeries","wood_tray")))));
         MIX_BLOCK = BLOCKS.register("mix_block", MixBlock::new);
+        BLENDER = BLOCKS.register("blender", BlenderBlock::new);
 
         /*面包方块*/
         BAGEL = BLOCKS.register("bagel", BreadBlock::new);
@@ -119,9 +140,11 @@ public class BakeriesBlocks {
         return BLOCKS.register(name, block);
     }
 
-    public static class Entities{
+    public static class Entities {
         public static final DeferredRegister<BlockEntityType<?>> REGISTER = DeferredRegister.create(BuiltInRegistries.BLOCK_ENTITY_TYPE, BakeriesMod.MODID);
         public static final Supplier<BlockEntityType<MixBlockEntity>> MIX_BLOCK_ENTITY = REGISTER.register("mix_block", () -> new BlockEntityType<>(MixBlockEntity::new, MIX_BLOCK.get()));
+        public static final Supplier<BlockEntityType<BlenderBlockEntity>> BLENDER_ENTITY = REGISTER.register("blender", () -> new BlockEntityType<>(BlenderBlockEntity::new, BLENDER.get()));
     }
+
 
 }

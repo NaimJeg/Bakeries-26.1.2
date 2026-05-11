@@ -17,10 +17,26 @@ public class BakeriesCreativeModeTabs {
                     .title(Component.translatable("item_group.bakeries.bakeries_tab"))
                     .icon(() -> BakeriesItems.BAGEL.get().getDefaultInstance())
                     .displayItems((_, output) -> {
+
+                        output.accept(BakeriesItems.FERMENTATION_TANK);
+                        output.accept(BakeriesItems.YEAST_TANK);
+                        output.accept(BakeriesItems.MILK_TANK);
+                        output.accept(BakeriesItems.CHEESE_TANK);
+
                         output.accept(BakeriesItems.WHOLE_WHEAT_FLOUR);
                         output.accept(BakeriesItems.FLOUR);
                         output.accept(BakeriesItems.COCOA_POWDER);
                         output.accept(BakeriesItems.MATCHA_POWDER);
+                        output.accept(BakeriesItems.CHEESE_CUBE);
+
+                        output.accept(BakeriesItems.SALT);
+                        output.accept(BakeriesItems.BOTTLE_YEAST);
+
+                        output.accept(BakeriesItems.BOTTLE_MILK);
+                        output.accept(BakeriesItems.BOTTLE_CREAM);
+                        output.accept(BakeriesItems.BOTTLE_BUTTER);
+                        output.accept(BakeriesItems.BUTTER_CUBE);
+
                         output.accept(BakeriesItems.BAGEL);
                         output.accept(BakeriesItems.WHOLE_WHEAT_BAGEL);
                         output.accept(BakeriesItems.ROUND_BREAD);

@@ -25,6 +25,8 @@ public class BakeriesMod {
         BakeriesItems.REGISTER.register(modEventBus);
         BakeriesBlocks.BLOCKS.register(modEventBus);
         BakeriesBlocks.Entities.REGISTER.register(modEventBus);
+        BakeriesRecipes.getRegister(modEventBus);
+        BakeriesMenuType.MENU.register(modEventBus);
         BakeriesCreativeModeTabs.REGISTER.register(modEventBus);
         BakeriesSounds.REGISTRY.register(modEventBus);
         modEventBus.addListener(this::commonSetup);

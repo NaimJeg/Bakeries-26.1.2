@@ -1,7 +1,9 @@
 package com.renyigesai.bakeries.common.init;
 
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.item.ItemUseAnimation;
 import net.minecraft.world.item.component.Consumable;
 import net.minecraft.world.item.component.Consumables;
 import net.minecraft.world.item.consume_effects.ApplyStatusEffectsConsumeEffect;
@@ -121,5 +123,9 @@ public class BakeriesConsumables {
         return Consumables.defaultFood()
                 .onConsume(new ApplyStatusEffectsConsumeEffect(effect))
                 .build();
+    }
+
+    public static Consumable.Builder defaultShake() {
+        return Consumable.builder().consumeSeconds(1.6F).animation(ItemUseAnimation.DRINK).sound(SoundEvents.GENERIC_DRINK).hasConsumeParticles(false);
     }
 }

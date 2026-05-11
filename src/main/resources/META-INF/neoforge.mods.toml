@@ -1,0 +1,28 @@
+
+license="ARR"
+[[mods]]
+modId="bakeries"
+version="1.21.1-NeoForge-1.0.0-beta"
+displayName="Bakeries"
+authors="Renyigesai,1-weibai-1"
+enumExtensions="META-INF/enumextensions.json"
+description='''
+Example mod description.
+'''
+[[mixins]]
+config="bakeries.mixins.json"
+
+
+[[dependencies.bakeries]]
+    modId="neoforge"
+    type="required"
+    versionRange="[${neo_version},)"
+    ordering="NONE"
+    side="BOTH"
+
+[[dependencies.bakeries]]
+    modId="minecraft"
+    type="required"
+    versionRange="${minecraft_version_range}"
+    ordering="NONE"
+    side="BOTH"

@@ -1,11 +1,13 @@
 package com.renyigesai.bakeries.common.utils;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.NonNullList;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
+import net.neoforged.neoforge.items.ItemStackHandler;
 
 public class ItemUtils {
 
@@ -22,6 +24,15 @@ public class ItemUtils {
         if (!player.getAbilities().instabuild){
             stack.shrink(count);
         }
+    }
+
+    @SuppressWarnings("removal")
+    public static NonNullList<ItemStack> toNonNullList(ItemStackHandler handler) {
+        NonNullList<ItemStack> list = NonNullList.withSize(handler.getSlots(), ItemStack.EMPTY);
+        for (int i = 0; i < handler.getSlots(); i++) {
+            list.set(i, handler.getStackInSlot(i));
+        }
+        return list;
     }
 
 //    public static void shrinkAndReturn(ItemStack stack,int count,Player player){

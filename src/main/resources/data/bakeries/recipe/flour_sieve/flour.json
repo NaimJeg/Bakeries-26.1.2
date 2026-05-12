@@ -1,0 +1,10 @@
+{
+  "type": "bakeries:flour_sieve",
+  "ingredient": "#c:flours/wheat",
+  "results": [
+    {
+      "count": 1,
+      "id": "bakeries:flour"
+    }
+  ]
+}

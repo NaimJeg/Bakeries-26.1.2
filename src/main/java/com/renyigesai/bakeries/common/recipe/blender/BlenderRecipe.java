@@ -1,4 +1,4 @@
-package com.renyigesai.bakeries.common.recipe;
+package com.renyigesai.bakeries.common.recipe.blender;
 
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
@@ -104,8 +104,8 @@ public class BlenderRecipe implements Recipe<BlenderInput> {
                                 },
                                 ArrayList::new
                         ).fieldOf("ingredients").forGetter(BlenderRecipe::getInputItems),
-                        ItemStackTemplate.CODEC.fieldOf("output").forGetter(BlenderRecipe::result),
-                        ItemStack.CODEC.fieldOf("container").forGetter(BlenderRecipe::getContainer)
+                        ItemStackTemplate.CODEC.fieldOf("result").forGetter(BlenderRecipe::result),
+                        ItemStack.CODEC.optionalFieldOf("container", ItemStack.EMPTY).forGetter(BlenderRecipe::getContainer)
                 ).apply(i, factory::create)
         );
     }

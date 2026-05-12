@@ -20,8 +20,9 @@ public class BakeriesMod {
     public static final String MODID = "bakeries";
     // Directly reference a slf4j logger
     public static final Logger LOGGER = LogUtils.getLogger();
-    public BakeriesMod(IEventBus modEventBus, ModContainer modContainer) {
+    public BakeriesMod(IEventBus modEventBus) {
         BakeriesDataComponents.DATA_COMPONENT_TYPE.register(modEventBus);
+        BakeriesMobEffects.EFFECTS.register(modEventBus);
         BakeriesItems.REGISTER.register(modEventBus);
         BakeriesBlocks.BLOCKS.register(modEventBus);
         BakeriesBlocks.Entities.REGISTER.register(modEventBus);

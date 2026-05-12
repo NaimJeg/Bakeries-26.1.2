@@ -42,23 +42,23 @@ public class BlenderMenu extends AbstractContainerMenu {
         for (int y = 0; y < 3; ++y) {
             for (int x = 0; x < 3; ++x) {
                 int slotIndex = y * 3 + x;
-                addSlot(new SlotItemHandler(blockEntity.getHandlerInventory(), slotIndex, ix + (x * 18) + 1, iy + (y * 18) + 1));
+                addSlot(new SlotItemHandler(blockEntity.getInventory(), slotIndex, ix + (x * 18) + 1, iy + (y * 18) + 1));
             }
         }
         // 添加容器槽 (9)
-        addSlot(new SlotItemHandler(blockEntity.getHandlerInventory(), 9, 116, 35));
+        addSlot(new SlotItemHandler(blockEntity.getInventory(), 9, 116, 35));
         // 添加输出槽 (10)
-        addSlot(new SlotItemHandler(blockEntity.getHandlerInventory(), 10, 153, 35));
+        addSlot(new SlotItemHandler(blockEntity.getInventory(), 10, 153, 35));
         // 添加过滤槽 (0-8)
         int fx = 8; // 起始 X 坐标
         int fy = 17; // 起始 Y 坐标
         for (int y = 0; y < 3; ++y) {
             for (int x = 0; x < 3; ++x) {
                 int slotIndex = (y * 3) + x;
-                addSlot(new FiltrationSlot(blockEntity.getHandlerFiltrationinventory(), slotIndex, fx + x * 8, fy + y * 17));
+                addSlot(new FiltrationSlot(blockEntity.getFiltrationinventory(), slotIndex, fx + x * 8, fy + y * 17));
             }
         }
-        addSlot(new SlotItemHandler(blockEntity.getHandlerFiltrationinventory(), 9, 32, 51));
+        addSlot(new FiltrationSlot(blockEntity.getFiltrationinventory(), 9, 32, 51));
         // 添加玩家物品栏
         addPlayerSlots(8,84);
         this.blockEntity.getLevel().blockEvent(this.blockEntity.getBlockPos(),this.blockEntity.getBlockState().getBlock(),0,0);

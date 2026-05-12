@@ -6,6 +6,7 @@ import com.renyigesai.bakeries.common.blocks.mix_block.MixBlockEntity;
 import com.renyigesai.bakeries.common.init.BakeriesBlocks;
 import com.renyigesai.bakeries.common.init.BakeriesDataComponents;
 import com.renyigesai.bakeries.common.init.BakeriesSounds;
+import com.renyigesai.bakeries.common.utils.TextUtils;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
@@ -184,9 +185,9 @@ public class PileItem extends BlockItem {
         if (isPerfect(itemStack)){
             builder.accept(Component.translatable("tooltips.bakeries.pile_item_perfect").withStyle(ChatFormatting.GOLD));
         }
-        if (itemStack.has(DataComponents.FOOD)){
-            FoodProperties foodProperties = itemStack.get(DataComponents.FOOD);
-            //TextUtils.addFoodEffectTooltip(itemStack, builder::accept, 1.0F,context.tickRate());
+        if (itemStack.has(DataComponents.FOOD) && itemStack.has(DataComponents.CONSUMABLE)){
+//            FoodProperties foodProperties = itemStack.get(DataComponents.FOOD);
+            TextUtils.addFoodEffectTooltip(itemStack, builder, 1.0F,context.tickRate());
         }
     }
 

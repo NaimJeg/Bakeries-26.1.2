@@ -18,16 +18,34 @@ public class BakeriesCreativeModeTabs {
                     .icon(() -> BakeriesItems.BAGEL.get().getDefaultInstance())
                     .displayItems((_, output) -> {
 
+                        output.accept(BakeriesItems.BLENDER);
+
                         output.accept(BakeriesItems.FERMENTATION_TANK);
                         output.accept(BakeriesItems.YEAST_TANK);
                         output.accept(BakeriesItems.MILK_TANK);
                         output.accept(BakeriesItems.CHEESE_TANK);
 
+                        output.accept(BakeriesItems.BREAD_KNIFE);
+                        output.accept(BakeriesItems.FLOUR_SIEVE);
+
                         output.accept(BakeriesItems.WHOLE_WHEAT_FLOUR);
                         output.accept(BakeriesItems.FLOUR);
                         output.accept(BakeriesItems.COCOA_POWDER);
                         output.accept(BakeriesItems.MATCHA_POWDER);
+
+                        output.accept(BakeriesItems.FOAMED_CREAM);
+                        output.accept(BakeriesItems.CHEESE_CREAM);
+                        output.accept(BakeriesItems.BUTTER_FLOUR_SAND);
+                        output.accept(BakeriesItems.HONEY_BUTTER);
+                        output.accept(BakeriesItems.WHOLE_EGG);
+                        output.accept(BakeriesItems.RAW_PROTEIN);
+                        output.accept(BakeriesItems.RAW_EGG_YOLK);
+                        output.accept(BakeriesItems.SALT_YOLK);
+
                         output.accept(BakeriesItems.CHEESE_CUBE);
+                        output.accept(BakeriesItems.FRESH_CHEESE_CUBE);
+                        output.accept(BakeriesItems.BROWN_SUGAR_CUBE);
+                        output.accept(BakeriesItems.TOMATO);
 
                         output.accept(BakeriesItems.SALT);
                         output.accept(BakeriesItems.BOTTLE_YEAST);

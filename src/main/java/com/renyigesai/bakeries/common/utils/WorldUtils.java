@@ -24,6 +24,7 @@ import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.capabilities.BlockCapability;
+import net.neoforged.neoforge.items.ItemStackHandler;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -170,6 +171,15 @@ public class WorldUtils {
             if (item.isValidInContainer(itemStacks.size())) {
                 itemStacks.set(item.slot(), item.stack());
             }
+        }
+    }
+
+    @SuppressWarnings("removal")
+    public static void loadItemsToHandler(ValueInput input, ItemStackHandler handler, String key) {
+        NonNullList<ItemStack> nonNullList = NonNullList.withSize(handler.getSlots(),ItemStack.EMPTY);
+        loadAllItems(input, nonNullList, key);
+        for (int i = 0; i < nonNullList.size(); i++) {
+            handler.setStackInSlot(i, nonNullList.get(i));
         }
     }
 

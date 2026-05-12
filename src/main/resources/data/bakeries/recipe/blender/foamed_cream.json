@@ -1,0 +1,12 @@
+{
+  "type": "bakeries:blender",
+  "ingredients": [
+    "bakeries:bottle_cream",
+    "bakeries:bottle_cream",
+    "minecraft:sugar"
+  ],
+  "result": {
+    "count": 4,
+    "id": "bakeries:foamed_cream"
+  }
+}

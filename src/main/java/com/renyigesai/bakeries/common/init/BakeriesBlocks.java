@@ -2,6 +2,7 @@ package com.renyigesai.bakeries.common.init;
 
 import com.renyigesai.bakeries.BakeriesMod;
 import com.renyigesai.bakeries.common.blocks.BreadBlock;
+import com.renyigesai.bakeries.common.blocks.TomatoBlock;
 import com.renyigesai.bakeries.common.blocks.blander.BlenderBlock;
 import com.renyigesai.bakeries.common.blocks.blander.BlenderBlockEntity;
 import com.renyigesai.bakeries.common.blocks.mix_block.MixBlock;
@@ -94,6 +95,8 @@ public class BakeriesBlocks {
     /**ÓóÄàÏÌµ°»ÆÃæ°ü*/
     public static final DeferredBlock<Block> TARO_SALT_YOLK_BREAD;
 
+    public static final DeferredBlock<Block> TOMATO;
+
 
     static {
 
@@ -134,6 +137,8 @@ public class BakeriesBlocks {
 //        MOULD_CHEESE_COCOA_TOAST = REGISTER.register("mould_cheese_cocoa_toast", () -> new MouldToastBlock(BlockBehaviour.Properties.of().sound(SoundType.METAL).strength(0.5F,0.5F),BakeriesItems.CHEESE_COCOA_TOAST));
         EGG_TART = BLOCKS.register("egg_tart",BreadBlock::new);
         TARO_SALT_YOLK_BREAD = BLOCKS.register("taro_salt_yolk_bread",BreadBlock::new);
+
+        TOMATO = BLOCKS.register("tomato", TomatoBlock::new);
     }
 
     private static<B extends Block> DeferredBlock<B> register(String name, Supplier<B> block) {

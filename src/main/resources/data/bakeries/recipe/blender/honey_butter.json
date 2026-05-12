@@ -1,0 +1,12 @@
+{
+  "type": "bakeries:blender",
+  "ingredients": [
+    "minecraft:honey_bottle",
+    "#c:butter",
+    "#c:butter"
+  ],
+  "result": {
+    "count": 4,
+    "id": "bakeries:honey_butter"
+  }
+}

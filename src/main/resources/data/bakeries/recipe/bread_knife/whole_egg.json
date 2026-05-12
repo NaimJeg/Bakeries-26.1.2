@@ -1,0 +1,10 @@
+{
+  "type": "bakeries:bread_knife",
+  "ingredient": "#minecraft:eggs",
+  "results": [
+    {
+      "count": 1,
+      "id": "bakeries:whole_egg"
+    }
+  ]
+}

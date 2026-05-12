@@ -1,0 +1,19 @@
+{
+  "type": "bakeries:blender",
+  "ingredients": [
+    "bakeries:flour",
+    "bakeries:flour",
+    "bakeries:flour",
+    "bakeries:flour",
+    "minecraft:sugar",
+    "#c:foods/milk",
+    "bakeries:bottle_yeast",
+    "#c:salt",
+    "#c:butter"
+
+  ],
+  "result": {
+    "count": 1,
+    "id": "bakeries:sweet_dough"
+  }
+}

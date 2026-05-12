@@ -1,0 +1,10 @@
+{
+  "type": "bakeries:flour_sieve",
+  "ingredient": "minecraft:cocoa_beans",
+  "results": [
+    {
+      "count": 1,
+      "id": "bakeries:cocoa_powder"
+    }
+  ]
+}

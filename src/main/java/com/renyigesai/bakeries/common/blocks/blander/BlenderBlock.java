@@ -18,10 +18,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.BaseEntityBlock;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.RenderShape;
-import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -42,7 +39,6 @@ public class BlenderBlock extends BaseEntityBlock {
     public static final BooleanProperty POWERED = BlockStateProperties.POWERED;
     public static final VoxelShape X_BOX = box(4.0,0.0,0.0,12.0,16.0,16.0);
     public static final VoxelShape Z_BOX = box(0.0,0.0,4.0,16.0,16.0,12.0);
-    public static final VoxelShape BOX = box(0.0,0.0,0.0,16.0,16.0,16.);
     public BlenderBlock(Identifier identifier) {
         super(BlockBehaviour.Properties.of().mapColor(MapColor.METAL).strength(3.5F, 3.5F).requiresCorrectToolForDrops().sound(SoundType.METAL).noOcclusion().isRedstoneConductor((bs, br, bp) -> false).setId(ResourceKey.create(Registries.BLOCK,identifier)));
         this.registerDefaultState(this.stateDefinition.any().setValue(POWERED,false).setValue(FACING, Direction.NORTH));
@@ -97,18 +93,6 @@ public class BlenderBlock extends BaseEntityBlock {
         return RenderShape.MODEL;
     }
 
-    //    @Override
-//    public void onRemove(BlockState state, Level world, BlockPos pos, BlockState newState, boolean isMoving) {
-//        if (state.getBlock() != newState.getBlock()) {
-//            BlockEntity blockEntity = world.getBlockEntity(pos);
-//            if (blockEntity instanceof BlenderBlockEntity blenderBlockEntity) {
-//                blenderBlockEntity.drops(blenderBlockEntity);
-//                world.updateNeighbourForOutputSignal(pos, this);
-//            }
-//            super.onRemove(state, world, pos, newState, isMoving);
-//        }
-//    }
-
     @Override
     public void animateTick(BlockState pState, Level pLevel, BlockPos pPos, RandomSource pRandom) {
         if (pState.getValue(POWERED)){
@@ -133,6 +117,16 @@ public class BlenderBlock extends BaseEntityBlock {
     @Override
     public BlockState getStateForPlacement(BlockPlaceContext pContext) {
         return this.defaultBlockState().setValue(FACING, pContext.getHorizontalDirection());
+    }
+
+    @Override
+    protected BlockState rotate(BlockState state, Rotation rot) {
+        return state.setValue(FACING, rot.rotate(state.getValue(FACING)));
+    }
+
+    @Override
+    protected BlockState mirror(BlockState state, Mirror mirror) {
+        return state.rotate(mirror.getRotation(state.getValue(FACING)));
     }
 
     @Nullable

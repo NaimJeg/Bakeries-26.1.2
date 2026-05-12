@@ -1,4 +1,4 @@
-package com.renyigesai.bakeries.common.recipe;
+package com.renyigesai.bakeries.common.recipe.blender;
 
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeInput;

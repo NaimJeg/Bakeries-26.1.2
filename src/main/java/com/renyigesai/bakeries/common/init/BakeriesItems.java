@@ -5,7 +5,10 @@ import com.renyigesai.bakeries.api.FoodData;
 import com.renyigesai.bakeries.api.blocks.AbstractPileBlock;
 import com.renyigesai.bakeries.api.items.BottleButterItem;
 import com.renyigesai.bakeries.api.items.PileItem;
+import com.renyigesai.bakeries.common.items.BreadKnifeItem;
+import com.renyigesai.bakeries.common.items.FlourSieveItem;
 import com.renyigesai.bakeries.common.items.ShakeItem;
+import com.renyigesai.bakeries.common.items.WholeEggItem;
 import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -14,10 +17,7 @@ import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.food.FoodProperties;
-import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.Rarity;
+import net.minecraft.world.item.*;
 import net.minecraft.world.item.component.Consumable;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.registries.DeferredBlock;
@@ -30,7 +30,7 @@ import java.util.function.Supplier;
 public class BakeriesItems {
     public static final DeferredRegister.Items REGISTER = DeferredRegister.createItems(BakeriesMod.MODID);
 
-
+    public static final DeferredItem<Item> BLENDER;
     public static final DeferredItem<Item> FERMENTATION_TANK;
     public static final DeferredItem<Item> YEAST_TANK;
     public static final DeferredItem<Item> MILK_TANK;
@@ -50,7 +50,29 @@ public class BakeriesItems {
     public static final DeferredItem<Item> BOTTLE_CREAM;
     public static final DeferredItem<Item> BOTTLE_BUTTER;
 
+    public static final DeferredItem<Item> FOAMED_CREAM;
+
+    public static final DeferredItem<Item> CHEESE_CREAM;
+
+    public static final DeferredItem<Item> BUTTER_FLOUR_SAND;
+
+    public static final DeferredItem<Item> HONEY_BUTTER;
+
+    public static final DeferredItem<Item> WHOLE_EGG;
+
+    public static final DeferredItem<Item> RAW_PROTEIN;
+
+    public static final DeferredItem<Item> RAW_EGG_YOLK;
+
+    public static final DeferredItem<Item> SALT_YOLK;
+
     public static final DeferredItem<Item> CHEESE_CUBE;
+
+    public static final DeferredItem<Item> FRESH_CHEESE_CUBE;
+
+    public static final DeferredItem<Item> BROWN_SUGAR_CUBE;
+
+    public static final DeferredItem<Item> TOMATO;
 
 
     public static final DeferredItem<Item> WOOD_TRAY;
@@ -81,8 +103,13 @@ public class BakeriesItems {
     public static final DeferredItem<Item> EGG_TART;
     public static final DeferredItem<Item> TARO_SALT_YOLK_BREAD;
 
+    public static final DeferredItem<Item> BREAD_KNIFE;
+    public static final DeferredItem<Item> FLOUR_SIEVE;
+
 
     static {
+
+        BLENDER = block(BakeriesBlocks.BLENDER);
 
         FERMENTATION_TANK = block(BakeriesBlocks.FERMENTATION_TANK);
         YEAST_TANK = block(BakeriesBlocks.YEAST_TANK);
@@ -93,6 +120,14 @@ public class BakeriesItems {
         WHOLE_WHEAT_FLOUR = item("whole_wheat_flour");
         COCOA_POWDER = item("cocoa_powder");
         MATCHA_POWDER = item("matcha_powder");
+        FOAMED_CREAM = foodItem("foamed_cream",BakeriesFoodProperties.FOAMED_CREAM);
+        CHEESE_CREAM = foodItem("cheese_cream",BakeriesFoodProperties.FOAMED_CREAM);
+        BUTTER_FLOUR_SAND = item("butter_flour_sand");
+        HONEY_BUTTER = item("honey_butter");
+        WHOLE_EGG = REGISTER.register("whole_egg", WholeEggItem::new);
+        RAW_PROTEIN = item("raw_protein");
+        RAW_EGG_YOLK = item("raw_egg_yolk");
+        SALT_YOLK = item("salt_yolk");
 
         SALT = item("salt");
         BOTTLE_YEAST = REGISTER.register("bottle_yeast",()-> new Item(new Item.Properties().stacksTo(16).craftRemainder(Items.GLASS_BOTTLE).setId(modItemId("bottle_yeast"))));
@@ -103,6 +138,11 @@ public class BakeriesItems {
         BOTTLE_BUTTER = REGISTER.register("bottle_butter", BottleButterItem::new);
 
         CHEESE_CUBE = foodItem("cheese_cube",BakeriesFoodProperties.CHEESE_CUBE);
+        FRESH_CHEESE_CUBE = foodItem("fresh_cheese_cube",BakeriesFoodProperties.CHEESE_CUBE);
+        BROWN_SUGAR_CUBE = item("brown_sugar_cube");
+
+        TOMATO = REGISTER.register("tomato",()-> new BlockItem(BakeriesBlocks.TOMATO.get(),new Item.Properties().food(BakeriesFoodProperties.TOMATO).useBlockDescriptionPrefix().setId(modItemId("tomato"))));
+
 
         WOOD_TRAY = block(BakeriesBlocks.WOOD_TRAY);
 
@@ -133,6 +173,9 @@ public class BakeriesItems {
 //        MOULD_CHEESE_COCOA_TOAST = mouldBlock(BakeriesBlocks.MOULD_CHEESE_COCOA_TOAST);
         EGG_TART = foodBreadBlock(BakeriesBlocks.EGG_TART,defaultFoodBread(FoodData.create(BakeriesFoodProperties.EGG_TART,BakeriesConsumables.EGG_TART)));
         TARO_SALT_YOLK_BREAD = foodBreadBlock(BakeriesBlocks.TARO_SALT_YOLK_BREAD,defaultFoodBread(FoodData.create(BakeriesFoodProperties.TARO_SALT_YOLK_BREAD,BakeriesConsumables.TARO_SALT_YOLK_BREAD)).rarity(BakeriesRarity.getTaro()));
+
+        BREAD_KNIFE = REGISTER.register("bread_knife",()-> new BreadKnifeItem(ToolMaterial.IRON,"bread_knife"));
+        FLOUR_SIEVE = REGISTER.register("flour_sieve",FlourSieveItem::new);
     }
 
     public static DeferredItem<Item> foodBreadBlock(Holder<Block> block, Item.Properties properties){
@@ -181,7 +224,7 @@ public class BakeriesItems {
         return Registry.register(BuiltInRegistries.ITEM, key, item);
     }
 
-    private static ResourceKey<Item> modItemId(String name) {
+    public static ResourceKey<Item> modItemId(String name) {
         return ResourceKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(BakeriesMod.MODID,name));
     }
 

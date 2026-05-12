@@ -1,29 +1,21 @@
 package com.renyigesai.bakeries.common.blocks.blander;
 
-import com.renyigesai.bakeries.BakeriesMod;
-import com.renyigesai.bakeries.api.ItemStackHandler;
 import com.renyigesai.bakeries.common.client.gui.blender.BlenderMenu;
 import com.renyigesai.bakeries.common.init.BakeriesBlocks;
 import com.renyigesai.bakeries.common.init.BakeriesRecipes;
-import com.renyigesai.bakeries.common.recipe.BlenderInput;
-import com.renyigesai.bakeries.common.recipe.BlenderRecipe;
+import com.renyigesai.bakeries.common.recipe.blender.BlenderInput;
+import com.renyigesai.bakeries.common.recipe.blender.BlenderRecipe;
 import com.renyigesai.bakeries.common.utils.ItemUtils;
 import com.renyigesai.bakeries.common.utils.WorldUtils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.core.HolderLookup;
 import net.minecraft.core.NonNullList;
 import net.minecraft.core.particles.ItemParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.Mth;
-import net.minecraft.world.ContainerHelper;
-import net.minecraft.world.Containers;
-import net.minecraft.world.ItemStackWithSlot;
-import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
@@ -37,11 +29,12 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.storage.ValueInput;
 import net.minecraft.world.level.storage.ValueOutput;
 import net.minecraft.world.phys.Vec3;
+import net.neoforged.neoforge.items.ItemStackHandler;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-
+@SuppressWarnings("removal")
 public class BlenderBlockEntity extends BaseContainerBlockEntity {
 
     private static final int CONTAINER_SLOT = 9;
@@ -72,21 +65,9 @@ public class BlenderBlockEntity extends BaseContainerBlockEntity {
         return this.inventory;
     }
 
-    @SuppressWarnings("removal")
-    public net.neoforged.neoforge.items.ItemStackHandler getHandlerInventory(){
-        return new net.neoforged.neoforge.items.ItemStackHandler(this.inventory.getItems());
-    }
-
-    @SuppressWarnings("removal")
-    public net.neoforged.neoforge.items.ItemStackHandler getHandlerFiltrationinventory(){
-        return new net.neoforged.neoforge.items.ItemStackHandler(this.filtrationinventory.getItems());
-    }
-
     public ItemStackHandler getFiltrationinventory() {
         return this.filtrationinventory;
     }
-
-
 
     @Override
     protected Component getDefaultName() {
@@ -95,7 +76,7 @@ public class BlenderBlockEntity extends BaseContainerBlockEntity {
 
     @Override
     protected NonNullList<ItemStack> getItems() {
-        return this.inventory.getItems();  // 直接返回内部列表
+        return ItemUtils.toNonNullList(inventory);  // 直接返回内部列表
     }
 
     @Override
@@ -238,10 +219,10 @@ public class BlenderBlockEntity extends BaseContainerBlockEntity {
         super.loadAdditional(input);
 
         this.inventory = new ItemStackHandler(11);
-        WorldUtils.loadAllItems(input,this.inventory.getItems(),"Items");
+        WorldUtils.loadItemsToHandler(input,this.inventory,"Items");
 
         this.filtrationinventory = new ItemStackHandler(10);
-        WorldUtils.loadAllItems(input, this.filtrationinventory.getItems(),"FiltrationItems");
+        WorldUtils.loadItemsToHandler(input,this.filtrationinventory,"FiltrationItems");
 
         cookingTotalTime = input.getIntOr("CookingTotalTime",0);
         filtrationIndex = input.getIntOr("FiltrationIndex",0);
@@ -249,8 +230,8 @@ public class BlenderBlockEntity extends BaseContainerBlockEntity {
 
     @Override
     protected void saveAdditional(ValueOutput output) {
-        WorldUtils.saveAllItems(output, this.inventory.getItems(),"Items");
-        WorldUtils.saveAllItems(output, this.filtrationinventory.getItems(),"FiltrationItems");
+        WorldUtils.saveAllItems(output, ItemUtils.toNonNullList(this.inventory),"Items");
+        WorldUtils.saveAllItems(output, ItemUtils.toNonNullList(this.filtrationinventory),"FiltrationItems");
         output.putInt("CookingTotalTime",cookingTotalTime);
         output.putInt("FiltrationIndex",filtrationIndex);
     }
@@ -324,12 +305,10 @@ public class BlenderBlockEntity extends BaseContainerBlockEntity {
     }
 
     private void craftItem() {
-        BakeriesMod.LOGGER.debug("进入craftItem()");
-        System.out.println(quickCheck);
         if (!(this.level instanceof ServerLevel serverLevel)){
             return;
         }
-        Optional<RecipeHolder<BlenderRecipe>> recipe = getBlenderRecipe(inventory.getItems(),serverLevel);
+        Optional<RecipeHolder<BlenderRecipe>> recipe = getBlenderRecipe(ItemUtils.toNonNullList(inventory),serverLevel);
         if (recipe.isPresent()) {
 
         }else {
@@ -337,9 +316,6 @@ public class BlenderBlockEntity extends BaseContainerBlockEntity {
             return;
         }
         BlenderRecipe blenderRecipe = recipe.get().value();
-
-        BakeriesMod.LOGGER.debug("成功获取到配方 " + blenderRecipe);
-
         ItemStack resultItem = blenderRecipe.result().create();
         ItemStack outputStack = inventory.getStackInSlot(OUTPUT_SLOT);
 
@@ -408,11 +384,7 @@ public class BlenderBlockEntity extends BaseContainerBlockEntity {
     }
 
     private Optional<RecipeHolder<BlenderRecipe>> getBlenderRecipe(List<ItemStack> stacks, ServerLevel level){
-        List<ItemStack> newStack = new ArrayList<>();
-        for (int i = 0; i < 9; i++) {
-            newStack.add(stacks.get(i));
-        }
-        return quickCheck.getRecipeFor(new BlenderInput(newStack),level);
+        return quickCheck.getRecipeFor(new BlenderInput(stacks),level);
     }
 
     private void spawnParticle(){

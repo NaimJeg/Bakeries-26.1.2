@@ -2,7 +2,9 @@ package com.renyigesai.bakeries.common.init;
 
 import com.renyigesai.bakeries.BakeriesMod;
 import com.renyigesai.bakeries.api.ResourceLocation;
+import com.renyigesai.bakeries.common.recipe.DoughCraftingTableRecipe;
 import com.renyigesai.bakeries.common.recipe.FlourSieveRecipe;
+import com.renyigesai.bakeries.common.recipe.OvenRecipe;
 import com.renyigesai.bakeries.common.recipe.blender.BlenderRecipe;
 import com.renyigesai.bakeries.common.recipe.BreadKnifeRecipe;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -29,6 +31,14 @@ public class BakeriesRecipes {
     public static final Supplier<RecipeType<FlourSieveRecipe>> FLOUR_SIEVE_TYPE = RECIPE_TYPE.register("flour_sieve",()-> RecipeType.simple(ResourceLocation.fromNamespaceAndPath(BakeriesMod.MODID,"flour_sieve")));
 
     public static final Supplier<RecipeSerializer<FlourSieveRecipe>> FLOUR_SIEVE_SERIALIZER = SERIALIZERS.register("flour_sieve", () -> FlourSieveRecipe.SERIALIZER);
+
+    public static final Supplier<RecipeType<DoughCraftingTableRecipe>> DOUGH_CRAFTING_TABLE_TYPE = RECIPE_TYPE.register("dough_crafting_table",()-> RecipeType.simple(ResourceLocation.fromNamespaceAndPath(BakeriesMod.MODID,"dough_crafting_table")));
+
+    public static final Supplier<RecipeSerializer<DoughCraftingTableRecipe>> DOUGH_CRAFTING_TABLE_SERIALIZER = SERIALIZERS.register("dough_crafting_table", () -> DoughCraftingTableRecipe.SERIALIZER);
+
+    public static final Supplier<RecipeType<OvenRecipe>> OVEN_TYPE = RECIPE_TYPE.register("oven",()-> RecipeType.simple(ResourceLocation.fromNamespaceAndPath(BakeriesMod.MODID,"oven")));
+
+    public static final Supplier<RecipeSerializer<OvenRecipe>> OVEN_SERIALIZER = SERIALIZERS.register("oven", () -> OvenRecipe.SERIALIZER);
 
     public static void getRegister(IEventBus bus){
         SERIALIZERS.register(bus);

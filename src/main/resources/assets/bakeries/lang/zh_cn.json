@@ -270,7 +270,7 @@
   "tooltips.bakeries.player_logged_in": "§6【烘焙坊】§f安装帕秋莉手册以获得模组教程书",
   "tooltips.bakeries.repeat_eat_item_drink": "喝",
   "tooltips.bakeries.repeat_eat_item_eat": "吃",
-  "tooltips.bakeries.row_item_temperature": "Min %s °c",
+  "tooltips.bakeries.row_item_temperature": "Min %s°c",
   "tooltips.bakeries.shake": "右键以摇晃",
   "tooltips.bakeries.toaster_0": "空手右键以开始烤制",
   "tooltips.bakeries.toaster_1": "%s右键以取出物品",

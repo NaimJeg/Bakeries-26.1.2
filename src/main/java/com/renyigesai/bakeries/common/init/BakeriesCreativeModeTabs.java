@@ -19,6 +19,8 @@ public class BakeriesCreativeModeTabs {
                     .displayItems((_, output) -> {
 
                         output.accept(BakeriesItems.BLENDER);
+                        output.accept(BakeriesItems.DOUGH_CRAFTING_TABLE);
+                        output.accept(BakeriesItems.OVEN);
 
                         output.accept(BakeriesItems.FERMENTATION_TANK);
                         output.accept(BakeriesItems.YEAST_TANK);
@@ -69,6 +71,12 @@ public class BakeriesCreativeModeTabs {
                         output.accept(BakeriesItems.SALT_CROISSANT);
                         output.accept(BakeriesItems.FLAT_CROISSANT);
                         output.accept(BakeriesItems.COUNTRY_BREAD_SLICE);
+                        output.accept(BakeriesItems.TOAST.get());
+                        output.accept(BakeriesItems.SLICED_TOAST.get());
+                        output.accept(BakeriesItems.BAKE_SLICED_TOAST.get());
+                        output.accept(BakeriesItems.HONEY_BUTTER_SPREAD_TOAST.get());
+                        output.accept(BakeriesItems.CHEESE_COCOA_TOAST.get());
+                        output.accept(BakeriesItems.SLICED_CHEESE_COCOA_TOAST.get());
                         output.accept(BakeriesItems.HONEY_BUTTER_SPREAD_COUNTRY_BREAD);
                         output.accept(BakeriesItems.CIABATTA);
                         output.accept(BakeriesItems.FOCACCIA);
@@ -87,7 +95,26 @@ public class BakeriesCreativeModeTabs {
                     .title(Component.translatable("item_group.bakeries.bakeries_sfp_tab"))
                     .icon(() -> BakeriesItems.ROUND_BREAD.get().getDefaultInstance())
                     .displayItems((_, output) ->
-                            {}
+                            {
+                                output.accept(BakeriesItems.SWEET_DOUGH);
+                                output.accept(BakeriesItems.SALTED_DOUGH);
+                                output.accept(BakeriesItems.COCOA_DOUGH);
+                                output.accept(BakeriesItems.WHOLE_WHEAT_DOUGH);
+                                output.accept(BakeriesItems.PASTRY);
+                                output.accept(BakeriesItems.EGG_TART_SHELL);
+                                output.accept(BakeriesItems.RAW_EGG_TART);
+                                output.accept(BakeriesItems.BAGEL_DOUGH);
+                                output.accept(BakeriesItems.WHOLE_WHEAT_BAGEL_DOUGH);
+                                output.accept(BakeriesItems.ROUND_BREAD_DOUGH);
+                                output.accept(BakeriesItems.BROWN_SUGAR_ROLL_DOUGH);
+                                output.accept(BakeriesItems.PINEAPPLE_BUN_DOUGH);
+                                output.accept(BakeriesItems.CROISSANT_DOUGH);
+                                output.accept(BakeriesItems.SALT_CROISSANT_DOUGH);
+                                output.accept(BakeriesItems.BAGUETTE_DOUGH);
+                                output.accept(BakeriesItems.CIABATTA_DOUGH);
+                                output.accept(BakeriesItems.FOCACCIA_DOUGH);
+                                output.accept(BakeriesItems.COUNTRY_BREAD_DOUGH);
+                            }
                     ).build());
 
 }

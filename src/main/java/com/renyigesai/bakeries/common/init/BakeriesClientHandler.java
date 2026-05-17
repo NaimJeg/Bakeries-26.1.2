@@ -1,8 +1,10 @@
 package com.renyigesai.bakeries.common.init;
 
 import com.renyigesai.bakeries.common.client.model.BlenderModel;
+import com.renyigesai.bakeries.common.client.model.OvenModel;
 import com.renyigesai.bakeries.common.client.renderer.blockentity.blender.BlenderRender;
 import com.renyigesai.bakeries.common.client.renderer.blockentity.mix_block.MixBlockRender;
+import com.renyigesai.bakeries.common.client.renderer.blockentity.oven.OvenRender;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -14,6 +16,7 @@ public class BakeriesClientHandler {
     public static void onRenders(EntityRenderersEvent.RegisterRenderers event){
         event.registerBlockEntityRenderer(BakeriesBlocks.Entities.MIX_BLOCK_ENTITY.get(), MixBlockRender::new);
         event.registerBlockEntityRenderer(BakeriesBlocks.Entities.BLENDER_ENTITY.get(), BlenderRender::new);
+        event.registerBlockEntityRenderer(BakeriesBlocks.Entities.OVEN_ENTITY.get(), OvenRender::new);
 //        event.registerBlockEntityRenderer(BakeriesBlocks.Entities.BLENDER_ENTITY.get(), BlenderRenderer::new);
 //        event.registerBlockEntityRenderer(BakeriesBlocks.Entities.OVEN_BLOCK_ENTITY.get(), OvenRender::new);
 //        event.registerBlockEntityRenderer(BakeriesBlocks.Entities.TOASTER_ENTITY.get(), ToasterRender::new);
@@ -25,6 +28,7 @@ public class BakeriesClientHandler {
     @SubscribeEvent
     public static void registerLayer(EntityRenderersEvent.RegisterLayerDefinitions event) {
         event.registerLayerDefinition(BlenderModel.BLENDER, BlenderModel::createBodyLayer);
+        event.registerLayerDefinition(OvenModel.OVEN, OvenModel::createBodyLayer);
 //        event.registerLayerDefinition(OvenModel.OVEN, OvenModel::createBodyLayer);
 //        event.registerLayerDefinition(MokaPotModel.LAYER_LOCATION, MokaPotModel::createBodyLayer);
 //        event.registerLayerDefinition(GlassBreadRackDoorModel.LAYER_LOCATION, GlassBreadRackDoorModel::createBodyLayer);

@@ -1,0 +1,12 @@
+{
+  "type": "bakeries:oven",
+  "ingredient":"bakeries:croissant_dough",
+  "max": 185,
+  "min": 175,
+  "perfect": 180,
+  "result": {
+    "count": 1,
+    "id": "bakeries:croissant"
+  },
+  "time": 200
+}

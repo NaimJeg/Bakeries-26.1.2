@@ -5,6 +5,7 @@ import com.renyigesai.bakeries.api.FoodData;
 import com.renyigesai.bakeries.api.blocks.AbstractPileBlock;
 import com.renyigesai.bakeries.api.items.BottleButterItem;
 import com.renyigesai.bakeries.api.items.PileItem;
+import com.renyigesai.bakeries.api.items.RawItem;
 import com.renyigesai.bakeries.common.items.BreadKnifeItem;
 import com.renyigesai.bakeries.common.items.FlourSieveItem;
 import com.renyigesai.bakeries.common.items.ShakeItem;
@@ -31,10 +32,13 @@ public class BakeriesItems {
     public static final DeferredRegister.Items REGISTER = DeferredRegister.createItems(BakeriesMod.MODID);
 
     public static final DeferredItem<Item> BLENDER;
+    public static final DeferredItem<Item> DOUGH_CRAFTING_TABLE;
+    public static final DeferredItem<Item> OVEN;
     public static final DeferredItem<Item> FERMENTATION_TANK;
     public static final DeferredItem<Item> YEAST_TANK;
     public static final DeferredItem<Item> MILK_TANK;
     public static final DeferredItem<Item> CHEESE_TANK;
+    public static final DeferredItem<Item> MOULD;
 
     public static final DeferredItem<Item> FLOUR;
     public static final DeferredItem<Item> WHOLE_WHEAT_FLOUR;
@@ -90,6 +94,52 @@ public class BakeriesItems {
     public static final DeferredItem<Item> DIRTY_CHOCO_CROISSANT;
     public static final DeferredItem<Item> SALT_CROISSANT;
     public static final DeferredItem<Item> FLAT_CROISSANT;
+
+    /**半成品和面团*/
+    public static final DeferredItem<Item> SWEET_DOUGH;
+
+    public static final DeferredItem<Item> COCOA_DOUGH;
+
+    public static final DeferredItem<Item> SALTED_DOUGH;
+
+    public static final DeferredItem<Item> WHOLE_WHEAT_DOUGH;
+
+    public static final DeferredItem<Item> PASTRY;
+
+    public static final DeferredItem<Item> EGG_TART_SHELL;
+
+    public static final DeferredItem<Item> RAW_EGG_TART;
+
+    public static final DeferredItem<Item> BAGEL_DOUGH;
+
+    public static final DeferredItem<Item> WHOLE_WHEAT_BAGEL_DOUGH;
+
+    public static final DeferredItem<Item> ROUND_BREAD_DOUGH;
+
+    public static final DeferredItem<Item> BROWN_SUGAR_ROLL_DOUGH;
+
+    public static final DeferredItem<Item> PINEAPPLE_BUN_DOUGH;
+
+    public static final DeferredItem<Item> CROISSANT_DOUGH;
+
+    public static final DeferredItem<Item> SALT_CROISSANT_DOUGH;
+
+    public static final DeferredItem<Item> BAGUETTE_DOUGH;
+
+    public static final DeferredItem<Item> CIABATTA_DOUGH;
+
+    public static final DeferredItem<Item> FOCACCIA_DOUGH;
+
+    public static final DeferredItem<Item> COUNTRY_BREAD_DOUGH;
+
+//    public static final DeferredItem<Item> MOULD_TOAST_DOUGH;
+
+    public static final DeferredItem<Item> TOAST;
+    public static final DeferredItem<Item> SLICED_TOAST;
+    public static final DeferredItem<Item> BAKE_SLICED_TOAST;
+    public static final DeferredItem<Item> HONEY_BUTTER_SPREAD_TOAST;
+    public static final DeferredItem<Item> CHEESE_COCOA_TOAST;
+    public static final DeferredItem<Item> SLICED_CHEESE_COCOA_TOAST;
 //    public static final DeferredItem<Item> BAGUETTE;
 //    public static final DeferredItem<Item> COUNTRY_BREAD;
     public static final DeferredItem<Item> COUNTRY_BREAD_SLICE;
@@ -110,11 +160,14 @@ public class BakeriesItems {
     static {
 
         BLENDER = block(BakeriesBlocks.BLENDER);
+        DOUGH_CRAFTING_TABLE = block(BakeriesBlocks.DOUGH_CRAFTING_TABLE);
+        OVEN = block(BakeriesBlocks.OVEN);
 
         FERMENTATION_TANK = block(BakeriesBlocks.FERMENTATION_TANK);
         YEAST_TANK = block(BakeriesBlocks.YEAST_TANK);
         MILK_TANK = block(BakeriesBlocks.MILK_TANK);
         CHEESE_TANK = block(BakeriesBlocks.CHEESE_TANK);
+        MOULD = block(BakeriesBlocks.MOULD);
 
         FLOUR = item("flour");
         WHOLE_WHEAT_FLOUR = item("whole_wheat_flour");
@@ -174,6 +227,33 @@ public class BakeriesItems {
         EGG_TART = foodBreadBlock(BakeriesBlocks.EGG_TART,defaultFoodBread(FoodData.create(BakeriesFoodProperties.EGG_TART,BakeriesConsumables.EGG_TART)));
         TARO_SALT_YOLK_BREAD = foodBreadBlock(BakeriesBlocks.TARO_SALT_YOLK_BREAD,defaultFoodBread(FoodData.create(BakeriesFoodProperties.TARO_SALT_YOLK_BREAD,BakeriesConsumables.TARO_SALT_YOLK_BREAD)).rarity(BakeriesRarity.getTaro()));
 
+        TOAST = block(BakeriesBlocks.TOAST);
+        CHEESE_COCOA_TOAST = block(BakeriesBlocks.CHEESE_COCOA_TOAST);
+
+        SLICED_TOAST = foodItem("sliced_toast",BakeriesFoodProperties.SLICED_TOAST);
+        BAKE_SLICED_TOAST = foodItem("bake_sliced_toast",BakeriesFoodProperties.SLICED_TOAST);
+        HONEY_BUTTER_SPREAD_TOAST = REGISTER.register("honey_butter_spread_toast",()-> new Item(new Item.Properties().food(BakeriesFoodProperties.HONEY_BUTTER_SPREAD_TOAST).setId(modItemId("honey_butter_spread_toast"))));
+        SLICED_CHEESE_COCOA_TOAST = foodItem("sliced_cheese_cocoa_toast",BakeriesFoodProperties.SLICED_CHEESE_COCOA_TOAST);
+
+        SWEET_DOUGH = item("sweet_dough");
+        SALTED_DOUGH = item("salted_dough");
+        COCOA_DOUGH = item("cocoa_dough");
+        WHOLE_WHEAT_DOUGH = item("whole_wheat_dough");
+        PASTRY = item("pastry");
+        EGG_TART_SHELL = item("egg_tart_shell");
+        RAW_EGG_TART = rawItem("raw_egg_tart",180);
+        BAGEL_DOUGH = rawItem("bagel_dough",200);
+        WHOLE_WHEAT_BAGEL_DOUGH = rawItem("whole_wheat_bagel_dough",200);
+        ROUND_BREAD_DOUGH = rawItem("round_bread_dough", 155);
+        BROWN_SUGAR_ROLL_DOUGH = rawItem("brown_sugar_roll_dough",155);
+        PINEAPPLE_BUN_DOUGH = rawItem("pineapple_bun_dough",170);
+        CROISSANT_DOUGH = rawItem("croissant_dough",175);
+        SALT_CROISSANT_DOUGH = rawItem("salt_croissant_dough",180);
+        BAGUETTE_DOUGH = rawItem("baguette_dough",230);
+        CIABATTA_DOUGH = rawItem("ciabatta_dough",210);
+        FOCACCIA_DOUGH = rawItem("focaccia_dough",230);
+        COUNTRY_BREAD_DOUGH = rawItem("country_bread_dough",225);
+
         BREAD_KNIFE = REGISTER.register("bread_knife",()-> new BreadKnifeItem(ToolMaterial.IRON,"bread_knife"));
         FLOUR_SIEVE = REGISTER.register("flour_sieve",FlourSieveItem::new);
     }
@@ -207,6 +287,10 @@ public class BakeriesItems {
     public static DeferredItem<Item> item(String name){
         return REGISTER.registerSimpleItem(name);
 //        return REGISTER.register(name,()-> new Item(new Item.Properties().setId(ResourceKey.create(Registries.ITEM,Identifier.fromNamespaceAndPath(BakeriesMod.MODID,name)))));
+    }
+
+    private static DeferredItem<Item> rawItem(String pName, int temperature) {
+        return REGISTER.register(pName, () -> new RawItem(new Item.Properties().setId(modItemId(pName)), temperature));
     }
 
 //    public static DeferredItem<Item> item(String name,Function<Item.Properties, Item> itemFactory){

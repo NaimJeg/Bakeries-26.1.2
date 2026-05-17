@@ -186,7 +186,6 @@ public class PileItem extends BlockItem {
             builder.accept(Component.translatable("tooltips.bakeries.pile_item_perfect").withStyle(ChatFormatting.GOLD));
         }
         if (itemStack.has(DataComponents.FOOD) && itemStack.has(DataComponents.CONSUMABLE)){
-//            FoodProperties foodProperties = itemStack.get(DataComponents.FOOD);
             TextUtils.addFoodEffectTooltip(itemStack, builder, 1.0F,context.tickRate());
         }
     }

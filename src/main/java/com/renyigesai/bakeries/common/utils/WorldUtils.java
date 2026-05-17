@@ -183,4 +183,13 @@ public class WorldUtils {
         }
     }
 
+    @SuppressWarnings("removal")
+    public static void saveItemsToHandler(ValueOutput output, ItemStackHandler handler, String key) {
+        NonNullList<ItemStack> nonNullList = NonNullList.withSize(handler.getSlots(),ItemStack.EMPTY);
+        saveAllItems(output, nonNullList, key);
+        for (int i = 0; i < nonNullList.size(); i++) {
+            handler.setStackInSlot(i, nonNullList.get(i));
+        }
+    }
+
 }

@@ -1,0 +1,8 @@
+{
+  "type": "bakeries:dough_crafting_table",
+  "ingredient": "bakeries:salted_dough",
+  "result": {
+    "count": 4,
+    "id": "bakeries:ciabatta_dough"
+  }
+}

@@ -1,0 +1,116 @@
+package com.renyigesai.bakeries.common.items;
+
+import com.renyigesai.bakeries.api.items.PileItem;
+import com.renyigesai.bakeries.common.init.BakeriesDataComponents;
+import com.renyigesai.bakeries.common.utils.ItemUtils;
+import net.minecraft.advancements.CriteriaTriggers;
+import net.minecraft.core.component.DataComponents;
+import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.stats.Stats;
+import net.minecraft.util.Mth;
+import net.minecraft.util.RandomSource;
+import net.minecraft.world.RandomSequence;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.food.FoodProperties;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.ItemUseAnimation;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.component.Consumable;
+import net.minecraft.world.item.component.ConsumableListener;
+import net.minecraft.world.item.component.TooltipDisplay;
+import net.minecraft.world.item.context.UseOnContext;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.gameevent.GameEvent;
+
+import java.util.function.Consumer;
+
+public class RepeatEatItem extends PileItem {
+    private final boolean canDrink;
+
+    public RepeatEatItem(Block block, Properties properties, int eatCount,boolean canDrink) {
+        super(block, properties.component(BakeriesDataComponents.EAT_COUNT_MAX,eatCount).component(BakeriesDataComponents.EAT_COUNT,eatCount));
+        this.canDrink = canDrink;
+    }
+
+    @Override
+    public boolean isExtra(UseOnContext pContext) {
+        ItemStack itemInHand = pContext.getItemInHand();
+        if (isRepeatEat(itemInHand)){
+            int eatCount = itemInHand.getOrDefault(BakeriesDataComponents.EAT_COUNT,-1);
+            int eatCountMax = itemInHand.getOrDefault(BakeriesDataComponents.EAT_COUNT_MAX,-1);
+            return eatCount == eatCountMax;
+        }
+        return super.isExtra(pContext);
+    }
+
+    @Override
+    public ItemUseAnimation getUseAnimation(ItemStack pStack) {
+        if (!this.canDrink){
+            return ItemUseAnimation.EAT;
+        }
+        return ItemUseAnimation.DRINK;
+    }
+
+    public static boolean isRepeatEat(ItemStack stack){
+        return stack.has(BakeriesDataComponents.EAT_COUNT_MAX) && stack.has(BakeriesDataComponents.EAT_COUNT);
+    }
+
+    @Override
+    public int getBarColor(ItemStack stack) {
+        return this.canDrink ? 5592575 : 15574564;
+    }
+
+    public static void eatOrBreak(LivingEntity living,ItemStack stack){
+        if (isRepeatEat(stack)){
+            int eatCount = stack.getOrDefault(BakeriesDataComponents.EAT_COUNT,0);
+            if (eatCount - 1 == 0){
+                stack.consume(1,living);
+            }else {
+                stack.set(BakeriesDataComponents.EAT_COUNT,eatCount - 1);
+            }
+        }
+    }
+
+    public int getBarWidth(ItemStack stack) {
+        if (isRepeatEat(stack)) {
+            Integer eatCount = stack.get(BakeriesDataComponents.EAT_COUNT);
+            Integer eatCountMax = stack.get(BakeriesDataComponents.EAT_COUNT_MAX);
+            if (eatCount != null && eatCountMax != null && eatCountMax > 0) {
+                return Mth.clamp(Math.round(13.0F * eatCount / eatCountMax), 0, 13);
+            }
+        }
+        return super.getBarWidth(stack);
+    }
+
+    @Override
+    public boolean isBarVisible(ItemStack stack) {
+        if (!isRepeatEat(stack)){
+            return false;
+        }
+        Integer eatCount = stack.get(BakeriesDataComponents.EAT_COUNT);
+        Integer eatCountMax = stack.get(BakeriesDataComponents.EAT_COUNT_MAX);
+        if (eatCount != null &&  eatCountMax != null){
+            return eatCount < eatCountMax;
+        }
+        return false;
+    }
+
+    @Override
+    public void appendHoverText(ItemStack stack, TooltipContext context, TooltipDisplay display, Consumer<Component> builder, TooltipFlag tooltipFlag) {
+        super.appendHoverText(stack, context, display, builder, tooltipFlag);
+        if (isRepeatEat(stack)){
+            int eatCount = stack.getOrDefault(BakeriesDataComponents.EAT_COUNT,-1);
+            int eatCountMax = stack.getOrDefault(BakeriesDataComponents.EAT_COUNT_MAX,-1);
+            String translatable = this.canDrink ? "tooltips.bakeries.repeat_eat_item_drink" : "tooltips.bakeries.repeat_eat_item_eat";
+            builder.accept(Component.literal(Component.translatable(translatable).getString() + eatCount + " / " + eatCountMax));
+        }
+
+    }
+
+}

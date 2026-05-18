@@ -6,10 +6,7 @@ import com.renyigesai.bakeries.api.blocks.AbstractPileBlock;
 import com.renyigesai.bakeries.api.items.BottleButterItem;
 import com.renyigesai.bakeries.api.items.PileItem;
 import com.renyigesai.bakeries.api.items.RawItem;
-import com.renyigesai.bakeries.common.items.BreadKnifeItem;
-import com.renyigesai.bakeries.common.items.FlourSieveItem;
-import com.renyigesai.bakeries.common.items.ShakeItem;
-import com.renyigesai.bakeries.common.items.WholeEggItem;
+import com.renyigesai.bakeries.common.items.*;
 import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -95,7 +92,7 @@ public class BakeriesItems {
     public static final DeferredItem<Item> SALT_CROISSANT;
     public static final DeferredItem<Item> FLAT_CROISSANT;
 
-    /**°ë³ÉÆ·ºÍÃæÍÅ*/
+    /**ï¿½ï¿½ï¿½Æ·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*/
     public static final DeferredItem<Item> SWEET_DOUGH;
 
     public static final DeferredItem<Item> COCOA_DOUGH;
@@ -150,6 +147,7 @@ public class BakeriesItems {
     public static final DeferredItem<Item> BAGEL_FILLED_SAUCE;
     public static final DeferredItem<Item> BAGUETTE_WITH_FILLING;
     public static final DeferredItem<Item> TOMATO_CHEESE_CROISSANT_SANDWICH;
+    public static final DeferredItem<Item> BAGUETTE;
     public static final DeferredItem<Item> EGG_TART;
     public static final DeferredItem<Item> TARO_SALT_YOLK_BREAD;
 
@@ -218,7 +216,7 @@ public class BakeriesItems {
         BAGEL_FILLED_SAUCE = foodBreadBlock(BakeriesBlocks.BAGEL_FILLED_SAUCE, defaultFoodBread(FoodData.create(BakeriesFoodProperties.BAGEL_FILLED_SAUCE)).rarity(BakeriesRarity.getAdvanced()));
         BAGUETTE_WITH_FILLING = foodBreadBlock(BakeriesBlocks.BAGUETTE_WITH_FILLING, defaultFoodBread(FoodData.create(BakeriesFoodProperties.BAGUETTE_WITH_FILLING)).rarity(BakeriesRarity.getAdvanced()));
         TOMATO_CHEESE_CROISSANT_SANDWICH = foodBreadBlock(BakeriesBlocks.TOMATO_CHEESE_CROISSANT_SANDWICH, defaultFoodBread(FoodData.create(BakeriesFoodProperties.TOMATO_CHEESE_CROISSANT_SANDWICH,BakeriesConsumables.TOMATO_CHEESE_CROISSANT_SANDWICH)).rarity(BakeriesRarity.getAdvanced()));
-//        BAGUETTE = REGISTER.register("baguette",()-> new BaguetteItem(BakeriesBlocks.BAGUETTE.get(),new Item.Properties().durability(4).food(BakeriesFoodProperties.BAGUETTE).attributes(BaguetteItem.createAttributes())));
+        BAGUETTE = REGISTER.register("baguette", BaguetteItem::new);
 //        COUNTRY_BREAD = block(BakeriesBlocks.COUNTRY_BREAD);
         COUNTRY_BREAD_SLICE = foodItem("country_bread_slice",BakeriesFoodProperties.COUNTRY_BREAD_SLICE);
         HONEY_BUTTER_SPREAD_COUNTRY_BREAD = foodItem("honey_butter_spread_country_bread",BakeriesFoodProperties.HONEY_BUTTER_SPREAD_COUNTRY_BREAD);

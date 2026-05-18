@@ -80,6 +80,7 @@ public class BakeriesCreativeModeTabs {
                         output.accept(BakeriesItems.HONEY_BUTTER_SPREAD_COUNTRY_BREAD);
                         output.accept(BakeriesItems.CIABATTA);
                         output.accept(BakeriesItems.FOCACCIA);
+                        output.accept(BakeriesItems.BAGUETTE);
                         output.accept(BakeriesItems.BERRY_BAGEL);
                         output.accept(BakeriesItems.BAGEL_FILLED_SAUCE);
                         output.accept(BakeriesItems.BAGUETTE_WITH_FILLING);

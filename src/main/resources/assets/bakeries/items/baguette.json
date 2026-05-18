@@ -1,6 +1,6 @@
 {
   "model": {
     "type": "minecraft:model",
-    "model": "bakeries:block/baguette_1"
+    "model": "bakeries:item/baguette"
   }
 }

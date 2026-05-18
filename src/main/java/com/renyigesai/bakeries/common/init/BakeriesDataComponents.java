@@ -13,8 +13,12 @@ import java.util.function.Supplier;
 public class BakeriesDataComponents {
     public static final DeferredRegister<DataComponentType<?>> DATA_COMPONENT_TYPE = DeferredRegister.create(Registries.DATA_COMPONENT_TYPE,BakeriesMod.MODID);
     public static final Supplier<DataComponentType<Boolean>> PERFECT;
+    public static final Supplier<DataComponentType<Integer>> EAT_COUNT;
+    public static final Supplier<DataComponentType<Integer>> EAT_COUNT_MAX;
 
     static {
         PERFECT = DATA_COMPONENT_TYPE.register("perfect", () -> DataComponentType.<Boolean>builder().persistent(Codec.BOOL).networkSynchronized(ByteBufCodecs.BOOL).build());
+        EAT_COUNT = DATA_COMPONENT_TYPE.register("eat_count", () -> DataComponentType.<Integer>builder().persistent(Codec.INT).networkSynchronized(ByteBufCodecs.INT).build());
+        EAT_COUNT_MAX = DATA_COMPONENT_TYPE.register("eat_count_max", () -> DataComponentType.<Integer>builder().persistent(Codec.INT).networkSynchronized(ByteBufCodecs.INT).build());
     }
 }

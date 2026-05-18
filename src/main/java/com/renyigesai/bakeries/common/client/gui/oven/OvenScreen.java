@@ -18,7 +18,6 @@ import net.minecraft.world.item.TooltipFlag;
 import net.neoforged.neoforge.client.ClientTooltipFlag;
 import net.neoforged.neoforge.client.network.ClientPacketDistributor;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 

@@ -40,7 +40,7 @@ public class BakeriesBlocks {
     public static final DeferredBlock<Block> OVEN;
 
 
-    /**发酵罐*/
+    /**?????*/
     public static final DeferredBlock<Block> FERMENTATION_TANK;
     public static final DeferredBlock<Block> YEAST_TANK;
     public static final DeferredBlock<Block> MILK_TANK;
@@ -49,59 +49,59 @@ public class BakeriesBlocks {
     public static final DeferredBlock<Block> MOULD;
 
 
-    /*面包方块*/
+    /*???????*/
 
-    /**贝果*/
+    /**????*/
     public static final DeferredBlock<Block> BAGEL;
-    /**全麦贝果*/
+    /**????*/
     public static final DeferredBlock<Block> WHOLE_WHEAT_BAGEL;
-    /**圆面包*/
+    /**????*/
     public static final DeferredBlock<Block> ROUND_BREAD;
-    /**莓果面包*/
+    /**??????*/
     public static final DeferredBlock<Block> BERRY_BREAD;
-    /**乳酪面包*/
+    /**???????*/
     public static final DeferredBlock<Block> CHEESE_CREAM_BREAD;
-    /**红糖卷*/
+    /**?????*/
     public static final DeferredBlock<Block> BROWN_SUGAR_ROLL;
-    /**菠萝包*/
+    /**?????*/
     public static final DeferredBlock<Block> PINEAPPLE_BUN;
-    /**菠萝包*/
+    /**?????*/
     public static final DeferredBlock<Block> PINEAPPLE_OIL;
-    /**肉松面包卷*/
+    /**?????????*/
     public static final DeferredBlock<Block> MEAT_FLOSS_BREAD_ROLL;
-    /**可颂*/
+    /**????*/
     public static final DeferredBlock<Block> CROISSANT;
-    /**脏脏包*/
+    /**?????*/
     public static final DeferredBlock<Block> DIRTY_CHOCO_CROISSANT;
-    /**盐可颂*/
+    /**?慰???*/
     public static final DeferredBlock<Block> SALT_CROISSANT;
-    /**恰巴塔面包*/
+    /**????????*/
     public static final DeferredBlock<Block> CIABATTA;
-    /**佛卡夏面包*/
+    /**???????*/
     public static final DeferredBlock<Block> FOCACCIA;
-    /**浆果贝果*/
+    /**????????*/
     public static final DeferredBlock<Block> BERRY_BAGEL;
-    /**填酱贝果*/
+    /**??????*/
     public static final DeferredBlock<Block> BAGEL_FILLED_SAUCE;
-    /**填馅法棍*/
+    /**???????*/
     public static final DeferredBlock<Block> BAGUETTE_WITH_FILLING;
-    /**番茄奶酪可颂三明治*/
+    /**?????????????????*/
     public static final DeferredBlock<Block> TOMATO_CHEESE_CROISSANT_SANDWICH;
-    /**法棍*/
+    /**????*/
     public static final DeferredBlock<Block> BAGUETTE;
-    /**乡村面包*/
+    /**??????*/
 //    public static final DeferredBlock<Block> COUNTRY_BREAD;
-    /**扁可颂*/
+    /**?????*/
     public static final DeferredBlock<Block> FLAT_CROISSANT;
-    /**吐司*/
+    /**???*/
     public static final DeferredBlock<Block> TOAST;
     public static final DeferredBlock<Block> MOULD_TOAST;
     public static final DeferredBlock<Block> CHEESE_COCOA_TOAST;
     public static final DeferredBlock<Block> MOULD_CHEESE_COCOA_TOAST;
 
-    /**蛋挞*/
+    /**???*/
     public static final DeferredBlock<Block> EGG_TART;
-    /**芋泥咸蛋黄面包*/
+    /**????????????*/
     public static final DeferredBlock<Block> TARO_SALT_YOLK_BREAD;
 
     public static final DeferredBlock<Block> TOMATO;
@@ -121,7 +121,7 @@ public class BakeriesBlocks {
         DOUGH_CRAFTING_TABLE = BLOCKS.register("dough_crafting_table", DoughCraftingTableBlock::new);
         OVEN = BLOCKS.register("oven", OvenBlock::new);
 
-        /*面包方块*/
+        /*???????*/
         BAGEL = BLOCKS.register("bagel", BreadBlock::new);
         WHOLE_WHEAT_BAGEL = BLOCKS.register("whole_wheat_bagel", BreadBlock::new);
         ROUND_BREAD = BLOCKS.register("round_bread", BreadBlock::new);

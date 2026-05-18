@@ -4,10 +4,11 @@ import net.minecraft.client.renderer.blockentity.state.BlockEntityRenderState;
 import net.minecraft.core.Direction;
 
 public class BlenderEntityRenderState extends BlockEntityRenderState {
-    public float open;
+    public float[] open;
     public Direction facing;
 
     public BlenderEntityRenderState() {
+        this.open = new float[2];
         this.facing = Direction.DOWN;
     }
 }

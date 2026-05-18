@@ -31,26 +31,28 @@ public class BlenderRender implements BlockEntityRenderer<BlenderBlockEntity,Ble
     @Override
     public void extractRenderState(BlenderBlockEntity blockEntity, BlenderEntityRenderState state, float partialTicks, Vec3 cameraPosition, ModelFeatureRenderer.CrumblingOverlay breakProgress) {
         BlockEntityRenderer.super.extractRenderState(blockEntity, state, partialTicks, cameraPosition, breakProgress);
-        state.open = blockEntity.getProgress(partialTicks);
+        state.open[0] = blockEntity.getProgress(partialTicks);
+        state.open[1] = blockEntity.getRprogress(partialTicks);
         state.facing = blockEntity.getBlockState().getValue(BlenderBlock.FACING).getOpposite();
     }
 
-    //äÖÈ¾·½¿éÄ£ÐÍ
+    //ï¿½ï¿½È¾ï¿½ï¿½ï¿½ï¿½Ä£ï¿½ï¿½
     @Override
     public void submit(BlenderEntityRenderState state, PoseStack poseStack, SubmitNodeCollector submitNodeCollector, CameraRenderState camera) {
         poseStack.pushPose();
 
-        //»ù´¡±ä»»£¬ÎÞÄÔ³­
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ä»»ï¿½ï¿½ï¿½ï¿½ï¿½Ô³ï¿½
         poseStack.translate(0.5,1.5,0.5);
         poseStack.mulPose(Axis.XP.rotationDegrees(180F));
         poseStack.mulPose(Axis.YP.rotationDegrees(state.facing.toYRot()));
         poseStack.scale(0.9995F, 0.9995F, 0.9995F);
 
-        model.getUp().xRot = (float) Math.toRadians(state.open * -25);
+//        model.getUp().xRot = (float) Math.toRadians(state.open * -25);
+//        model.getUp().xRot = -(state.open * ((float)Math.PI / 2F));
 
-        /*äÖÈ¾·½¿éÄ£ÐÍ£¬²ÎÊýmodelÊÇÄã×öºÃµÄJavaÄ£ÐÍ£¬stateÖµÊÓÇé¿ö´«µÝ£¬poseStack¾ÍÌîposeStack£¬textureÊÇÌùÍ¼£¬·µ»Ø×ÊÔ´µØÖ·¼´¿É
-        * lightCoords´Óstate»ñÈ¡lightCoords¼´¿É£¬overlayCoordsÖ±½ÓÌîOverlayTexture.NO_OVERLAY,outlineColorÌî0£¬×îºóÒ»¸öÖ±½Ó´Ó
-        * state»ñÈ¡breakProgress
+        /*ï¿½ï¿½È¾ï¿½ï¿½ï¿½ï¿½Ä£ï¿½Í£ï¿½ï¿½ï¿½ï¿½ï¿½modelï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ãµï¿½JavaÄ£ï¿½Í£ï¿½stateÖµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý£ï¿½poseStackï¿½ï¿½ï¿½ï¿½poseStackï¿½ï¿½textureï¿½ï¿½ï¿½ï¿½Í¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô´ï¿½ï¿½Ö·ï¿½ï¿½ï¿½ï¿½
+        * lightCoordsï¿½ï¿½stateï¿½ï¿½È¡lightCoordsï¿½ï¿½ï¿½É£ï¿½overlayCoordsÖ±ï¿½ï¿½ï¿½ï¿½OverlayTexture.NO_OVERLAY,outlineColorï¿½ï¿½0ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½Ö±ï¿½Ó´ï¿½
+        * stateï¿½ï¿½È¡breakProgress
         * */
         submitNodeCollector.submitModel(model,state.open,poseStack, TEXTURE,state.lightCoords,OverlayTexture.NO_OVERLAY,0,state.breakProgress);
         poseStack.popPose();

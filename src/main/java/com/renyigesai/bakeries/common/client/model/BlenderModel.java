@@ -11,8 +11,9 @@ import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
 import net.minecraft.client.renderer.rendertype.RenderTypes;
+import org.jspecify.annotations.NonNull;
 
-public class BlenderModel extends Model<Float> {
+public class BlenderModel extends Model<float[]> {
 	public static final ModelLayerLocation BLENDER =
 			new ModelLayerLocation(ResourceLocation.fromNamespaceAndPath(BakeriesMod.MODID, "blender"), "main");
 	private final ModelPart all;
@@ -69,8 +70,15 @@ public class BlenderModel extends Model<Float> {
 		return up;
 	}
 
-	public void setupAnim(Float progress) {
-		super.setupAnim(progress);
-		up.xRot = (float) Math.toRadians(progress * -25);
+	@Override
+	public void setupAnim(float @NonNull [] state) {
+		super.setupAnim(state);
+		up.xRot = (float) Math.toRadians(state[0] * -25);
+		up.yRot = (float) Math.toRadians(state[1] * 360);
 	}
+
+	//	public void setupAnim(Float progress) {
+//		super.setupAnim(progress);
+//		up.xRot = (float) Math.toRadians(progress * -25);
+//	}
 }

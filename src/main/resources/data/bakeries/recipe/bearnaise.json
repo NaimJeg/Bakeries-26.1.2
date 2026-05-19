@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "bakeries:olive_oil",
+    "bakeries:raw_egg_yolk",
+    "minecraft:sugar",
+    "minecraft:glass_bottle"
+  ],
+  "result": {
+    "id": "bakeries:bearnaise",
+    "count": 1
+  }
+}

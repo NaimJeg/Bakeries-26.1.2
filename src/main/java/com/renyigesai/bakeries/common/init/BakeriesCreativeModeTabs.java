@@ -35,6 +35,10 @@ public class BakeriesCreativeModeTabs {
                         output.accept(BakeriesItems.COCOA_POWDER);
                         output.accept(BakeriesItems.MATCHA_POWDER);
 
+                        output.accept(BakeriesItems.OLIVE_OIL);
+                        output.accept(BakeriesItems.BEARNAISE);
+                        output.accept(BakeriesItems.MEAT_FLOSS);
+
                         output.accept(BakeriesItems.FOAMED_CREAM);
                         output.accept(BakeriesItems.CHEESE_CREAM);
                         output.accept(BakeriesItems.BUTTER_FLOUR_SAND);

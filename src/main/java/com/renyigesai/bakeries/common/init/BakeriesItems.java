@@ -14,6 +14,7 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.component.Consumable;
@@ -41,6 +42,9 @@ public class BakeriesItems {
     public static final DeferredItem<Item> WHOLE_WHEAT_FLOUR;
     public static final DeferredItem<Item> COCOA_POWDER;
     public static final DeferredItem<Item> MATCHA_POWDER;
+    public static final DeferredItem<Item> OLIVE_OIL;
+    public static final DeferredItem<Item> BEARNAISE;
+    public static final DeferredItem<Item> MEAT_FLOSS;
 
     public static final DeferredItem<Item> SALT;
     public static final DeferredItem<Item> BOTTLE_YEAST;
@@ -141,6 +145,8 @@ public class BakeriesItems {
 //    public static final DeferredItem<Item> COUNTRY_BREAD;
     public static final DeferredItem<Item> COUNTRY_BREAD_SLICE;
     public static final DeferredItem<Item> HONEY_BUTTER_SPREAD_COUNTRY_BREAD;
+    public static final DeferredItem<Item> MOULD_TOAST;
+    public static final DeferredItem<Item> MOULD_CHEESE_COCOA_TOAST;
     public static final DeferredItem<Item> CIABATTA;
     public static final DeferredItem<Item> FOCACCIA;
     public static final DeferredItem<Item> BERRY_BAGEL;
@@ -172,6 +178,9 @@ public class BakeriesItems {
         WHOLE_WHEAT_FLOUR = item("whole_wheat_flour");
         COCOA_POWDER = item("cocoa_powder");
         MATCHA_POWDER = item("matcha_powder");
+        OLIVE_OIL = REGISTER.register("olive_oil",OliveOilItem::new);
+        BEARNAISE = REGISTER.register("bearnaise",()->new PileItem(BakeriesBlocks.BEARNAISE.get(),new PileItem.PileProperties().placeSound(SoundEvents.GLASS_PLACE).itemProperties(new Item.Properties().craftRemainder(Items.GLASS_BOTTLE).stacksTo(16).setId(modItemId("bearnaise")))));
+        MEAT_FLOSS = foodItem("meat_floss",BakeriesFoodProperties.MEAT_FLOSS);
         FOAMED_CREAM = foodItem("foamed_cream",BakeriesFoodProperties.FOAMED_CREAM);
         CHEESE_CREAM = foodItem("cheese_cream",BakeriesFoodProperties.FOAMED_CREAM);
         BUTTER_FLOUR_SAND = item("butter_flour_sand");
@@ -221,8 +230,8 @@ public class BakeriesItems {
 //        COUNTRY_BREAD = block(BakeriesBlocks.COUNTRY_BREAD);
         COUNTRY_BREAD_SLICE = foodItem("country_bread_slice",BakeriesFoodProperties.COUNTRY_BREAD_SLICE);
         HONEY_BUTTER_SPREAD_COUNTRY_BREAD = foodItem("honey_butter_spread_country_bread",BakeriesFoodProperties.HONEY_BUTTER_SPREAD_COUNTRY_BREAD);
-//        MOULD_TOAST = mouldBlock(BakeriesBlocks.MOULD_TOAST);
-//        MOULD_CHEESE_COCOA_TOAST = mouldBlock(BakeriesBlocks.MOULD_CHEESE_COCOA_TOAST);
+        MOULD_TOAST = REGISTER.register("mould_toast",()-> new MouldBlockItem(BakeriesBlocks.MOULD_TOAST.get(),new Item.Properties().setId(modItemId("mould_toast")).useBlockDescriptionPrefix()));
+        MOULD_CHEESE_COCOA_TOAST = REGISTER.register("mould_cheese_cocoa_toast",()-> new MouldBlockItem(BakeriesBlocks.MOULD_CHEESE_COCOA_TOAST.get(),new Item.Properties().setId(modItemId("mould_cheese_cocoa_toast")).useBlockDescriptionPrefix()));
         EGG_TART = foodBreadBlock(BakeriesBlocks.EGG_TART,defaultFoodBread(FoodData.create(BakeriesFoodProperties.EGG_TART,BakeriesConsumables.EGG_TART)));
         TARO_SALT_YOLK_BREAD = foodBreadBlock(BakeriesBlocks.TARO_SALT_YOLK_BREAD,defaultFoodBread(FoodData.create(BakeriesFoodProperties.TARO_SALT_YOLK_BREAD,BakeriesConsumables.TARO_SALT_YOLK_BREAD)).rarity(BakeriesRarity.getTaro()));
 

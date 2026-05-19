@@ -48,6 +48,9 @@ public class BakeriesBlocks {
 
     public static final DeferredBlock<Block> MOULD;
 
+    public static final DeferredBlock<Block> OLIVE_OIL;
+    public static final DeferredBlock<Block> BEARNAISE;
+
 
     /*???????*/
 
@@ -114,6 +117,8 @@ public class BakeriesBlocks {
         MILK_TANK = BLOCKS.register("milk_tank",MilkTankBlock::new);
         CHEESE_TANK = BLOCKS.register("cheese_tank",CheeseTankBkock::new);
         MOULD = BLOCKS.register("mould",()-> new MouldBlock(BakeriesItems.MOULD,"mould"));
+        OLIVE_OIL = BLOCKS.register("olive_oil",TanPieBlock::new);
+        BEARNAISE = BLOCKS.register("bearnaise",TanPieBlock::new);
 
         WOOD_TRAY = BLOCKS.register("wood_tray",()-> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS).setId(ResourceKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath("bakeries","wood_tray")))));
         MIX_BLOCK = BLOCKS.register("mix_block", MixBlock::new);

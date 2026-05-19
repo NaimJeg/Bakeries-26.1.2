@@ -1,5 +1,6 @@
 package com.renyigesai.bakeries.api.blocks;
 
+import com.renyigesai.bakeries.common.tag.CommonTags;
 import com.renyigesai.bakeries.common.utils.ItemUtils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvents;
@@ -25,8 +26,7 @@ public abstract class AKnifeCutBlock extends HorizontalDirectionalBlock {
 
     /*获取传入的物品是否为可用的刀*/
     public boolean isKnifeItem(ItemStack itemStack) {
-//        return itemStack.is(CommonTags.KNIFE);
-        return true;
+        return itemStack.is(CommonTags.KNIFE);
     }
 
     /*返回切片方块状态,对于只切一刀的方块请返回null*/

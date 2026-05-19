@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "  a",
+    " b ",
+    "c  "
+  ],
+  "key": {
+    "a":"minecraft:iron_ingot",
+    "b":"minecraft:stick",
+    "c":"minecraft:iron_nugget"
+  },
+  "result": {
+    "id": "bakeries:bread_knife",
+    "count": 1
+  }
+}

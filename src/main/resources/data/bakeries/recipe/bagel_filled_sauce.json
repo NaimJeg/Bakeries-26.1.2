@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "bakeries:bagel",
+    "bakeries:bearnaise"
+  ],
+  "result": {
+    "id": "bakeries:bagel_filled_sauce",
+    "count": 1
+  }
+}

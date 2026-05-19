@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "bakeries:round_bread",
+    "bakeries:round_bread",
+    "bakeries:cheese_cream"
+  ],
+  "result": {
+    "id": "bakeries:cheese_cream_bread",
+    "count": 2
+  }
+}

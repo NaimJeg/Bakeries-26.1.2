@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "abb",
+    "cdb",
+    "aeb"
+  ],
+  "key": {
+    "a": "minecraft:iron_nugget",
+    "b":"minecraft:iron_ingot",
+    "c":"minecraft:redstone",
+    "d":  "minecraft:hopper",
+    "e":  "minecraft:cauldron"
+  },
+  "result": {
+    "id": "bakeries:blender",
+    "count": 1
+  }
+}

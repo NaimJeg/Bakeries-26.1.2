@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aba",
+    "cdc",
+    "aba"
+  ],
+  "key": {
+    "a": "minecraft:iron_ingot",
+    "b": "minecraft:redstone",
+    "c":  "minecraft:quartz",
+    "d":  "minecraft:glass_pane"
+  },
+  "result": {
+    "id": "bakeries:oven",
+    "count": 1
+  }
+}

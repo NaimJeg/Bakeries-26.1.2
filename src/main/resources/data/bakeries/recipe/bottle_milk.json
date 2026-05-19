@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " a ",
+    "bbb"
+  ],
+  "key": {
+    "a":"minecraft:milk_bucket",
+    "b":"minecraft:glass_bottle"
+  },
+  "result": {
+    "id": "bakeries:bottle_milk",
+    "count": 3
+  }
+}

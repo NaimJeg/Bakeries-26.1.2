@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "a",
+    "b",
+    "b"
+  ],
+  "key": {
+    "a":"#minecraft:wooden_slabs",
+    "b":"minecraft:glass"
+  },
+  "result": {
+    "id": "bakeries:fermentation_tank",
+    "count": 1
+  }
+}

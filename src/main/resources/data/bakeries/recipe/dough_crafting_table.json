@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "bc ",
+    "ad "
+  ],
+  "key": {
+    "a": "bakeries:cupboard",
+    "b": "minecraft:stick",
+    "c": "minecraft:wooden_pressure_plates",
+    "d": "minecraft:book",
+  },
+  "result": {
+    "id": "bakeries:dough_crafting_table",
+    "count": 1
+  }
+}

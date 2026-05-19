@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "bakeries:bagel",
+    "#minecraft:fox_food",
+    "minecraft:sugar"
+  ],
+  "result": {
+    "id": "bakeries:berry_bagel",
+    "count": 1
+  }
+}

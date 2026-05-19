@@ -124,8 +124,4 @@ public class BreadKnifeItem extends Item {
     public void appendHoverText(ItemStack itemStack, TooltipContext context, TooltipDisplay display, Consumer<Component> builder, TooltipFlag tooltipFlag) {
         super.appendHoverText(itemStack, context, display, builder, tooltipFlag);
     }
-//    @Override
-//    public void appendHoverText(ItemStack stack, Item.TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
-//        tooltipComponents.add(Component.translatable(UtilTranslatable.setTooltips(BakeriesMod.MODID, "bread_knife")).withStyle(ChatFormatting.BLUE));
-//    }
 }

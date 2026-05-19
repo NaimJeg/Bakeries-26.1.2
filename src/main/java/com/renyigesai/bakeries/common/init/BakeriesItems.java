@@ -153,6 +153,7 @@ public class BakeriesItems {
 
     public static final DeferredItem<Item> BREAD_KNIFE;
     public static final DeferredItem<Item> FLOUR_SIEVE;
+    public static final DeferredItem<Item> ETERNAL_BAGUETTE;
 
 
     static {
@@ -254,6 +255,7 @@ public class BakeriesItems {
 
         BREAD_KNIFE = REGISTER.register("bread_knife",()-> new BreadKnifeItem(ToolMaterial.IRON,"bread_knife"));
         FLOUR_SIEVE = REGISTER.register("flour_sieve",FlourSieveItem::new);
+        ETERNAL_BAGUETTE = REGISTER.register("eternal_baguette",EternalBaguetteItem::new);
     }
 
     public static DeferredItem<Item> foodBreadBlock(Holder<Block> block, Item.Properties properties){

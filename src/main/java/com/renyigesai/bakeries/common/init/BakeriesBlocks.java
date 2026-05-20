@@ -4,6 +4,9 @@ import com.renyigesai.bakeries.BakeriesMod;
 import com.renyigesai.bakeries.common.blocks.*;
 import com.renyigesai.bakeries.common.blocks.blander.BlenderBlock;
 import com.renyigesai.bakeries.common.blocks.blander.BlenderBlockEntity;
+import com.renyigesai.bakeries.common.blocks.bread_rack.BreadRackBlock;
+import com.renyigesai.bakeries.common.blocks.bread_rack.BreadRackBlockEntity;
+import com.renyigesai.bakeries.common.blocks.bread_rack.GlassBreadRackBlock;
 import com.renyigesai.bakeries.common.blocks.cupboard.CupboardBlock;
 import com.renyigesai.bakeries.common.blocks.cupboard.CupboardBlockEntity;
 import com.renyigesai.bakeries.common.blocks.dough_crafting_table.DoughCraftingTableBlock;
@@ -21,7 +24,6 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.SoundType;
@@ -29,7 +31,6 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.MapColor;
 import net.neoforged.neoforge.registries.DeferredBlock;
-import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
 import java.util.function.Supplier;
@@ -38,11 +39,13 @@ public class BakeriesBlocks {
     public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(BakeriesMod.MODID);
 
     public static final DeferredBlock<Block> WOOD_TRAY;
-    public static final DeferredBlock<@org.jetbrains.annotations.NotNull MixBlock> MIX_BLOCK;
+    public static final DeferredBlock<MixBlock> MIX_BLOCK;
     public static final DeferredBlock<Block> BLENDER;
     public static final DeferredBlock<Block> DOUGH_CRAFTING_TABLE;
     public static final DeferredBlock<Block> OVEN;
     public static final DeferredBlock<Block> CUPBOARD;
+    public static final DeferredBlock<Block> BREAD_RACK;
+    public static final DeferredBlock<Block> GLASS_BREAD_RACK;
 
 
     /**?????*/
@@ -149,6 +152,8 @@ public class BakeriesBlocks {
         DOUGH_CRAFTING_TABLE = BLOCKS.register("dough_crafting_table", DoughCraftingTableBlock::new);
         OVEN = BLOCKS.register("oven", OvenBlock::new);
         CUPBOARD = BLOCKS.register("cupboard",()-> new CupboardBlock(cupboardProperties("cupboard")));
+        BREAD_RACK = BLOCKS.register("bread_rack",()-> new BreadRackBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS).setId(modBlockId("bread_rack"))));
+        GLASS_BREAD_RACK = BLOCKS.register("glass_bread_rack",()-> new GlassBreadRackBlock(BlockBehaviour.Properties.ofFullCopy(BREAD_RACK.get()).setId(modBlockId("glass_bread_rack"))));
 
         /*???????*/
         BAGEL = BLOCKS.register("bagel", BreadBlock::new);
@@ -203,6 +208,7 @@ public class BakeriesBlocks {
         public static final Supplier<BlockEntityType<DoughCraftingTableBlockEntity>> DOUGH_CRAFTING_TABLE_ENTITY = REGISTER.register("dough_crafting_table", () -> new BlockEntityType<>(DoughCraftingTableBlockEntity::new, DOUGH_CRAFTING_TABLE.get()));
         public static final Supplier<BlockEntityType<OvenBlockEntity>> OVEN_ENTITY = REGISTER.register("oven", () -> new BlockEntityType<>(OvenBlockEntity::new, OVEN.get()));
         public static final Supplier<BlockEntityType<CupboardBlockEntity>> CUPBOARD_ENTITY = REGISTER.register("cupboard", () -> new BlockEntityType<>(CupboardBlockEntity::new, CUPBOARD.get()));
+        public static final Supplier<BlockEntityType<BreadRackBlockEntity>> BREAD_RACK_ENTITY = REGISTER.register("bread_rack", () -> new BlockEntityType<>(BreadRackBlockEntity::new, BREAD_RACK.get(),GLASS_BREAD_RACK.get()));
     }
 
 

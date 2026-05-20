@@ -10,6 +10,7 @@ import com.renyigesai.bakeries.common.items.*;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
@@ -17,11 +18,15 @@ import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.component.Consumable;
 import net.minecraft.world.item.component.TooltipDisplay;
+import net.minecraft.world.item.equipment.Equippable;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.waypoints.Waypoint;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -29,6 +34,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Supplier;
+import java.util.function.UnaryOperator;
 
 public class BakeriesItems {
     public static final DeferredRegister.Items REGISTER = DeferredRegister.createItems(BakeriesMod.MODID);
@@ -225,7 +231,9 @@ public class BakeriesItems {
         COFFEE_TABLE = block(BakeriesBlocks.COFFEE_TABLE);
 
         BREAD_RACK = block(BakeriesBlocks.BREAD_RACK);
-        GLASS_BREAD_RACK = block(BakeriesBlocks.GLASS_BREAD_RACK);
+//        GLASS_BREAD_RACK = block(BakeriesBlocks.GLASS_BREAD_RACK);
+//        CARVED_PUMPKIN = registerBlock(Blocks.CARVED_PUMPKIN, (UnaryOperator)((p) -> Waypoint.addHideAttribute(p).component(DataComponents.EQUIPPABLE, Equippable.builder(EquipmentSlot.HEAD).setSwappable(false).setCameraOverlay(Identifier.withDefaultNamespace("misc/pumpkinblur")).build())));
+        GLASS_BREAD_RACK = REGISTER.register("glass_bread_rack",()-> new BlockItem(BakeriesBlocks.GLASS_BREAD_RACK.get(),new Item.Properties().component(DataComponents.EQUIPPABLE, Equippable.builder(EquipmentSlot.HEAD).build()).setId(modItemId("glass_bread_rack"))));
 
         SOFA_WHITE = block(BakeriesBlocks.SOFA_WHITE);
         SOFA_RED = block(BakeriesBlocks.SOFA_RED);

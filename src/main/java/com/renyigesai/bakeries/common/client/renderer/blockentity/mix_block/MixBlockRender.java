@@ -76,7 +76,7 @@ public class MixBlockRender extends BlockEntityItemRenderer<MixBlockEntity, com.
                 // 4. ����ģ��ê�㣺ʹģ�����Ķ��뵱ǰԭ��
                 poseStack.translate(-0.5, -0.5, -0.5);
                 // 5. �ύ
-                blockModelRenderState.submitWithZOffset(poseStack, submitNodeCollector, state.lightCoords, OverlayTexture.NO_OVERLAY, 0);
+                blockModelRenderState.submit(poseStack, submitNodeCollector, state.lightCoords, OverlayTexture.NO_OVERLAY, 0);
                 poseStack.popPose();
             }
         }

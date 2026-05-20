@@ -28,6 +28,8 @@ public class BakeriesCreativeModeTabs {
                         output.accept(BakeriesItems.MILK_TANK);
                         output.accept(BakeriesItems.CHEESE_TANK);
 
+                        output.accept(BakeriesItems.COFFEE_TABLE);
+
                         output.accept(BakeriesItems.WOOD_COUNTER);
 
                         output.accept(BakeriesItems.SOFA_WHITE);

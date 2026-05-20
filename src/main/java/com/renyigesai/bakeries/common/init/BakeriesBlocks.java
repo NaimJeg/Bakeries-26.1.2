@@ -56,6 +56,8 @@ public class BakeriesBlocks {
     public static final DeferredBlock<Block> OLIVE_OIL;
     public static final DeferredBlock<Block> BEARNAISE;
 
+    public static final DeferredBlock<Block> COFFEE_TABLE;
+
     public static final DeferredBlock<SofaBlock> SOFA_WHITE;
     public static final DeferredBlock<SofaBlock> SOFA_RED;
     public static final DeferredBlock<SofaBlock> SOFA_LIGHT_GRAY;
@@ -132,6 +134,9 @@ public class BakeriesBlocks {
         BEARNAISE = BLOCKS.register("bearnaise",TanPieBlock::new);
 
         /*沙发*/
+
+        COFFEE_TABLE = BLOCKS.register("coffee_table",CoffeeTableBlock::new);
+
         SOFA_WHITE = BLOCKS.register("sofa_white",()-> new SofaBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS).setId(modBlockId("sofa_white")), SofaBlock.Color.WHITE));
         SOFA_RED = BLOCKS.register("sofa_red",()-> new SofaBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS).setId(modBlockId("sofa_red")), SofaBlock.Color.RED));
         SOFA_LIGHT_GRAY = BLOCKS.register("sofa_light_gray",()-> new SofaBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS).setId(modBlockId("sofa_light_gray")), SofaBlock.Color.LIGHT_GRAY));

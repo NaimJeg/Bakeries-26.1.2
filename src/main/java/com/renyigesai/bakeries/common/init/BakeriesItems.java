@@ -86,6 +86,7 @@ public class BakeriesItems {
 
 
     public static final DeferredItem<Item> WOOD_TRAY;
+    public static final DeferredItem<Item> COFFEE_TABLE;
 
     public static final DeferredItem<Item> SOFA_WHITE;
     public static final DeferredItem<Item> SOFA_RED;
@@ -218,6 +219,8 @@ public class BakeriesItems {
 
 
         WOOD_TRAY = block(BakeriesBlocks.WOOD_TRAY);
+
+        COFFEE_TABLE = block(BakeriesBlocks.COFFEE_TABLE);
 
         SOFA_WHITE = block(BakeriesBlocks.SOFA_WHITE);
         SOFA_RED = block(BakeriesBlocks.SOFA_RED);

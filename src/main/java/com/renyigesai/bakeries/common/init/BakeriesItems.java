@@ -31,6 +31,7 @@ public class BakeriesItems {
 
     public static final DeferredItem<Item> BLENDER;
     public static final DeferredItem<Item> DOUGH_CRAFTING_TABLE;
+    public static final DeferredItem<Item> CUPBOARD;
     public static final DeferredItem<Item> OVEN;
     public static final DeferredItem<Item> FERMENTATION_TANK;
     public static final DeferredItem<Item> YEAST_TANK;
@@ -81,6 +82,10 @@ public class BakeriesItems {
 
 
     public static final DeferredItem<Item> WOOD_TRAY;
+
+    public static final DeferredItem<Item> SOFA_WHITE;
+    public static final DeferredItem<Item> SOFA_RED;
+    public static final DeferredItem<Item> SOFA_LIGHT_GRAY;
 
     public static final DeferredItem<Item> BAGEL;
     public static final DeferredItem<Item> WHOLE_WHEAT_BAGEL;
@@ -166,6 +171,7 @@ public class BakeriesItems {
 
         BLENDER = block(BakeriesBlocks.BLENDER);
         DOUGH_CRAFTING_TABLE = block(BakeriesBlocks.DOUGH_CRAFTING_TABLE);
+        CUPBOARD = block(BakeriesBlocks.CUPBOARD);
         OVEN = block(BakeriesBlocks.OVEN);
 
         FERMENTATION_TANK = block(BakeriesBlocks.FERMENTATION_TANK);
@@ -206,6 +212,10 @@ public class BakeriesItems {
 
 
         WOOD_TRAY = block(BakeriesBlocks.WOOD_TRAY);
+
+        SOFA_WHITE = block(BakeriesBlocks.SOFA_WHITE);
+        SOFA_RED = block(BakeriesBlocks.SOFA_RED);
+        SOFA_LIGHT_GRAY = block(BakeriesBlocks.SOFA_LIGHT_GRAY);
 
         BAGEL = foodBreadBlock(BakeriesBlocks.BAGEL,BakeriesFoodProperties.BAGEL);
         WHOLE_WHEAT_BAGEL = foodBreadBlock(BakeriesBlocks.WHOLE_WHEAT_BAGEL,FoodData.create(BakeriesFoodProperties.WHOLE_WHEAT_BAGEL,BakeriesConsumables.WHOLE_WHEAT_BAGEL));

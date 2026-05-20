@@ -1,0 +1,20 @@
+
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "bakeries:sliced_toast",
+    "bakeries:sliced_toast",
+    "bakeries:sliced_toast",
+    "bakeries:sliced_toast",
+    "bakeries:meat_floss",
+    "bakeries:meat_floss",
+    "bakeries:meat_floss",
+    "bakeries:meat_floss",
+    "bakeries:bearnaise"
+  ],
+  "result": {
+    "id": "bakeries:meat_floss_bread_roll",
+    "count": 4
+  }
+}

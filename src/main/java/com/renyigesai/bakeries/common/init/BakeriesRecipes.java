@@ -7,7 +7,9 @@ import com.renyigesai.bakeries.common.recipe.FlourSieveRecipe;
 import com.renyigesai.bakeries.common.recipe.OvenRecipe;
 import com.renyigesai.bakeries.common.recipe.blender.BlenderRecipe;
 import com.renyigesai.bakeries.common.recipe.BreadKnifeRecipe;
+import mezz.jei.api.recipe.types.IRecipeType;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.item.crafting.SingleItemRecipe;
@@ -43,5 +45,9 @@ public class BakeriesRecipes {
     public static void getRegister(IEventBus bus){
         SERIALIZERS.register(bus);
         RECIPE_TYPE.register(bus);
+    }
+
+    public static class JEI {
+        public static final IRecipeType<RecipeHolder<BlenderRecipe>> BLENDER = IRecipeType.create(BLENDER_TYPE.get());
     }
 }

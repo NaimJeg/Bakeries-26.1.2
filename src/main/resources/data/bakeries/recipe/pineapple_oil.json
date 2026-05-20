@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "bakeries:pineapple_bun",
+    "#c:butter"
+  ],
+  "result": {
+    "id": "bakeries:pineapple_oil",
+    "count": 1
+  }
+}

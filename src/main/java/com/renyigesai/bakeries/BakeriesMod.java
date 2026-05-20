@@ -23,6 +23,7 @@ public class BakeriesMod {
     public BakeriesMod(IEventBus modEventBus) {
         BakeriesDataComponents.DATA_COMPONENT_TYPE.register(modEventBus);
         BakeriesMobEffects.EFFECTS.register(modEventBus);
+        BakeriesEntityTypes.ENTITY.register(modEventBus);
         BakeriesItems.REGISTER.register(modEventBus);
         BakeriesBlocks.BLOCKS.register(modEventBus);
         BakeriesBlocks.Entities.REGISTER.register(modEventBus);

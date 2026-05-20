@@ -20,12 +20,17 @@ public class BakeriesCreativeModeTabs {
 
                         output.accept(BakeriesItems.BLENDER);
                         output.accept(BakeriesItems.DOUGH_CRAFTING_TABLE);
+                        output.accept(BakeriesItems.CUPBOARD);
                         output.accept(BakeriesItems.OVEN);
 
                         output.accept(BakeriesItems.FERMENTATION_TANK);
                         output.accept(BakeriesItems.YEAST_TANK);
                         output.accept(BakeriesItems.MILK_TANK);
                         output.accept(BakeriesItems.CHEESE_TANK);
+
+                        output.accept(BakeriesItems.SOFA_WHITE);
+                        output.accept(BakeriesItems.SOFA_RED);
+                        output.accept(BakeriesItems.SOFA_LIGHT_GRAY);
 
                         output.accept(BakeriesItems.BREAD_KNIFE);
                         output.accept(BakeriesItems.FLOUR_SIEVE);

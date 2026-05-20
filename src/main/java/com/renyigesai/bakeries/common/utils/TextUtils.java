@@ -54,7 +54,7 @@ public class TextUtils {
             Iterator var8;
             MobEffect effect;
             if (effectList.isEmpty()) {
-                tooltipAdder.accept(NO_EFFECTS);
+//                tooltipAdder.accept(NO_EFFECTS);
             } else {
                 for(var8 = effectList.iterator(); var8.hasNext(); tooltipAdder.accept(mutableComponent.withStyle(effect.getCategory().getTooltipFormatting()))) {
                     MobEffectInstance instance = (MobEffectInstance)var8.next();

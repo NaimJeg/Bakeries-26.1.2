@@ -4,12 +4,15 @@ import com.renyigesai.bakeries.BakeriesMod;
 import com.renyigesai.bakeries.common.blocks.*;
 import com.renyigesai.bakeries.common.blocks.blander.BlenderBlock;
 import com.renyigesai.bakeries.common.blocks.blander.BlenderBlockEntity;
+import com.renyigesai.bakeries.common.blocks.cupboard.CupboardBlock;
+import com.renyigesai.bakeries.common.blocks.cupboard.CupboardBlockEntity;
 import com.renyigesai.bakeries.common.blocks.dough_crafting_table.DoughCraftingTableBlock;
 import com.renyigesai.bakeries.common.blocks.dough_crafting_table.DoughCraftingTableBlockEntity;
 import com.renyigesai.bakeries.common.blocks.mix_block.MixBlock;
 import com.renyigesai.bakeries.common.blocks.mix_block.MixBlockEntity;
 import com.renyigesai.bakeries.common.blocks.oven.OvenBlock;
 import com.renyigesai.bakeries.common.blocks.oven.OvenBlockEntity;
+import com.renyigesai.bakeries.common.blocks.sofa.SofaBlock;
 import com.renyigesai.bakeries.common.blocks.tank.CheeseTankBkock;
 import com.renyigesai.bakeries.common.blocks.tank.FermentationTankBlock;
 import com.renyigesai.bakeries.common.blocks.tank.MilkTankBlock;
@@ -24,6 +27,7 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.material.MapColor;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -38,6 +42,7 @@ public class BakeriesBlocks {
     public static final DeferredBlock<Block> BLENDER;
     public static final DeferredBlock<Block> DOUGH_CRAFTING_TABLE;
     public static final DeferredBlock<Block> OVEN;
+    public static final DeferredBlock<Block> CUPBOARD;
 
 
     /**?????*/
@@ -50,6 +55,10 @@ public class BakeriesBlocks {
 
     public static final DeferredBlock<Block> OLIVE_OIL;
     public static final DeferredBlock<Block> BEARNAISE;
+
+    public static final DeferredBlock<SofaBlock> SOFA_WHITE;
+    public static final DeferredBlock<SofaBlock> SOFA_RED;
+    public static final DeferredBlock<SofaBlock> SOFA_LIGHT_GRAY;
 
 
     /*???????*/
@@ -120,11 +129,17 @@ public class BakeriesBlocks {
         OLIVE_OIL = BLOCKS.register("olive_oil",TanPieBlock::new);
         BEARNAISE = BLOCKS.register("bearnaise",TanPieBlock::new);
 
+        /*沙发*/
+        SOFA_WHITE = BLOCKS.register("sofa_white",()-> new SofaBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS).setId(modBlockId("sofa_white")), SofaBlock.Color.WHITE));
+        SOFA_RED = BLOCKS.register("sofa_red",()-> new SofaBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS).setId(modBlockId("sofa_red")), SofaBlock.Color.RED));
+        SOFA_LIGHT_GRAY = BLOCKS.register("sofa_light_gray",()-> new SofaBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS).setId(modBlockId("sofa_light_gray")), SofaBlock.Color.LIGHT_GRAY));
+
         WOOD_TRAY = BLOCKS.register("wood_tray",()-> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS).setId(ResourceKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath("bakeries","wood_tray")))));
         MIX_BLOCK = BLOCKS.register("mix_block", MixBlock::new);
         BLENDER = BLOCKS.register("blender", BlenderBlock::new);
         DOUGH_CRAFTING_TABLE = BLOCKS.register("dough_crafting_table", DoughCraftingTableBlock::new);
         OVEN = BLOCKS.register("oven", OvenBlock::new);
+        CUPBOARD = BLOCKS.register("cupboard",()-> new CupboardBlock(cupboardProperties("cupboard")));
 
         /*???????*/
         BAGEL = BLOCKS.register("bagel", BreadBlock::new);
@@ -168,12 +183,17 @@ public class BakeriesBlocks {
         return ResourceKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(BakeriesMod.MODID,name));
     }
 
+    private static BlockBehaviour.Properties cupboardProperties(String name){
+        return BlockBehaviour.Properties.of().strength(2.0F,3.0F).requiresCorrectToolForDrops().mapColor(MapColor.COLOR_GRAY).sound(SoundType.CHISELED_BOOKSHELF).setId(modBlockId(name));
+    }
+
     public static class Entities {
         public static final DeferredRegister<BlockEntityType<?>> REGISTER = DeferredRegister.create(BuiltInRegistries.BLOCK_ENTITY_TYPE, BakeriesMod.MODID);
         public static final Supplier<BlockEntityType<MixBlockEntity>> MIX_BLOCK_ENTITY = REGISTER.register("mix_block", () -> new BlockEntityType<>(MixBlockEntity::new, MIX_BLOCK.get()));
         public static final Supplier<BlockEntityType<BlenderBlockEntity>> BLENDER_ENTITY = REGISTER.register("blender", () -> new BlockEntityType<>(BlenderBlockEntity::new, BLENDER.get()));
         public static final Supplier<BlockEntityType<DoughCraftingTableBlockEntity>> DOUGH_CRAFTING_TABLE_ENTITY = REGISTER.register("dough_crafting_table", () -> new BlockEntityType<>(DoughCraftingTableBlockEntity::new, DOUGH_CRAFTING_TABLE.get()));
         public static final Supplier<BlockEntityType<OvenBlockEntity>> OVEN_ENTITY = REGISTER.register("oven", () -> new BlockEntityType<>(OvenBlockEntity::new, OVEN.get()));
+        public static final Supplier<BlockEntityType<CupboardBlockEntity>> CUPBOARD_ENTITY = REGISTER.register("cupboard", () -> new BlockEntityType<>(CupboardBlockEntity::new, CUPBOARD.get()));
     }
 
 

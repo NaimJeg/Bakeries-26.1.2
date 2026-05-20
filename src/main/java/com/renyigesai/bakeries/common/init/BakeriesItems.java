@@ -7,10 +7,12 @@ import com.renyigesai.bakeries.api.items.BottleButterItem;
 import com.renyigesai.bakeries.api.items.PileItem;
 import com.renyigesai.bakeries.api.items.RawItem;
 import com.renyigesai.bakeries.common.items.*;
+import net.minecraft.ChatFormatting;
 import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.sounds.SoundEvent;
@@ -18,11 +20,13 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.component.Consumable;
+import net.minecraft.world.item.component.TooltipDisplay;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
+import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
@@ -86,6 +90,8 @@ public class BakeriesItems {
     public static final DeferredItem<Item> SOFA_WHITE;
     public static final DeferredItem<Item> SOFA_RED;
     public static final DeferredItem<Item> SOFA_LIGHT_GRAY;
+
+    public static final DeferredItem<Item> WOOD_COUNTER;
 
     public static final DeferredItem<Item> BAGEL;
     public static final DeferredItem<Item> WHOLE_WHEAT_BAGEL;
@@ -216,6 +222,12 @@ public class BakeriesItems {
         SOFA_WHITE = block(BakeriesBlocks.SOFA_WHITE);
         SOFA_RED = block(BakeriesBlocks.SOFA_RED);
         SOFA_LIGHT_GRAY = block(BakeriesBlocks.SOFA_LIGHT_GRAY);
+        WOOD_COUNTER = REGISTER.register("wood_counter",()-> new  BlockItem(BakeriesBlocks.WOOD_COUNTER.get(),new Item.Properties().useBlockDescriptionPrefix().setId(modItemId("wood_counter"))){
+            @Override
+            public void appendHoverText(ItemStack itemStack, TooltipContext context, TooltipDisplay display, Consumer<Component> builder, TooltipFlag tooltipFlag) {
+                builder.accept(Component.translatable("tooltips.bakeries.wood_counter").withStyle(ChatFormatting.GRAY));
+            }
+        });
 
         BAGEL = foodBreadBlock(BakeriesBlocks.BAGEL,BakeriesFoodProperties.BAGEL);
         WHOLE_WHEAT_BAGEL = foodBreadBlock(BakeriesBlocks.WHOLE_WHEAT_BAGEL,FoodData.create(BakeriesFoodProperties.WHOLE_WHEAT_BAGEL,BakeriesConsumables.WHOLE_WHEAT_BAGEL));

@@ -74,7 +74,7 @@ public class BlenderModel extends Model<float[]> {
 	public void setupAnim(float @NonNull [] state) {
 		super.setupAnim(state);
 		up.xRot = (float) Math.toRadians(state[0] * -25);
-		up.yRot = (float) Math.toRadians(state[1] * 360);
+		head.yRot = (float) Math.toRadians(state[1] * 360);
 	}
 
 	//	public void setupAnim(Float progress) {

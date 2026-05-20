@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aa",
+    "bb"
+  ],
+  "key": {
+    "a":"#minecraft:wooden_slabs",
+    "b":"#minecraft:logs"
+  },
+  "result": {
+    "id": "bakeries:wood_counter",
+    "count": 2
+  }
+}

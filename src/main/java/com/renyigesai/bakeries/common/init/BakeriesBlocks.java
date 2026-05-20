@@ -60,6 +60,8 @@ public class BakeriesBlocks {
     public static final DeferredBlock<SofaBlock> SOFA_RED;
     public static final DeferredBlock<SofaBlock> SOFA_LIGHT_GRAY;
 
+    public static final DeferredBlock<Block> WOOD_COUNTER;
+
 
     /*???????*/
 
@@ -133,6 +135,8 @@ public class BakeriesBlocks {
         SOFA_WHITE = BLOCKS.register("sofa_white",()-> new SofaBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS).setId(modBlockId("sofa_white")), SofaBlock.Color.WHITE));
         SOFA_RED = BLOCKS.register("sofa_red",()-> new SofaBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS).setId(modBlockId("sofa_red")), SofaBlock.Color.RED));
         SOFA_LIGHT_GRAY = BLOCKS.register("sofa_light_gray",()-> new SofaBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS).setId(modBlockId("sofa_light_gray")), SofaBlock.Color.LIGHT_GRAY));
+
+        WOOD_COUNTER = BLOCKS.register("wood_counter",WoodCounterBlock::new);
 
         WOOD_TRAY = BLOCKS.register("wood_tray",()-> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS).setId(ResourceKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath("bakeries","wood_tray")))));
         MIX_BLOCK = BLOCKS.register("mix_block", MixBlock::new);

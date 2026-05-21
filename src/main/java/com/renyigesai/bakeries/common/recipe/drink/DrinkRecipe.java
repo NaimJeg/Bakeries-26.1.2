@@ -1,4 +1,4 @@
-package com.renyigesai.bakeries.common.recipe.blender;
+package com.renyigesai.bakeries.common.recipe.drink;
 
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
@@ -16,24 +16,22 @@ import net.neoforged.neoforge.common.util.RecipeMatcher;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BlenderRecipe implements Recipe<BlenderInput> {
-    public static final MapCodec<BlenderRecipe> MAP_CODEC = blenderMapCodec(BlenderRecipe::new);
-    public static final StreamCodec<RegistryFriendlyByteBuf, BlenderRecipe> STREAM_CODEC = blenderStreamCodec(BlenderRecipe::new);
-    public static final RecipeSerializer<BlenderRecipe> SERIALIZER = new RecipeSerializer<>(MAP_CODEC, STREAM_CODEC);
+public class DrinkRecipe implements Recipe<DrinkInput> {
+    public static final MapCodec<DrinkRecipe> MAP_CODEC = drinkMapCodec(DrinkRecipe::new);
+    public static final StreamCodec<RegistryFriendlyByteBuf, DrinkRecipe> STREAM_CODEC = drinkStreamCodec(DrinkRecipe::new);
+    public static final RecipeSerializer<DrinkRecipe> SERIALIZER = new RecipeSerializer<>(MAP_CODEC, STREAM_CODEC);
     private final NonNullList<Ingredient> inputItems;
     private final ItemStackTemplate result;
-    private final ItemStack container;
 
-    public BlenderRecipe(NonNullList<Ingredient> ingredients,
-                         ItemStackTemplate result, ItemStack container) {
+    public DrinkRecipe(NonNullList<Ingredient> ingredients,
+                       ItemStackTemplate result) {
         this.inputItems = ingredients;
         this.result = result;
-        this.container = container.isEmpty() ? ItemStack.EMPTY : container;
     }
 
 
     @Override
-    public boolean matches(BlenderInput inv, Level level) {
+    public boolean matches(DrinkInput inv, Level level) {
         List<ItemStack> inputs = new ArrayList<>();
         int i = 0;
 
@@ -48,17 +46,13 @@ public class BlenderRecipe implements Recipe<BlenderInput> {
     }
 
     @Override
-    public ItemStack assemble(BlenderInput input) {
+    public ItemStack assemble(DrinkInput input) {
         return result.create();
     }
 
     @Override
     public boolean showNotification() {
         return false;
-    }
-
-    public ItemStack getContainer() {
-        return container.copy();
     }
 
     public NonNullList<Ingredient> getInputItems() {
@@ -81,8 +75,8 @@ public class BlenderRecipe implements Recipe<BlenderInput> {
     }
 
     @Override
-    public RecipeType<BlenderRecipe> getType() {
-        return BakeriesRecipes.BLENDER_TYPE.get();
+    public RecipeType<DrinkRecipe> getType() {
+        return BakeriesRecipes.DRINK_TYPE.get();
     }
 
     public ItemStackTemplate result(){
@@ -90,10 +84,10 @@ public class BlenderRecipe implements Recipe<BlenderInput> {
     }
 
     @Override
-    public RecipeSerializer<BlenderRecipe> getSerializer() {
-        return BakeriesRecipes.BLENDER_SERIALIZER.get();
+    public RecipeSerializer<DrinkRecipe> getSerializer() {
+        return BakeriesRecipes.DRINK_SERIALIZER.get();
     }
-    public static <T extends BlenderRecipe> MapCodec<T> blenderMapCodec(BlenderRecipe.Factory<T> factory) {
+    public static <T extends DrinkRecipe> MapCodec<T> drinkMapCodec(DrinkRecipe.Factory<T> factory) {
         return RecordCodecBuilder.mapCodec(
                 i -> i.group(
                         Ingredient.CODEC.listOf().xmap(
@@ -103,31 +97,27 @@ public class BlenderRecipe implements Recipe<BlenderInput> {
                                     return nonNull;
                                 },
                                 ArrayList::new
-                        ).fieldOf("ingredients").forGetter(BlenderRecipe::getInputItems),
-                        ItemStackTemplate.CODEC.fieldOf("result").forGetter(BlenderRecipe::result),
-                        ItemStack.CODEC.optionalFieldOf("container", ItemStack.EMPTY).forGetter(BlenderRecipe::getContainer)
+                        ).fieldOf("ingredients").forGetter(DrinkRecipe::getInputItems),
+                        ItemStackTemplate.CODEC.fieldOf("result").forGetter(DrinkRecipe::result)
                 ).apply(i, factory::create)
         );
     }
 
-    public static <T extends BlenderRecipe> StreamCodec<RegistryFriendlyByteBuf, T> blenderStreamCodec(BlenderRecipe.Factory<T> factory) {
+    public static <T extends DrinkRecipe> StreamCodec<RegistryFriendlyByteBuf, T> drinkStreamCodec(DrinkRecipe.Factory<T> factory) {
         return StreamCodec.composite(
                 Ingredient.CONTENTS_STREAM_CODEC.apply(ByteBufCodecs.collection(NonNullList::createWithCapacity)),
-                BlenderRecipe::getInputItems,
+                DrinkRecipe::getInputItems,
                 ItemStackTemplate.STREAM_CODEC,
-                BlenderRecipe::result,
-                ItemStack.OPTIONAL_STREAM_CODEC,
-                BlenderRecipe::getContainer,
+                DrinkRecipe::result,
                 factory::create
         );
     }
 
     @FunctionalInterface
-    public interface Factory<T extends BlenderRecipe> {
+    public interface Factory<T extends DrinkRecipe> {
         T create(
                 NonNullList<Ingredient> ingredients,
-                ItemStackTemplate result,
-                ItemStack container
+                ItemStackTemplate result
         );
     }
 }

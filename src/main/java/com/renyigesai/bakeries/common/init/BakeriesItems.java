@@ -6,6 +6,7 @@ import com.renyigesai.bakeries.api.blocks.AbstractPileBlock;
 import com.renyigesai.bakeries.api.items.BottleButterItem;
 import com.renyigesai.bakeries.api.items.PileItem;
 import com.renyigesai.bakeries.api.items.RawItem;
+import com.renyigesai.bakeries.common.blocks.fluid.BakeriesFluids;
 import com.renyigesai.bakeries.common.items.*;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.Holder;
@@ -43,6 +44,8 @@ public class BakeriesItems {
     public static final DeferredItem<Item> DOUGH_CRAFTING_TABLE;
     public static final DeferredItem<Item> CUPBOARD;
     public static final DeferredItem<Item> OVEN;
+    public static final DeferredItem<Item> MOKA_POT;
+    public static final DeferredItem<Item> MOKA_POT_FILL;
     public static final DeferredItem<Item> FERMENTATION_TANK;
     public static final DeferredItem<Item> YEAST_TANK;
     public static final DeferredItem<Item> MILK_TANK;
@@ -58,6 +61,8 @@ public class BakeriesItems {
     public static final DeferredItem<Item> MEAT_FLOSS;
 
     public static final DeferredItem<Item> SALT;
+    public static final DeferredItem<Item> RAW_SALT_BLOCK;
+    public static final DeferredItem<Item> SALT_WATER_BUCKET;
     public static final DeferredItem<Item> BOTTLE_YEAST;
 
     public static final DeferredItem<Item> BUTTER_CUBE;
@@ -88,7 +93,16 @@ public class BakeriesItems {
 
     public static final DeferredItem<Item> BROWN_SUGAR_CUBE;
 
+    public static final DeferredItem<Item> RAW_COFFEE_BEAN;
+
+    public static final DeferredItem<Item> COFFEE_BEAN;
+
+    public static final DeferredItem<Item> GROUND_COFFEE;
+
     public static final DeferredItem<Item> TOMATO;
+    public static final DeferredItem<Item> TARO;
+    public static final DeferredItem<Item> COOKED_TARO;
+    public static final DeferredItem<Item> MASHED_TARO;
 
     public static final DeferredItem<Item> WOOD_TRAY;
     public static final DeferredItem<Item> COFFEE_TABLE;
@@ -188,6 +202,8 @@ public class BakeriesItems {
         DOUGH_CRAFTING_TABLE = block(BakeriesBlocks.DOUGH_CRAFTING_TABLE);
         CUPBOARD = block(BakeriesBlocks.CUPBOARD);
         OVEN = block(BakeriesBlocks.OVEN);
+        MOKA_POT = block(BakeriesBlocks.MOKA_POT);
+        MOKA_POT_FILL = REGISTER.register("moka_pot_fill",MokaPotFillItem::new);
 
         FERMENTATION_TANK = block(BakeriesBlocks.FERMENTATION_TANK);
         YEAST_TANK = block(BakeriesBlocks.YEAST_TANK);
@@ -212,6 +228,8 @@ public class BakeriesItems {
         SALT_YOLK = item("salt_yolk");
 
         SALT = item("salt");
+        RAW_SALT_BLOCK = block(BakeriesBlocks.RAW_SALT_BLOCK);
+        SALT_WATER_BUCKET = REGISTER.register("salt_water_bucket",()-> new BucketItem(BakeriesFluids.SALT_WATER.get(),new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1).setId(modItemId("salt_water_bucket"))));
         BOTTLE_YEAST = REGISTER.register("bottle_yeast",()-> new Item(new Item.Properties().stacksTo(16).craftRemainder(Items.GLASS_BOTTLE).setId(modItemId("bottle_yeast"))));
         BUTTER_CUBE = item("butter_cube");
 
@@ -223,7 +241,16 @@ public class BakeriesItems {
         FRESH_CHEESE_CUBE = foodItem("fresh_cheese_cube",BakeriesFoodProperties.CHEESE_CUBE);
         BROWN_SUGAR_CUBE = item("brown_sugar_cube");
 
+        RAW_COFFEE_BEAN = REGISTER.register("raw_coffee_bean",()-> new BlockItem(BakeriesBlocks.COFFEE_PLANT.get(), new Item.Properties().setId(modItemId("raw_coffee_bean"))));
+        COFFEE_BEAN = item("coffee_bean");
+        GROUND_COFFEE = item("ground_coffee");
+
+
+
         TOMATO = REGISTER.register("tomato",()-> new BlockItem(BakeriesBlocks.TOMATO.get(),new Item.Properties().food(BakeriesFoodProperties.TOMATO).useBlockDescriptionPrefix().setId(modItemId("tomato"))));
+        TARO = REGISTER.register("taro",()-> new BlockItem(BakeriesBlocks.TARO.get(),new Item.Properties().useBlockDescriptionPrefix().setId(modItemId("taro"))));
+        COOKED_TARO = foodItem("cooked_taro",BakeriesFoodProperties.COOKED_TARO);
+        MASHED_TARO = foodItem("mashed_taro",BakeriesFoodProperties.MASHED_TARO);
 
 
         WOOD_TRAY = block(BakeriesBlocks.WOOD_TRAY);
@@ -233,7 +260,7 @@ public class BakeriesItems {
         BREAD_RACK = block(BakeriesBlocks.BREAD_RACK);
 //        GLASS_BREAD_RACK = block(BakeriesBlocks.GLASS_BREAD_RACK);
 //        CARVED_PUMPKIN = registerBlock(Blocks.CARVED_PUMPKIN, (UnaryOperator)((p) -> Waypoint.addHideAttribute(p).component(DataComponents.EQUIPPABLE, Equippable.builder(EquipmentSlot.HEAD).setSwappable(false).setCameraOverlay(Identifier.withDefaultNamespace("misc/pumpkinblur")).build())));
-        GLASS_BREAD_RACK = REGISTER.register("glass_bread_rack",()-> new BlockItem(BakeriesBlocks.GLASS_BREAD_RACK.get(),new Item.Properties().component(DataComponents.EQUIPPABLE, Equippable.builder(EquipmentSlot.HEAD).build()).setId(modItemId("glass_bread_rack"))));
+        GLASS_BREAD_RACK = REGISTER.register("glass_bread_rack",()-> new BlockItem(BakeriesBlocks.GLASS_BREAD_RACK.get(),new Item.Properties().useBlockDescriptionPrefix().setId(modItemId("glass_bread_rack"))));
 
         SOFA_WHITE = block(BakeriesBlocks.SOFA_WHITE);
         SOFA_RED = block(BakeriesBlocks.SOFA_RED);

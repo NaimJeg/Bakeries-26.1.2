@@ -22,6 +22,8 @@ public class BakeriesCreativeModeTabs {
                         output.accept(BakeriesItems.DOUGH_CRAFTING_TABLE);
                         output.accept(BakeriesItems.CUPBOARD);
                         output.accept(BakeriesItems.OVEN);
+                        output.accept(BakeriesItems.MOKA_POT);
+                        output.accept(BakeriesItems.MOKA_POT_FILL);
 
                         output.accept(BakeriesItems.FERMENTATION_TANK);
                         output.accept(BakeriesItems.YEAST_TANK);
@@ -62,9 +64,17 @@ public class BakeriesCreativeModeTabs {
                         output.accept(BakeriesItems.CHEESE_CUBE);
                         output.accept(BakeriesItems.FRESH_CHEESE_CUBE);
                         output.accept(BakeriesItems.BROWN_SUGAR_CUBE);
+                        output.accept(BakeriesItems.RAW_COFFEE_BEAN);
+                        output.accept(BakeriesItems.COFFEE_BEAN);
+                        output.accept(BakeriesItems.GROUND_COFFEE);
                         output.accept(BakeriesItems.TOMATO);
+                        output.accept(BakeriesItems.TARO);
+                        output.accept(BakeriesItems.COOKED_TARO);
+                        output.accept(BakeriesItems.MASHED_TARO);
 
                         output.accept(BakeriesItems.SALT);
+                        output.accept(BakeriesItems.RAW_SALT_BLOCK);
+                        output.accept(BakeriesItems.SALT_WATER_BUCKET);
                         output.accept(BakeriesItems.BOTTLE_YEAST);
 
                         output.accept(BakeriesItems.BOTTLE_MILK);

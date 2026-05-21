@@ -7,6 +7,7 @@ import com.renyigesai.bakeries.common.recipe.FlourSieveRecipe;
 import com.renyigesai.bakeries.common.recipe.OvenRecipe;
 import com.renyigesai.bakeries.common.recipe.blender.BlenderRecipe;
 import com.renyigesai.bakeries.common.recipe.BreadKnifeRecipe;
+import com.renyigesai.bakeries.common.recipe.drink.DrinkRecipe;
 import mezz.jei.api.recipe.types.IRecipeType;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.item.crafting.RecipeHolder;
@@ -41,6 +42,10 @@ public class BakeriesRecipes {
     public static final Supplier<RecipeType<OvenRecipe>> OVEN_TYPE = RECIPE_TYPE.register("oven",()-> RecipeType.simple(ResourceLocation.fromNamespaceAndPath(BakeriesMod.MODID,"oven")));
 
     public static final Supplier<RecipeSerializer<OvenRecipe>> OVEN_SERIALIZER = SERIALIZERS.register("oven", () -> OvenRecipe.SERIALIZER);
+
+    public static final Supplier<RecipeType<DrinkRecipe>> DRINK_TYPE = RECIPE_TYPE.register("drink",()-> RecipeType.simple(ResourceLocation.fromNamespaceAndPath(BakeriesMod.MODID,"drink")));
+
+    public static final Supplier<RecipeSerializer<DrinkRecipe>> DRINK_SERIALIZER = SERIALIZERS.register("drink", () -> DrinkRecipe.SERIALIZER);
 
     public static void getRegister(IEventBus bus){
         SERIALIZERS.register(bus);

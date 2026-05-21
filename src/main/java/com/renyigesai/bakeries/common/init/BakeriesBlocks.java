@@ -11,8 +11,11 @@ import com.renyigesai.bakeries.common.blocks.cupboard.CupboardBlock;
 import com.renyigesai.bakeries.common.blocks.cupboard.CupboardBlockEntity;
 import com.renyigesai.bakeries.common.blocks.dough_crafting_table.DoughCraftingTableBlock;
 import com.renyigesai.bakeries.common.blocks.dough_crafting_table.DoughCraftingTableBlockEntity;
+import com.renyigesai.bakeries.common.blocks.fluid.SaltWaterFluidsBlock;
 import com.renyigesai.bakeries.common.blocks.mix_block.MixBlock;
 import com.renyigesai.bakeries.common.blocks.mix_block.MixBlockEntity;
+import com.renyigesai.bakeries.common.blocks.moka_pot.MokaPotBlock;
+import com.renyigesai.bakeries.common.blocks.moka_pot.MokaPotBlockEntity;
 import com.renyigesai.bakeries.common.blocks.oven.OvenBlock;
 import com.renyigesai.bakeries.common.blocks.oven.OvenBlockEntity;
 import com.renyigesai.bakeries.common.blocks.sofa.SofaBlock;
@@ -26,6 +29,7 @@ import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.LiquidBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -46,6 +50,7 @@ public class BakeriesBlocks {
     public static final DeferredBlock<Block> CUPBOARD;
     public static final DeferredBlock<Block> BREAD_RACK;
     public static final DeferredBlock<Block> GLASS_BREAD_RACK;
+    public static final DeferredBlock<Block> MOKA_POT;
 
 
     /**?????*/
@@ -124,6 +129,12 @@ public class BakeriesBlocks {
     public static final DeferredBlock<Block> TARO_SALT_YOLK_BREAD;
 
     public static final DeferredBlock<Block> TOMATO;
+    public static final DeferredBlock<Block> TARO;
+    public static final DeferredBlock<Block> COFFEE_PLANT;
+
+    /**盐相关*/
+    public static final DeferredBlock<LiquidBlock> SALT_WATER_BLOCK;
+    public static final DeferredBlock<Block> RAW_SALT_BLOCK;
 
 
     static {
@@ -154,6 +165,7 @@ public class BakeriesBlocks {
         CUPBOARD = BLOCKS.register("cupboard",()-> new CupboardBlock(cupboardProperties("cupboard")));
         BREAD_RACK = BLOCKS.register("bread_rack",()-> new BreadRackBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS).setId(modBlockId("bread_rack"))));
         GLASS_BREAD_RACK = BLOCKS.register("glass_bread_rack",()-> new GlassBreadRackBlock(BlockBehaviour.Properties.ofFullCopy(BREAD_RACK.get()).setId(modBlockId("glass_bread_rack"))));
+        MOKA_POT = BLOCKS.register("moka_pot", MokaPotBlock::new);
 
         /*???????*/
         BAGEL = BLOCKS.register("bagel", BreadBlock::new);
@@ -187,6 +199,11 @@ public class BakeriesBlocks {
         TARO_SALT_YOLK_BREAD = BLOCKS.register("taro_salt_yolk_bread",BreadBlock::new);
 
         TOMATO = BLOCKS.register("tomato", TomatoBlock::new);
+        TARO = BLOCKS.register("taro", TaroBlock::new);
+        COFFEE_PLANT = BLOCKS.register("coffee_plant",CoffeePlantBlock::new);
+
+        SALT_WATER_BLOCK = BLOCKS.register("salt_water_block", SaltWaterFluidsBlock::new);
+        RAW_SALT_BLOCK = BLOCKS.register("raw_salt_block",()-> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.STONE).setId(modBlockId("raw_salt_block"))));
     }
 
     private static<B extends Block> DeferredBlock<B> register(String name, Supplier<B> block) {
@@ -209,6 +226,7 @@ public class BakeriesBlocks {
         public static final Supplier<BlockEntityType<OvenBlockEntity>> OVEN_ENTITY = REGISTER.register("oven", () -> new BlockEntityType<>(OvenBlockEntity::new, OVEN.get()));
         public static final Supplier<BlockEntityType<CupboardBlockEntity>> CUPBOARD_ENTITY = REGISTER.register("cupboard", () -> new BlockEntityType<>(CupboardBlockEntity::new, CUPBOARD.get()));
         public static final Supplier<BlockEntityType<BreadRackBlockEntity>> BREAD_RACK_ENTITY = REGISTER.register("bread_rack", () -> new BlockEntityType<>(BreadRackBlockEntity::new, BREAD_RACK.get(),GLASS_BREAD_RACK.get()));
+        public static final Supplier<BlockEntityType<MokaPotBlockEntity>> MOKA_POT_ENTITY = REGISTER.register("moka_pot", () -> new BlockEntityType<>(MokaPotBlockEntity::new, MOKA_POT.get()));
     }
 
 

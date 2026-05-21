@@ -1,6 +1,8 @@
 package com.renyigesai.bakeries;
 
 import com.mojang.logging.LogUtils;
+import com.renyigesai.bakeries.common.blocks.fluid.BakeriesFluidTypes;
+import com.renyigesai.bakeries.common.blocks.fluid.BakeriesFluids;
 import com.renyigesai.bakeries.common.init.*;
 import net.minecraft.client.Minecraft;
 import net.neoforged.bus.api.IEventBus;
@@ -24,6 +26,8 @@ public class BakeriesMod {
         BakeriesDataComponents.DATA_COMPONENT_TYPE.register(modEventBus);
         BakeriesMobEffects.EFFECTS.register(modEventBus);
         BakeriesEntityTypes.ENTITY.register(modEventBus);
+        BakeriesFluids.REGISTRY.register(modEventBus);
+        BakeriesFluidTypes.REGISTRY.register(modEventBus);
         BakeriesItems.REGISTER.register(modEventBus);
         BakeriesBlocks.BLOCKS.register(modEventBus);
         BakeriesBlocks.Entities.REGISTER.register(modEventBus);

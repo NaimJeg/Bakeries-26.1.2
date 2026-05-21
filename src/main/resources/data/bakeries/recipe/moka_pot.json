@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "a ",
+    "ab",
+    "c "
+  ],
+  "key": {
+    "a":"minecraft:iron_ingot",
+    "b":"minecraft:stick",
+    "c":"minecraft:black_dye"
+  },
+  "result": {
+    "id": "bakeries:moka_pot",
+    "count": 1
+  }
+}

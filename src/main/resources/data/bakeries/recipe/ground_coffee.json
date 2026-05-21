@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "bakeries:coffee_bean",
+    "bakeries:coffee_bean",
+    "bakeries:coffee_bean",
+    "bakeries:coffee_bean"
+  ],
+  "result": {
+    "id": "bakeries:ground_coffee",
+    "count": 2
+  }
+}

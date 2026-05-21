@@ -38,6 +38,17 @@ public class RepeatEatItem extends PileItem {
         this.canDrink = canDrink;
     }
 
+    public RepeatEatItem(Block block, Properties properties,PileProperties pileProperties,int eatCount, boolean canDrink) {
+        super(block, pileProperties.itemProperties(properties.component(BakeriesDataComponents.EAT_COUNT_MAX,eatCount).component(BakeriesDataComponents.EAT_COUNT,eatCount)));
+//        super(block, pileProperties);
+        this.canDrink = canDrink;
+    }
+
+    public RepeatEatItem(Block block, Properties pProperties, boolean canDrink) {
+        super(block, pProperties);
+        this.canDrink = canDrink;
+    }
+
     @Override
     public boolean isExtra(UseOnContext pContext) {
         ItemStack itemInHand = pContext.getItemInHand();

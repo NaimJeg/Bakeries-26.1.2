@@ -21,34 +21,46 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.item.crafting.display.RecipeDisplay;
-import org.jetbrains.annotations.Nullable;
+import org.jspecify.annotations.Nullable;
 
-public class BlenderRecipeCategory extends AbstractRecipeCategory<RecipeHolder<BlenderRecipe>> {
+public class BlenderRecipeCategory implements IRecipeCategory<RecipeHolder<BlenderRecipe>> {
 
     public final static Identifier UID = ResourceLocation.fromNamespaceAndPath(BakeriesMod.MODID, "blender");
     public static final Identifier TEXTURE = ResourceLocation.fromNamespaceAndPath(BakeriesMod.MODID, "textures/gui/jei_blender_gui.png");
-
-//    public final IDrawable back;
-//    public final IDrawable icon;
-
-
+    private final IDrawable icon;
 
     public BlenderRecipeCategory(IGuiHelper helper) {
-        super(BakeriesRecipes.JEI.BLENDER, Component.translatable(""), helper.createDrawableIngredient(VanillaTypes.ITEM_STACK,new ItemStack(BakeriesItems.BLENDER.get())), 90, 69);
+        this.icon = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK,new ItemStack(BakeriesItems.BLENDER.get()));
     }
 
+    @Override
+    public IRecipeType<RecipeHolder<BlenderRecipe>> getRecipeType() {
+        return BakeriesRecipes.JEI.BLENDER;
+    }
 
-//    public BlenderRecipeCategory(IGuiHelper helper) {
-//        super();
-//        this.back = helper.createDrawable(TEXTURE,0, 0, 90, 69);
-//        this.icon = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK,new ItemStack(BakeriesItems.BLENDER.get()));
-//
-//    }
+    @Override
+    public Component getTitle() {
+        return Component.literal("Blender");
+    }
 
+    @Override
+    public int getWidth() {
+        return 90;
+    }
 
+    @Override
+    public int getHeight() {
+        return 69;
+    }
+
+    @Override
+    public @Nullable IDrawable getIcon() {
+        return icon;
+    }
 
     @Override
     public void setRecipe(IRecipeLayoutBuilder builder, RecipeHolder<BlenderRecipe> recipe, IFocusGroup focuses) {
+        BakeriesMod.LOGGER.debug("setRecipe");
         NonNullList<Ingredient> recipeIngredients = recipe.value().getInputItems();
         BlenderRecipe value = recipe.value();
         RecipeDisplay display = value.display().getFirst();
@@ -61,12 +73,15 @@ public class BlenderRecipeCategory extends AbstractRecipeCategory<RecipeHolder<B
             for (int column = 0; column < 3; ++column) {
                 int inputIndex = row * 3 + column;
                 if (inputIndex < recipeIngredients.size()) {
-                    builder.addInputSlot(x + (column * borderSlotSize) + 1, y + (row * borderSlotSize) + 1).add(recipeIngredients.get(inputIndex));
+                    builder.addSlot(RecipeIngredientRole.INPUT,x + (column * borderSlotSize) + 1, y + (row * borderSlotSize) + 1).add(recipeIngredients.get(inputIndex));
                 }
             }
         }
         //���������
-        builder.addSlot(RecipeIngredientRole.INPUT,67,8).add(recipe.value().getContainer());
+        if (recipe.value().getContainer() != null){
+            builder.addSlot(RecipeIngredientRole.CRAFTING_STATION,67,8).add(recipe.value().getContainer());
+        }
+
         //��������
         builder.addSlot(RecipeIngredientRole.OUTPUT,67,43).add(recipe.value().result().create());
     }

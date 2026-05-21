@@ -51,6 +51,7 @@ public class DrinkBlock extends AbstractPileBlock {
         return SoundEvents.GLASS_PLACE;
     }
 
+
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         builder.add(FACING,PILE);

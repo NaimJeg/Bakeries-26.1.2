@@ -1,0 +1,12 @@
+{
+  "type": "bakeries:drink",
+  "ingredients": [
+    "minecraft:ice",
+    "#c:foods/milk",
+    "bakeries:moka_pot_fill"
+  ],
+  "result": {
+    "count": 1,
+    "id": "bakeries:iced_latte"
+  }
+}

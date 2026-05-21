@@ -30,6 +30,8 @@ public class BakeriesCreativeModeTabs {
                         output.accept(BakeriesItems.MILK_TANK);
                         output.accept(BakeriesItems.CHEESE_TANK);
 
+                        output.accept(BakeriesItems.DRINK_CUP);
+
                         output.accept(BakeriesItems.WOOD_TRAY);
                         output.accept(BakeriesItems.WOOD_COUNTER);
                         output.accept(BakeriesItems.COFFEE_TABLE);
@@ -112,6 +114,14 @@ public class BakeriesCreativeModeTabs {
                         output.accept(BakeriesItems.TOMATO_CHEESE_CROISSANT_SANDWICH);
                         output.accept(BakeriesItems.EGG_TART);
                         output.accept(BakeriesItems.TARO_SALT_YOLK_BREAD);
+
+                        output.accept(BakeriesItems.ICED_AMERICAN);
+                        output.accept(BakeriesItems.ICED_LATTE);
+                        output.accept(BakeriesItems.BROWN_SUGAR_LATTE);
+                        output.accept(BakeriesItems.CREAM_BINGLE_COFFEE);
+                        output.accept(BakeriesItems.MATCHA_LATTE);
+                        output.accept(BakeriesItems.MATCHA_PARFAIT);
+                        output.accept(BakeriesItems.TARO_MILK);
                             }
                     ).build());
 

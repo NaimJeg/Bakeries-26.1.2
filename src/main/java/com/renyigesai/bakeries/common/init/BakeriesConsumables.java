@@ -40,10 +40,10 @@ public class BakeriesConsumables {
     public static final Consumable GARLIC_FLAVORED_BAGUETTE;
 
     static {
-        WHOLE_WHEAT_BAGEL = defaultEffectFood(new MobEffectInstance(MobEffects.SATURATION, 20));
-        BROWN_SUGAR_ROLL = defaultEffectFood(new MobEffectInstance(BakeriesMobEffects.ENJOY, 600));
-        CROISSANT = defaultEffectFood(new MobEffectInstance(BakeriesMobEffects.ENJOY, 1200));
-        PINEAPPLE_BUN = defaultEffectFood(new MobEffectInstance(BakeriesMobEffects.ENJOY, 1200));
+        WHOLE_WHEAT_BAGEL = defaultEffectFood(new MobEffectInstance(MobEffects.SATURATION, 20)).build();
+        BROWN_SUGAR_ROLL = defaultEffectFood(new MobEffectInstance(BakeriesMobEffects.ENJOY, 600)).build();
+        CROISSANT = defaultEffectFood(new MobEffectInstance(BakeriesMobEffects.ENJOY, 1200)).build();
+        PINEAPPLE_BUN = defaultEffectFood(new MobEffectInstance(BakeriesMobEffects.ENJOY, 1200)).build();
 
         SALT_CROISSANT = Consumables.defaultFood()
                 .onConsume(new ApplyStatusEffectsConsumeEffect(new MobEffectInstance(BakeriesMobEffects.ENJOY, 600)))
@@ -55,21 +55,25 @@ public class BakeriesConsumables {
                 .onConsume(new ApplyStatusEffectsConsumeEffect(new MobEffectInstance(BakeriesMobEffects.CHEESE_POWER, 600)))
                 .build();
 
-        FOCACCIA = defaultEffectFood(new MobEffectInstance(BakeriesMobEffects.ENJOY, 600, 1));
+        FOCACCIA = defaultEffectFood(new MobEffectInstance(BakeriesMobEffects.ENJOY, 600, 1)).build();
 
-        ICED_AMERICAN = defaultEffectFood(new MobEffectInstance(MobEffects.SPEED, 600));
-        ICED_LATTE = defaultEffectFood(new MobEffectInstance(MobEffects.SPEED, 600));
-        BROWN_SUGAR_LATTE = defaultEffectFood(new MobEffectInstance(MobEffects.SPEED, 600));
-        CREAM_BINGLE_COFFEE = defaultEffectFood(new MobEffectInstance(MobEffects.SPEED, 600));
+        ICED_AMERICAN = defaultEffectFood(new MobEffectInstance(MobEffects.SPEED, 600)).consumeSeconds(1.6F).animation(ItemUseAnimation.DRINK).sound(SoundEvents.GENERIC_DRINK).hasConsumeParticles(false).build();
+        ICED_LATTE = defaultEffectFood(new MobEffectInstance(MobEffects.SPEED, 600)).consumeSeconds(1.6F).animation(ItemUseAnimation.DRINK).sound(SoundEvents.GENERIC_DRINK).hasConsumeParticles(false).build();
+        BROWN_SUGAR_LATTE = defaultEffectFood(new MobEffectInstance(MobEffects.SPEED, 600)).consumeSeconds(1.6F).animation(ItemUseAnimation.DRINK).sound(SoundEvents.GENERIC_DRINK).hasConsumeParticles(false).build();
+        CREAM_BINGLE_COFFEE = defaultEffectFood(new MobEffectInstance(MobEffects.SPEED, 600)).consumeSeconds(1.6F).animation(ItemUseAnimation.DRINK).sound(SoundEvents.GENERIC_DRINK).hasConsumeParticles(false).build();
 
         MATCHA_LATTE = Consumables.defaultFood()
                 .onConsume(new ApplyStatusEffectsConsumeEffect(new MobEffectInstance(MobEffects.SPEED, 600)))
                 .onConsume(new ApplyStatusEffectsConsumeEffect(new MobEffectInstance(MobEffects.HASTE, 600)))
+                .consumeSeconds(1.6F).animation(ItemUseAnimation.DRINK).sound(SoundEvents.GENERIC_DRINK)
+                .hasConsumeParticles(false)
                 .build();
 
         MATCHA_PARFAIT = Consumables.defaultFood()
                 .onConsume(new ApplyStatusEffectsConsumeEffect(new MobEffectInstance(MobEffects.SPEED, 600)))
                 .onConsume(new ApplyStatusEffectsConsumeEffect(new MobEffectInstance(MobEffects.HASTE, 600)))
+                .consumeSeconds(1.6F).animation(ItemUseAnimation.DRINK).sound(SoundEvents.GENERIC_DRINK)
+                .hasConsumeParticles(false)
                 .build();
 
         DIRTY_CHOCO_CROISSANT = Consumables.defaultFood()
@@ -77,52 +81,48 @@ public class BakeriesConsumables {
                 .onConsume(new ApplyStatusEffectsConsumeEffect(new MobEffectInstance(BakeriesMobEffects.COCOA_MANIA, 1200)))
                 .build();
 
-        TOMATO_CHEESE_CROISSANT_SANDWICH = defaultEffectFood(new MobEffectInstance(BakeriesMobEffects.ENJOY, 6000, 2));
-        BERRY_BAGEL = defaultEffectFood(new MobEffectInstance(MobEffects.REGENERATION, 1200));
-        CUP_CAKE = defaultEffectFood(new MobEffectInstance(BakeriesMobEffects.SOFT, 1200));
-        CAKE_ROLL = defaultEffectFood(new MobEffectInstance(BakeriesMobEffects.SOFT, 1200));
+        TOMATO_CHEESE_CROISSANT_SANDWICH = defaultEffectFood(new MobEffectInstance(BakeriesMobEffects.ENJOY, 6000, 2)).build();
+        BERRY_BAGEL = defaultEffectFood(new MobEffectInstance(MobEffects.REGENERATION, 1200)).build();
+        CUP_CAKE = defaultEffectFood(new MobEffectInstance(BakeriesMobEffects.SOFT, 1200)).build();
+        CAKE_ROLL = defaultEffectFood(new MobEffectInstance(BakeriesMobEffects.SOFT, 1200)).build();
 
         CREAM_CAKE_CUBE = Consumables.defaultFood()
                 .onConsume(new ApplyStatusEffectsConsumeEffect(new MobEffectInstance(BakeriesMobEffects.SOFT, 1200)))
                 .onConsume(new ApplyStatusEffectsConsumeEffect(new MobEffectInstance(MobEffects.REGENERATION, 1200)))
                 .build();
 
-        CHEESE_CREAM_BREAD = defaultEffectFood(new MobEffectInstance(BakeriesMobEffects.CHEESE_POWER, 1200));
-        EGG_TART = defaultEffectFood(new MobEffectInstance(MobEffects.INSTANT_HEALTH, 1));
-        PINEAPPLE_OIL = defaultEffectFood(new MobEffectInstance(BakeriesMobEffects.ENJOY, 1800, 1));
+        CHEESE_CREAM_BREAD = defaultEffectFood(new MobEffectInstance(BakeriesMobEffects.CHEESE_POWER, 1200)).build();
+        EGG_TART = defaultEffectFood(new MobEffectInstance(MobEffects.INSTANT_HEALTH, 1)).build();
+        PINEAPPLE_OIL = defaultEffectFood(new MobEffectInstance(BakeriesMobEffects.ENJOY, 1800, 1)).build();
 
         FLAT_CROISSANT = Consumables.defaultFood()
                 .onConsume(new ApplyStatusEffectsConsumeEffect(new MobEffectInstance(BakeriesMobEffects.ENJOY, 600)))
                 .onConsume(new ApplyStatusEffectsConsumeEffect(new MobEffectInstance(MobEffects.RESISTANCE, 600)))
                 .build();
 
-        TARO_SALT_YOLK_BREAD = defaultEffectFood(new MobEffectInstance(BakeriesMobEffects.ENJOY, 1800));
+        TARO_SALT_YOLK_BREAD = defaultEffectFood(new MobEffectInstance(BakeriesMobEffects.ENJOY, 1800)).build();
 
         TARO_MILK = Consumables.defaultFood()
                 .onConsume(new ApplyStatusEffectsConsumeEffect(new MobEffectInstance(MobEffects.SPEED, 600)))
                 .onConsume(new ApplyStatusEffectsConsumeEffect(new MobEffectInstance(MobEffects.HASTE, 600)))
+                .consumeSeconds(1.6F).animation(ItemUseAnimation.DRINK).sound(SoundEvents.GENERIC_DRINK)
+                .hasConsumeParticles(false)
                 .build();
 
-        RICE_BREAD = defaultEffectFood(new MobEffectInstance(BakeriesMobEffects.ENJOY, 600));
-
-//        RICE_BREAD_FARMERSDELIGHT = Consumables.defaultFood()
-//                .onConsume(new ApplyStatusEffectsConsumeEffect(new MobEffectInstance(ModEffects.COMFORT, 6000)))
-//                .onConsume(new ApplyStatusEffectsConsumeEffect(new MobEffectInstance(BakeriesMobEffects.ENJOY, 600)))
-//                .build();
+        RICE_BREAD = defaultEffectFood(new MobEffectInstance(BakeriesMobEffects.ENJOY, 600)).build();
 
         ORANGE_AMERICAN = Consumables.defaultFood()
                 .onConsume(new ApplyStatusEffectsConsumeEffect(new MobEffectInstance(MobEffects.SPEED, 600)))
                 .onConsume(new ApplyStatusEffectsConsumeEffect(new MobEffectInstance(MobEffects.REGENERATION, 600)))
                 .build();
 
-        GARLIC_FLAVORED_BAGUETTE = defaultEffectFood(new MobEffectInstance(MobEffects.RESISTANCE, 600));
+        GARLIC_FLAVORED_BAGUETTE = defaultEffectFood(new MobEffectInstance(MobEffects.RESISTANCE, 600)).build();
     }
 
     // 便捷方法：创建仅包含单个药水效果的 Consumable
-    private static Consumable defaultEffectFood(MobEffectInstance effect) {
+    private static Consumable.Builder defaultEffectFood(MobEffectInstance effect) {
         return Consumables.defaultFood()
-                .onConsume(new ApplyStatusEffectsConsumeEffect(effect))
-                .build();
+                .onConsume(new ApplyStatusEffectsConsumeEffect(effect));
     }
 
     public static Consumable.Builder defaultShake() {

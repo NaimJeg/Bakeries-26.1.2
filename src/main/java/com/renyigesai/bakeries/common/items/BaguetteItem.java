@@ -32,7 +32,7 @@ public class BaguetteItem extends RepeatEatItem {
 
     @Override
     public void hurtEnemy(ItemStack itemstack, LivingEntity entity, LivingEntity sourceentity) {
-        eatOrBreak(entity,itemstack);
+        onConsume(entity.level(),entity,itemstack);
     }
 
     public static ItemAttributeModifiers createAttributes() {

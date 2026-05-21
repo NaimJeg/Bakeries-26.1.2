@@ -46,6 +46,7 @@ public class BakeriesItems {
     public static final DeferredItem<Item> OVEN;
     public static final DeferredItem<Item> MOKA_POT;
     public static final DeferredItem<Item> MOKA_POT_FILL;
+    public static final DeferredItem<Item> DRINK_CUP;
     public static final DeferredItem<Item> FERMENTATION_TANK;
     public static final DeferredItem<Item> YEAST_TANK;
     public static final DeferredItem<Item> MILK_TANK;
@@ -191,6 +192,14 @@ public class BakeriesItems {
     public static final DeferredItem<Item> EGG_TART;
     public static final DeferredItem<Item> TARO_SALT_YOLK_BREAD;
 
+    public static final DeferredItem<Item> ICED_AMERICAN;
+    public static final DeferredItem<Item> ICED_LATTE;
+    public static final DeferredItem<Item> BROWN_SUGAR_LATTE;
+    public static final DeferredItem<Item> CREAM_BINGLE_COFFEE;
+    public static final DeferredItem<Item> MATCHA_LATTE;
+    public static final DeferredItem<Item> MATCHA_PARFAIT;
+    public static final DeferredItem<Item> TARO_MILK;
+
     public static final DeferredItem<Item> BREAD_KNIFE;
     public static final DeferredItem<Item> FLOUR_SIEVE;
     public static final DeferredItem<Item> ETERNAL_BAGUETTE;
@@ -204,6 +213,7 @@ public class BakeriesItems {
         OVEN = block(BakeriesBlocks.OVEN);
         MOKA_POT = block(BakeriesBlocks.MOKA_POT);
         MOKA_POT_FILL = REGISTER.register("moka_pot_fill",MokaPotFillItem::new);
+        DRINK_CUP = block(BakeriesBlocks.DRINK_CUP);
 
         FERMENTATION_TANK = block(BakeriesBlocks.FERMENTATION_TANK);
         YEAST_TANK = block(BakeriesBlocks.YEAST_TANK);
@@ -308,6 +318,14 @@ public class BakeriesItems {
         HONEY_BUTTER_SPREAD_TOAST = REGISTER.register("honey_butter_spread_toast",()-> new Item(new Item.Properties().food(BakeriesFoodProperties.HONEY_BUTTER_SPREAD_TOAST).setId(modItemId("honey_butter_spread_toast"))));
         SLICED_CHEESE_COCOA_TOAST = foodItem("sliced_cheese_cocoa_toast",BakeriesFoodProperties.SLICED_CHEESE_COCOA_TOAST);
 
+        ICED_AMERICAN = drinkItem(BakeriesBlocks.ICED_AMERICAN,FoodData.create(BakeriesFoodProperties.ICED_AMERICAN,BakeriesConsumables.ICED_AMERICAN) ,1);
+        ICED_LATTE = drinkItem(BakeriesBlocks.ICED_LATTE,FoodData.create(BakeriesFoodProperties.ICED_LATTE,BakeriesConsumables.ICED_LATTE) ,4);
+        BROWN_SUGAR_LATTE = drinkItem(BakeriesBlocks.BROWN_SUGAR_LATTE,FoodData.create(BakeriesFoodProperties.BROWN_SUGAR_LATTE,BakeriesConsumables.BROWN_SUGAR_LATTE) ,2);
+        CREAM_BINGLE_COFFEE = drinkItem(BakeriesBlocks.CREAM_BINGLE_COFFEE,FoodData.create(BakeriesFoodProperties.CREAM_BINGLE_COFFEE,BakeriesConsumables.CREAM_BINGLE_COFFEE) ,4);
+        MATCHA_LATTE = drinkItem(BakeriesBlocks.MATCHA_LATTE,FoodData.create(BakeriesFoodProperties.MATCHA_LATTE,BakeriesConsumables.MATCHA_LATTE) ,3);
+        MATCHA_PARFAIT = drinkItem(BakeriesBlocks.MATCHA_PARFAIT,FoodData.create(BakeriesFoodProperties.MATCHA_PARFAIT,BakeriesConsumables.MATCHA_PARFAIT) ,4);
+        TARO_MILK = REGISTER.register("taro_milk",()-> new DrinkItem(BakeriesBlocks.TARO_MILK.get(),new Item.Properties().food(BakeriesFoodProperties.TARO_MILK,BakeriesConsumables.TARO_MILK).durability(6).craftRemainder(BakeriesItems.DRINK_CUP.get()).rarity(BakeriesRarity.getTaro()).setId(modItemId("taro_milk")).useBlockDescriptionPrefix(),4));
+
         SWEET_DOUGH = item("sweet_dough");
         SALTED_DOUGH = item("salted_dough");
         COCOA_DOUGH = item("cocoa_dough");
@@ -330,6 +348,11 @@ public class BakeriesItems {
         BREAD_KNIFE = REGISTER.register("bread_knife",()-> new BreadKnifeItem(ToolMaterial.IRON,"bread_knife"));
         FLOUR_SIEVE = REGISTER.register("flour_sieve",FlourSieveItem::new);
         ETERNAL_BAGUETTE = REGISTER.register("eternal_baguette",EternalBaguetteItem::new);
+    }
+
+    private static DeferredItem<Item> drinkItem(Holder<Block> block,FoodData foodData,int upEffect){
+        Identifier identifier = block.unwrapKey().get().identifier();
+        return REGISTER.register(identifier.getPath(),()-> new DrinkItem(block.value(),new Item.Properties().food(foodData.foodProperties,foodData.consumable).durability(6).craftRemainder(BakeriesItems.DRINK_CUP.get()).setId(ResourceKey.create(Registries.ITEM,identifier)).useBlockDescriptionPrefix(),upEffect));
     }
 
     public static DeferredItem<Item> foodBreadBlock(Holder<Block> block, Item.Properties properties){

@@ -1,0 +1,13 @@
+{
+  "type": "bakeries:drink",
+  "ingredients": [
+    "minecraft:packed_ice",
+    "#c:foods/milk",
+    "bakeries:moka_pot_fill",
+    "bakeries:foamed_cream"
+  ],
+  "result": {
+    "count": 1,
+    "id": "bakeries:cream_bingle_coffee"
+  }
+}

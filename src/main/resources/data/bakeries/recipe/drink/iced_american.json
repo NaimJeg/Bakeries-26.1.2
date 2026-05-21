@@ -1,0 +1,12 @@
+{
+  "type": "bakeries:drink",
+  "ingredients": [
+    "minecraft:ice",
+    "minecraft:water_bucket",
+    "bakeries:moka_pot_fill"
+  ],
+  "result": {
+    "count": 1,
+    "id": "bakeries:iced_american"
+  }
+}

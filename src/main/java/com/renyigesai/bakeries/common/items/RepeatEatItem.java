@@ -66,15 +66,23 @@ public class RepeatEatItem extends PileItem {
         return this.canDrink ? 5592575 : 15574564;
     }
 
-    public static void eatOrBreak(LivingEntity living,ItemStack stack){
+    public ItemStack onConsume(Level level,LivingEntity living,ItemStack stack){
         if (isRepeatEat(stack)){
-            int eatCount = stack.getOrDefault(BakeriesDataComponents.EAT_COUNT,0);
+            int eatCount = stack.getOrDefault(BakeriesDataComponents.EAT_COUNT,-1);
+            ItemStack cache = ItemStack.EMPTY;
+            eat(level, living, stack);
             if (eatCount - 1 == 0){
+                cache = stack.copy();
                 stack.consume(1,living);
             }else {
                 stack.set(BakeriesDataComponents.EAT_COUNT,eatCount - 1);
             }
+            return (eatCount - 1 == 0 && cache.getCraftingRemainder() != null) ? cache.getCraftingRemainder().create() : stack;
         }
+        return stack;
+    }
+    public void eat(Level level,LivingEntity living,ItemStack stack){
+
     }
 
     public int getBarWidth(ItemStack stack) {

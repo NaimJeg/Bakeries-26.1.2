@@ -15,11 +15,8 @@ public class ConsumableMixin {
 
     @Inject(method = "onConsume",at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/LivingEntity;gameEvent(Lnet/minecraft/core/Holder;)V"), cancellable = true)
    public void onConsume(Level level, LivingEntity user, ItemStack stack, CallbackInfoReturnable<ItemStack> cir){
-        if (stack.getItem() instanceof RepeatEatItem){
-            if (RepeatEatItem.isRepeatEat(stack)){
-                RepeatEatItem.eatOrBreak(user,stack);
-            }
-            cir.setReturnValue(stack);
+        if (stack.getItem() instanceof RepeatEatItem repeatEatItem){
+            cir.setReturnValue(repeatEatItem.onConsume(level, user, stack));
         }
    }
 

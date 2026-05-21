@@ -1,0 +1,12 @@
+{
+  "type": "bakeries:drink",
+  "ingredients": [
+    "minecraft:ice",
+    "#c:foods/milk",
+    "#c:matcha"
+  ],
+  "output": {
+    "count": 1,
+    "id": "bakeries:matcha_latte"
+  }
+}

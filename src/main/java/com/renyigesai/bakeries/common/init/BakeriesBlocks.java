@@ -12,6 +12,8 @@ import com.renyigesai.bakeries.common.blocks.cupboard.CupboardBlockEntity;
 import com.renyigesai.bakeries.common.blocks.dough_crafting_table.DoughCraftingTableBlock;
 import com.renyigesai.bakeries.common.blocks.dough_crafting_table.DoughCraftingTableBlockEntity;
 import com.renyigesai.bakeries.common.blocks.fluid.SaltWaterFluidsBlock;
+import com.renyigesai.bakeries.common.blocks.glass_drink_cup.GlassDrinkCupBlock;
+import com.renyigesai.bakeries.common.blocks.glass_drink_cup.GlassDrinkCupBlockEntity;
 import com.renyigesai.bakeries.common.blocks.mix_block.MixBlock;
 import com.renyigesai.bakeries.common.blocks.mix_block.MixBlockEntity;
 import com.renyigesai.bakeries.common.blocks.moka_pot.MokaPotBlock;
@@ -51,6 +53,7 @@ public class BakeriesBlocks {
     public static final DeferredBlock<Block> BREAD_RACK;
     public static final DeferredBlock<Block> GLASS_BREAD_RACK;
     public static final DeferredBlock<Block> MOKA_POT;
+    public static final DeferredBlock<Block> DRINK_CUP;
 
 
     /**?????*/
@@ -128,6 +131,15 @@ public class BakeriesBlocks {
     /**????????????*/
     public static final DeferredBlock<Block> TARO_SALT_YOLK_BREAD;
 
+    /**饮料方块*/
+    public static final DeferredBlock<Block> ICED_AMERICAN;
+    public static final DeferredBlock<Block> ICED_LATTE;
+    public static final DeferredBlock<Block> BROWN_SUGAR_LATTE;
+    public static final DeferredBlock<Block> CREAM_BINGLE_COFFEE;
+    public static final DeferredBlock<Block> MATCHA_LATTE;
+    public static final DeferredBlock<Block> MATCHA_PARFAIT;
+    public static final DeferredBlock<Block> TARO_MILK;
+
     public static final DeferredBlock<Block> TOMATO;
     public static final DeferredBlock<Block> TARO;
     public static final DeferredBlock<Block> COFFEE_PLANT;
@@ -166,6 +178,7 @@ public class BakeriesBlocks {
         BREAD_RACK = BLOCKS.register("bread_rack",()-> new BreadRackBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS).setId(modBlockId("bread_rack"))));
         GLASS_BREAD_RACK = BLOCKS.register("glass_bread_rack",()-> new GlassBreadRackBlock(BlockBehaviour.Properties.ofFullCopy(BREAD_RACK.get()).setId(modBlockId("glass_bread_rack"))));
         MOKA_POT = BLOCKS.register("moka_pot", MokaPotBlock::new);
+        DRINK_CUP = BLOCKS.register("drink_cup", GlassDrinkCupBlock::new);
 
         /*???????*/
         BAGEL = BLOCKS.register("bagel", BreadBlock::new);
@@ -198,6 +211,15 @@ public class BakeriesBlocks {
         EGG_TART = BLOCKS.register("egg_tart",BreadBlock::new);
         TARO_SALT_YOLK_BREAD = BLOCKS.register("taro_salt_yolk_bread",BreadBlock::new);
 
+        /**饮料方块*/
+        ICED_AMERICAN = drinkBlock("iced_american");
+        ICED_LATTE = drinkBlock("iced_latte");
+        BROWN_SUGAR_LATTE = drinkBlock("brown_sugar_latte");
+        CREAM_BINGLE_COFFEE = drinkBlock("cream_bingle_coffee");
+        MATCHA_LATTE = drinkBlock("matcha_latte");
+        MATCHA_PARFAIT = drinkBlock("matcha_parfait");
+        TARO_MILK = drinkBlock("taro_milk");
+
         TOMATO = BLOCKS.register("tomato", TomatoBlock::new);
         TARO = BLOCKS.register("taro", TaroBlock::new);
         COFFEE_PLANT = BLOCKS.register("coffee_plant",CoffeePlantBlock::new);
@@ -218,6 +240,10 @@ public class BakeriesBlocks {
         return BlockBehaviour.Properties.of().strength(2.0F,3.0F).requiresCorrectToolForDrops().mapColor(MapColor.COLOR_GRAY).sound(SoundType.CHISELED_BOOKSHELF).setId(modBlockId(name));
     }
 
+    private static DeferredBlock<Block> drinkBlock(String name){
+        return BLOCKS.register(name,DrinkBlock::new);
+    }
+
     public static class Entities {
         public static final DeferredRegister<BlockEntityType<?>> REGISTER = DeferredRegister.create(BuiltInRegistries.BLOCK_ENTITY_TYPE, BakeriesMod.MODID);
         public static final Supplier<BlockEntityType<MixBlockEntity>> MIX_BLOCK_ENTITY = REGISTER.register("mix_block", () -> new BlockEntityType<>(MixBlockEntity::new, MIX_BLOCK.get()));
@@ -227,6 +253,7 @@ public class BakeriesBlocks {
         public static final Supplier<BlockEntityType<CupboardBlockEntity>> CUPBOARD_ENTITY = REGISTER.register("cupboard", () -> new BlockEntityType<>(CupboardBlockEntity::new, CUPBOARD.get()));
         public static final Supplier<BlockEntityType<BreadRackBlockEntity>> BREAD_RACK_ENTITY = REGISTER.register("bread_rack", () -> new BlockEntityType<>(BreadRackBlockEntity::new, BREAD_RACK.get(),GLASS_BREAD_RACK.get()));
         public static final Supplier<BlockEntityType<MokaPotBlockEntity>> MOKA_POT_ENTITY = REGISTER.register("moka_pot", () -> new BlockEntityType<>(MokaPotBlockEntity::new, MOKA_POT.get()));
+        public static final Supplier<BlockEntityType<GlassDrinkCupBlockEntity>> DRINK_CUP_ENTITY = REGISTER.register("drink_cup", () -> new BlockEntityType<>(GlassDrinkCupBlockEntity::new, DRINK_CUP.get()));
     }
 
 

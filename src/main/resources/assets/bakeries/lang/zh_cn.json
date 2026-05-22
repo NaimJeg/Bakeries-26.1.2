@@ -277,5 +277,6 @@
   "tooltips.bakeries.shake": "右键以摇晃",
   "tooltips.bakeries.toaster_0": "空手右键以开始烤制",
   "tooltips.bakeries.toaster_1": "%s右键以取出物品",
-  "tooltips.bakeries.wood_counter": "使用碗右键方块以改变状态"
+  "tooltips.bakeries.wood_counter": "使用碗右键方块以改变状态",
+  "tooltips.bakeries.raw_item_perfect_temperature": "Perfect %s°c"
 }

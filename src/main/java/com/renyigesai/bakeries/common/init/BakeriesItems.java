@@ -340,17 +340,17 @@ public class BakeriesItems {
         WHOLE_WHEAT_DOUGH = item("whole_wheat_dough");
         PASTRY = item("pastry");
         EGG_TART_SHELL = item("egg_tart_shell");
-        RAW_EGG_TART = rawItem("raw_egg_tart",180);
-        BAGEL_DOUGH = rawItem("bagel_dough",200);
-        WHOLE_WHEAT_BAGEL_DOUGH = rawItem("whole_wheat_bagel_dough",200);
-        ROUND_BREAD_DOUGH = rawItem("round_bread_dough", 155);
-        BROWN_SUGAR_ROLL_DOUGH = rawItem("brown_sugar_roll_dough",155);
-        PINEAPPLE_BUN_DOUGH = rawItem("pineapple_bun_dough",170);
-        CROISSANT_DOUGH = rawItem("croissant_dough",175);
-        SALT_CROISSANT_DOUGH = rawItem("salt_croissant_dough",180);
-        BAGUETTE_DOUGH = rawItem("baguette_dough",230);
-        CIABATTA_DOUGH = rawItem("ciabatta_dough",210);
-        FOCACCIA_DOUGH = rawItem("focaccia_dough",230);
+        RAW_EGG_TART = rawItem("raw_egg_tart",180,200);
+        BAGEL_DOUGH = rawItem("bagel_dough",200,225);
+        WHOLE_WHEAT_BAGEL_DOUGH = rawItem("whole_wheat_bagel_dough",200,225);
+        ROUND_BREAD_DOUGH = rawItem("round_bread_dough", 155,180);
+        BROWN_SUGAR_ROLL_DOUGH = rawItem("brown_sugar_roll_dough",155,170);
+        PINEAPPLE_BUN_DOUGH = rawItem("pineapple_bun_dough",170,180);
+        CROISSANT_DOUGH = rawItem("croissant_dough",175,180);
+        SALT_CROISSANT_DOUGH = rawItem("salt_croissant_dough",180,180);
+        BAGUETTE_DOUGH = rawItem("baguette_dough",230,240);
+        CIABATTA_DOUGH = rawItem("ciabatta_dough",210,220);
+        FOCACCIA_DOUGH = rawItem("focaccia_dough",230,240);
         MOULD_TOAST_DOUGH = rawItem("mould_toast_dough",135);
         MOULD_CHEESE_COCOA_TOAST_DOUGH = rawItem("mould_cheese_cocoa_toast_dough",135);
         COUNTRY_BREAD_DOUGH = rawItem("country_bread_dough",225);
@@ -397,7 +397,11 @@ public class BakeriesItems {
     }
 
     private static DeferredItem<Item> rawItem(String pName, int temperature) {
-        return REGISTER.register(pName, () -> new RawItem(new Item.Properties().setId(modItemId(pName)), temperature));
+        return REGISTER.register(pName, () -> new RawItem(new Item.Properties().setId(modItemId(pName)),temperature));
+    }
+
+    private static DeferredItem<Item> rawItem(String pName, int temperature,int perfectTemperature) {
+        return REGISTER.register(pName, () -> new RawItem(new Item.Properties().setId(modItemId(pName)),temperature,perfectTemperature,pName));
     }
 
 //    public static DeferredItem<Item> item(String name,Function<Item.Properties, Item> itemFactory){

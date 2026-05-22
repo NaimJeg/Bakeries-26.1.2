@@ -3,6 +3,7 @@
   "package": "com.renyigesai.bakeries.common.mixin",
   "compatibilityLevel": "JAVA_25",
   "mixins": [
+    "ClientAdvancementsMixin",
     "ConsumableMixin",
     "FallingBlockEntityMixin"
   ],

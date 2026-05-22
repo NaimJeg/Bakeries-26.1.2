@@ -47,10 +47,4 @@ public class BakeriesClientHandler {
         event.registerLayerDefinition(MokaPotModel.LAYER_LOCATION, MokaPotModel::createBodyLayer);
 //        event.registerLayerDefinition(GlassBreadRackDoorModel.LAYER_LOCATION, GlassBreadRackDoorModel::createBodyLayer);
     }
-
-    @SubscribeEvent
-    public static void on(RecipesReceivedEvent event){
-        RecipeMap recipeMap = event.getRecipeMap();
-        BLENDERS = Lists.newArrayList(recipeMap.byType(BakeriesRecipes.BLENDER_TYPE.get()));
-    }
 }

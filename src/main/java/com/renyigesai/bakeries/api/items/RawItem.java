@@ -55,7 +55,6 @@ public class RawItem extends Item {
                     if (advancementProgress == null) {
                         return;
                     }
-                    advancementProgress = null;
                     if (advancementProgress.isDone()) {
                         builder.accept(Component.translatable("tooltips.bakeries.raw_item_perfect_temperature",String.valueOf(perfectTemperature)).withStyle(ChatFormatting.GOLD));
                     }

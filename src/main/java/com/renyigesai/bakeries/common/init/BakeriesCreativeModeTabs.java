@@ -22,6 +22,7 @@ public class BakeriesCreativeModeTabs {
                         output.accept(BakeriesItems.DOUGH_CRAFTING_TABLE);
                         output.accept(BakeriesItems.CUPBOARD);
                         output.accept(BakeriesItems.OVEN);
+                        output.accept(BakeriesItems.TOASTER);
                         output.accept(BakeriesItems.MOKA_POT);
                         output.accept(BakeriesItems.MOKA_POT_FILL);
 

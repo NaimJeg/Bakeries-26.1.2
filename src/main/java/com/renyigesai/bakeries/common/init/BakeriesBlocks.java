@@ -25,6 +25,8 @@ import com.renyigesai.bakeries.common.blocks.tank.CheeseTankBkock;
 import com.renyigesai.bakeries.common.blocks.tank.FermentationTankBlock;
 import com.renyigesai.bakeries.common.blocks.tank.MilkTankBlock;
 import com.renyigesai.bakeries.common.blocks.tank.YeastTankBlock;
+import com.renyigesai.bakeries.common.blocks.toaster.ToasterBlock;
+import com.renyigesai.bakeries.common.blocks.toaster.ToasterBlockEntity;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.Identifier;
@@ -54,6 +56,7 @@ public class BakeriesBlocks {
     public static final DeferredBlock<Block> GLASS_BREAD_RACK;
     public static final DeferredBlock<Block> MOKA_POT;
     public static final DeferredBlock<Block> DRINK_CUP;
+    public static final DeferredBlock<Block> TOASTER;
 
 
     /**?????*/
@@ -179,6 +182,7 @@ public class BakeriesBlocks {
         GLASS_BREAD_RACK = BLOCKS.register("glass_bread_rack",()-> new GlassBreadRackBlock(BlockBehaviour.Properties.ofFullCopy(BREAD_RACK.get()).setId(modBlockId("glass_bread_rack"))));
         MOKA_POT = BLOCKS.register("moka_pot", MokaPotBlock::new);
         DRINK_CUP = BLOCKS.register("drink_cup", GlassDrinkCupBlock::new);
+        TOASTER = BLOCKS.register("toaster", ToasterBlock::new);
 
         /*???????*/
         BAGEL = BLOCKS.register("bagel", BreadBlock::new);
@@ -254,6 +258,7 @@ public class BakeriesBlocks {
         public static final Supplier<BlockEntityType<BreadRackBlockEntity>> BREAD_RACK_ENTITY = REGISTER.register("bread_rack", () -> new BlockEntityType<>(BreadRackBlockEntity::new, BREAD_RACK.get(),GLASS_BREAD_RACK.get()));
         public static final Supplier<BlockEntityType<MokaPotBlockEntity>> MOKA_POT_ENTITY = REGISTER.register("moka_pot", () -> new BlockEntityType<>(MokaPotBlockEntity::new, MOKA_POT.get()));
         public static final Supplier<BlockEntityType<GlassDrinkCupBlockEntity>> DRINK_CUP_ENTITY = REGISTER.register("drink_cup", () -> new BlockEntityType<>(GlassDrinkCupBlockEntity::new, DRINK_CUP.get()));
+        public static final Supplier<BlockEntityType<ToasterBlockEntity>> TOASTER_ENTITY = REGISTER.register("toaster", () -> new BlockEntityType<>(ToasterBlockEntity::new, TOASTER.get()));
     }
 
 

@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "cdc",
+    "aba"
+  ],
+  "key": {
+    "a":"minecraft:iron_ingot",
+    "b":"minecraft:redstone",
+    "c":"minecraft:quartz",
+    "d":"minecraft:glass_pane"
+  },
+  "result": {
+    "id": "bakeries:toaster",
+    "count": 1
+  }
+}

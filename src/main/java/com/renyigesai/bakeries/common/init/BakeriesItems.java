@@ -44,6 +44,7 @@ public class BakeriesItems {
     public static final DeferredItem<Item> DOUGH_CRAFTING_TABLE;
     public static final DeferredItem<Item> CUPBOARD;
     public static final DeferredItem<Item> OVEN;
+    public static final DeferredItem<Item> TOASTER;
     public static final DeferredItem<Item> MOKA_POT;
     public static final DeferredItem<Item> MOKA_POT_FILL;
     public static final DeferredItem<Item> DRINK_CUP;
@@ -216,6 +217,7 @@ public class BakeriesItems {
         DOUGH_CRAFTING_TABLE = block(BakeriesBlocks.DOUGH_CRAFTING_TABLE);
         CUPBOARD = block(BakeriesBlocks.CUPBOARD);
         OVEN = block(BakeriesBlocks.OVEN);
+        TOASTER = block(BakeriesBlocks.TOASTER);
         MOKA_POT = block(BakeriesBlocks.MOKA_POT);
         MOKA_POT_FILL = REGISTER.register("moka_pot_fill",MokaPotFillItem::new);
         DRINK_CUP = block(BakeriesBlocks.DRINK_CUP);

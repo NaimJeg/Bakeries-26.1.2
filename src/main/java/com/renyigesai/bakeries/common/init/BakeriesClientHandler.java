@@ -11,6 +11,7 @@ import com.renyigesai.bakeries.common.client.renderer.blockentity.bread_rack.Bre
 import com.renyigesai.bakeries.common.client.renderer.blockentity.mix_block.MixBlockRender;
 import com.renyigesai.bakeries.common.client.renderer.blockentity.moka_pot.MokaPotRender;
 import com.renyigesai.bakeries.common.client.renderer.blockentity.oven.OvenRender;
+import com.renyigesai.bakeries.common.client.renderer.blockentity.toaster.ToasterRender;
 import com.renyigesai.bakeries.common.recipe.blender.BlenderRecipe;
 import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.item.crafting.RecipeMap;
@@ -34,6 +35,7 @@ public class BakeriesClientHandler {
         event.registerBlockEntityRenderer(BakeriesBlocks.Entities.BREAD_RACK_ENTITY.get(), BreadRackRender::new);
 //        event.registerBlockEntityRenderer(BakeriesBlocks.Entities.TOASTER_ENTITY.get(), ToasterRender::new);
         event.registerBlockEntityRenderer(BakeriesBlocks.Entities.MOKA_POT_ENTITY.get(), MokaPotRender::new);
+        event.registerBlockEntityRenderer(BakeriesBlocks.Entities.TOASTER_ENTITY.get(), ToasterRender::new);
 //        event.registerBlockEntityRenderer(BakeriesBlocks.Entities.MENU_ENTITY.get(), MenuRender::new);
     }
 

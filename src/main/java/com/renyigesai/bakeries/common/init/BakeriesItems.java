@@ -101,6 +101,7 @@ public class BakeriesItems {
     public static final DeferredItem<Item> GROUND_COFFEE;
 
     public static final DeferredItem<Item> TOMATO;
+    public static final DeferredItem<Item> OLIVE;
     public static final DeferredItem<Item> TARO;
     public static final DeferredItem<Item> COOKED_TARO;
     public static final DeferredItem<Item> MASHED_TARO;
@@ -165,6 +166,10 @@ public class BakeriesItems {
     public static final DeferredItem<Item> CIABATTA_DOUGH;
 
     public static final DeferredItem<Item> FOCACCIA_DOUGH;
+
+    public static final DeferredItem<Item> MOULD_TOAST_DOUGH;
+
+    public static final DeferredItem<Item> MOULD_CHEESE_COCOA_TOAST_DOUGH;
 
     public static final DeferredItem<Item> COUNTRY_BREAD_DOUGH;
 
@@ -258,6 +263,7 @@ public class BakeriesItems {
 
 
         TOMATO = REGISTER.register("tomato",()-> new BlockItem(BakeriesBlocks.TOMATO.get(),new Item.Properties().food(BakeriesFoodProperties.TOMATO).useBlockDescriptionPrefix().setId(modItemId("tomato"))));
+        OLIVE = item("olive");
         TARO = REGISTER.register("taro",()-> new BlockItem(BakeriesBlocks.TARO.get(),new Item.Properties().useBlockDescriptionPrefix().setId(modItemId("taro"))));
         COOKED_TARO = foodItem("cooked_taro",BakeriesFoodProperties.COOKED_TARO);
         MASHED_TARO = foodItem("mashed_taro",BakeriesFoodProperties.MASHED_TARO);
@@ -316,7 +322,7 @@ public class BakeriesItems {
         SLICED_TOAST = foodItem("sliced_toast",BakeriesFoodProperties.SLICED_TOAST);
         BAKE_SLICED_TOAST = foodItem("bake_sliced_toast",BakeriesFoodProperties.SLICED_TOAST);
         HONEY_BUTTER_SPREAD_TOAST = REGISTER.register("honey_butter_spread_toast",()-> new Item(new Item.Properties().food(BakeriesFoodProperties.HONEY_BUTTER_SPREAD_TOAST).setId(modItemId("honey_butter_spread_toast"))));
-        SLICED_CHEESE_COCOA_TOAST = foodItem("sliced_cheese_cocoa_toast",BakeriesFoodProperties.SLICED_CHEESE_COCOA_TOAST);
+        SLICED_CHEESE_COCOA_TOAST = foodItem("sliced_cheese_cocoa_toast",BakeriesFoodProperties.SLICED_CHEESE_COCOA_TOAST,BakeriesConsumables.SLICED_CHEESE_COCOA_TOAST);
 
         ICED_AMERICAN = drinkItem(BakeriesBlocks.ICED_AMERICAN,FoodData.create(BakeriesFoodProperties.ICED_AMERICAN,BakeriesConsumables.ICED_AMERICAN) ,1);
         ICED_LATTE = drinkItem(BakeriesBlocks.ICED_LATTE,FoodData.create(BakeriesFoodProperties.ICED_LATTE,BakeriesConsumables.ICED_LATTE) ,4);
@@ -343,6 +349,8 @@ public class BakeriesItems {
         BAGUETTE_DOUGH = rawItem("baguette_dough",230);
         CIABATTA_DOUGH = rawItem("ciabatta_dough",210);
         FOCACCIA_DOUGH = rawItem("focaccia_dough",230);
+        MOULD_TOAST_DOUGH = rawItem("mould_toast_dough",135);
+        MOULD_CHEESE_COCOA_TOAST_DOUGH = rawItem("mould_cheese_cocoa_toast_dough",135);
         COUNTRY_BREAD_DOUGH = rawItem("country_bread_dough",225);
 
         BREAD_KNIFE = REGISTER.register("bread_knife",()-> new BreadKnifeItem(ToolMaterial.IRON,"bread_knife"));

@@ -70,6 +70,7 @@ public class BakeriesCreativeModeTabs {
                         output.accept(BakeriesItems.COFFEE_BEAN);
                         output.accept(BakeriesItems.GROUND_COFFEE);
                         output.accept(BakeriesItems.TOMATO);
+                        output.accept(BakeriesItems.OLIVE);
                         output.accept(BakeriesItems.TARO);
                         output.accept(BakeriesItems.COOKED_TARO);
                         output.accept(BakeriesItems.MASHED_TARO);
@@ -148,6 +149,9 @@ public class BakeriesCreativeModeTabs {
                                 output.accept(BakeriesItems.SALT_CROISSANT_DOUGH);
                                 output.accept(BakeriesItems.BAGUETTE_DOUGH);
                                 output.accept(BakeriesItems.CIABATTA_DOUGH);
+                                output.accept(BakeriesItems.FOCACCIA_DOUGH);
+                                output.accept(BakeriesItems.MOULD_TOAST_DOUGH);
+                                output.accept(BakeriesItems.MOULD_CHEESE_COCOA_TOAST_DOUGH);
                                 output.accept(BakeriesItems.FOCACCIA_DOUGH);
                                 output.accept(BakeriesItems.COUNTRY_BREAD_DOUGH);
                             }

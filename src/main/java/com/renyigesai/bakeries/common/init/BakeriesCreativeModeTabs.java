@@ -15,7 +15,7 @@ public class BakeriesCreativeModeTabs {
             "0_bakeries_tab",
             () -> CreativeModeTab.builder()
                     .title(Component.translatable("item_group.bakeries.bakeries_tab"))
-                    .icon(() -> BakeriesItems.BAGEL.get().getDefaultInstance())
+                    .icon(() -> BakeriesItems.OVEN.get().getDefaultInstance())
                     .displayItems((_, output) -> {
 
                         output.accept(BakeriesItems.BLENDER);
@@ -45,6 +45,7 @@ public class BakeriesCreativeModeTabs {
 
                         output.accept(BakeriesItems.BREAD_KNIFE);
                         output.accept(BakeriesItems.FLOUR_SIEVE);
+                        output.accept(BakeriesItems.MOULD);
 
                         output.accept(BakeriesItems.WHOLE_WHEAT_FLOUR);
                         output.accept(BakeriesItems.FLOUR);
@@ -57,7 +58,7 @@ public class BakeriesCreativeModeTabs {
 
                         output.accept(BakeriesItems.FOAMED_CREAM);
                         output.accept(BakeriesItems.CHEESE_CREAM);
-                        output.accept(BakeriesItems.BUTTER_FLOUR_SAND);
+//                        output.accept(BakeriesItems.BUTTER_FLOUR_SAND);
                         output.accept(BakeriesItems.HONEY_BUTTER);
                         output.accept(BakeriesItems.WHOLE_EGG);
                         output.accept(BakeriesItems.RAW_PROTEIN);
@@ -110,12 +111,14 @@ public class BakeriesCreativeModeTabs {
                         output.accept(BakeriesItems.CIABATTA);
                         output.accept(BakeriesItems.FOCACCIA);
                         output.accept(BakeriesItems.BAGUETTE);
+                        output.accept(BakeriesItems.COUNTRY_BREAD);
                         output.accept(BakeriesItems.BERRY_BAGEL);
                         output.accept(BakeriesItems.BAGEL_FILLED_SAUCE);
                         output.accept(BakeriesItems.BAGUETTE_WITH_FILLING);
                         output.accept(BakeriesItems.TOMATO_CHEESE_CROISSANT_SANDWICH);
-                        output.accept(BakeriesItems.EGG_TART);
                         output.accept(BakeriesItems.TARO_SALT_YOLK_BREAD);
+                        output.accept(BakeriesItems.EGG_TART);
+
 
                         output.accept(BakeriesItems.ICED_AMERICAN);
                         output.accept(BakeriesItems.ICED_LATTE);
@@ -131,7 +134,7 @@ public class BakeriesCreativeModeTabs {
             "1_bakeries_sfp_tab",
             () -> CreativeModeTab.builder()
                     .title(Component.translatable("item_group.bakeries.bakeries_sfp_tab"))
-                    .icon(() -> BakeriesItems.ROUND_BREAD.get().getDefaultInstance())
+                    .icon(() -> BakeriesItems.SWEET_DOUGH.get().getDefaultInstance())
                     .displayItems((_, output) ->
                             {
                                 output.accept(BakeriesItems.SWEET_DOUGH);

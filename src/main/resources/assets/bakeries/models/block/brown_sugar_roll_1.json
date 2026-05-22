@@ -1,5 +1,5 @@
 {
-  "parent": "bakeries:custom/brown_sugar_roll_1",
+  "parent": "bakeries:custom/cinnamon_roll_1",
   "render_type": "minecraft:cutout",
   "textures": {
     "0": "bakeries:block/brown_sugar_roll",

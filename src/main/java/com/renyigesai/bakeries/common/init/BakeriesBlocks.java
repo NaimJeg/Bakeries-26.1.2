@@ -120,7 +120,7 @@ public class BakeriesBlocks {
     /**????*/
     public static final DeferredBlock<Block> BAGUETTE;
     /**??????*/
-//    public static final DeferredBlock<Block> COUNTRY_BREAD;
+    public static final DeferredBlock<Block> COUNTRY_BREAD;
     /**?????*/
     public static final DeferredBlock<Block> FLAT_CROISSANT;
     /**???*/
@@ -204,7 +204,7 @@ public class BakeriesBlocks {
         BAGUETTE_WITH_FILLING = BLOCKS.register("baguette_with_filling",BreadBlock::new);
         TOMATO_CHEESE_CROISSANT_SANDWICH = BLOCKS.register("tomato_cheese_croissant_sandwich",BreadBlock::new);
         BAGUETTE = BLOCKS.register("baguette", BreadBlock::new);
-//        COUNTRY_BREAD = register("country_bread",()-> new CountryBreadBlock(BlockBehaviour.Properties.of().sound(SoundType.WOOL).strength(0.5F,0.5F)));
+        COUNTRY_BREAD = BLOCKS.register("country_bread",CountryBreadBlock::new);
         FLAT_CROISSANT = BLOCKS.register("flat_croissant", BreadBlock::new);
         TOAST = register("toast", () -> new ToastBlock(BlockBehaviour.Properties.of().sound(SoundType.WOOL).strength(0.5F,0.5F).setId(modBlockId("toast")), BakeriesItems.SLICED_TOAST));
         MOULD_TOAST = BLOCKS.register("mould_toast", () ->

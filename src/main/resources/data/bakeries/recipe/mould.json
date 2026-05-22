@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aba",
+    "cac"
+  ],
+  "key": {
+    "a":"minecraft:iron_nugget",
+    "b":"minecraft:black_dye",
+    "c":"minecraft:iron_ingot"
+  },
+  "result": {
+    "id": "bakeries:mould",
+    "count": 2
+  }
+}

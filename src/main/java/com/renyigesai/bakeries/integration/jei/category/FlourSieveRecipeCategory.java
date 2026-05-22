@@ -43,6 +43,6 @@ public class FlourSieveRecipeCategory extends AbstractRecipeCategory<RecipeHolde
         for (int i = 0; i < allResults.size(); i++) {
             builder.addSlot(RecipeIngredientRole.OUTPUT,74 + (i * 16),2).add(allResults.get(i));
         }
-        builder.addSlot(RecipeIngredientRole.RENDER_ONLY,3,3).add(new ItemStack(BakeriesItems.BREAD_KNIFE.get()));
+        builder.addSlot(RecipeIngredientRole.RENDER_ONLY,3,3).add(new ItemStack(BakeriesItems.FLOUR_SIEVE.get()));
     }
 }

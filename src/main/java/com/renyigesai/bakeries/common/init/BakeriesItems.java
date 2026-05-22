@@ -195,6 +195,7 @@ public class BakeriesItems {
     public static final DeferredItem<Item> BAGUETTE_WITH_FILLING;
     public static final DeferredItem<Item> TOMATO_CHEESE_CROISSANT_SANDWICH;
     public static final DeferredItem<Item> BAGUETTE;
+    public static final DeferredItem<Item> COUNTRY_BREAD;
     public static final DeferredItem<Item> EGG_TART;
     public static final DeferredItem<Item> TARO_SALT_YOLK_BREAD;
 
@@ -258,7 +259,7 @@ public class BakeriesItems {
         FRESH_CHEESE_CUBE = foodItem("fresh_cheese_cube",BakeriesFoodProperties.CHEESE_CUBE);
         BROWN_SUGAR_CUBE = item("brown_sugar_cube");
 
-        RAW_COFFEE_BEAN = REGISTER.register("raw_coffee_bean",()-> new BlockItem(BakeriesBlocks.COFFEE_PLANT.get(), new Item.Properties().setId(modItemId("raw_coffee_bean"))));
+        RAW_COFFEE_BEAN = REGISTER.register("raw_coffee_bean",()-> new BlockItem(BakeriesBlocks.COFFEE_PLANT.get(), new Item.Properties().setId(modItemId("raw_coffee_bean")).useBlockDescriptionPrefix()));
         COFFEE_BEAN = item("coffee_bean");
         GROUND_COFFEE = item("ground_coffee");
 
@@ -310,7 +311,7 @@ public class BakeriesItems {
         BAGUETTE_WITH_FILLING = foodBreadBlock(BakeriesBlocks.BAGUETTE_WITH_FILLING, defaultFoodBread(FoodData.create(BakeriesFoodProperties.BAGUETTE_WITH_FILLING)).rarity(BakeriesRarity.getAdvanced()));
         TOMATO_CHEESE_CROISSANT_SANDWICH = foodBreadBlock(BakeriesBlocks.TOMATO_CHEESE_CROISSANT_SANDWICH, defaultFoodBread(FoodData.create(BakeriesFoodProperties.TOMATO_CHEESE_CROISSANT_SANDWICH,BakeriesConsumables.TOMATO_CHEESE_CROISSANT_SANDWICH)).rarity(BakeriesRarity.getAdvanced()));
         BAGUETTE = REGISTER.register("baguette", BaguetteItem::new);
-//        COUNTRY_BREAD = block(BakeriesBlocks.COUNTRY_BREAD);
+        COUNTRY_BREAD = block(BakeriesBlocks.COUNTRY_BREAD);
         COUNTRY_BREAD_SLICE = foodItem("country_bread_slice",BakeriesFoodProperties.COUNTRY_BREAD_SLICE);
         HONEY_BUTTER_SPREAD_COUNTRY_BREAD = foodItem("honey_butter_spread_country_bread",BakeriesFoodProperties.HONEY_BUTTER_SPREAD_COUNTRY_BREAD);
         MOULD_TOAST = REGISTER.register("mould_toast",()-> new MouldBlockItem(BakeriesBlocks.MOULD_TOAST.get(),new Item.Properties().setId(modItemId("mould_toast")).useBlockDescriptionPrefix()));

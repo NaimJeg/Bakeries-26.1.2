@@ -1,5 +1,5 @@
 {
-  "parent": "bakeries:custom/bingle_coffee_1",
+  "parent": "bakeries:custom/bingle_coffee",
   "render_type": "minecraft:cutout",
   "textures": {
     "0": "bakeries:block/drink_cup",

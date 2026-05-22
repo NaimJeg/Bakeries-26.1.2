@@ -2,6 +2,8 @@ package com.renyigesai.bakeries.common.init;
 
 import com.renyigesai.bakeries.BakeriesMod;
 import com.renyigesai.bakeries.common.potion.BakeriesMobEffect;
+import com.renyigesai.bakeries.common.potion.CocoaManiaMobEffect;
+import com.renyigesai.bakeries.common.potion.EnjoyMobEffect;
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.Identifier;
@@ -19,10 +21,8 @@ public class BakeriesMobEffects {
             new BakeriesMobEffect(MobEffectCategory.BENEFICIAL, -3972305).addAttributeModifier(Attributes.ATTACK_SPEED, Identifier.withDefaultNamespace("effect.cocoa_mania"), 0.2F, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL));
 
     public static final Holder<MobEffect> CHEESE_POWER = EFFECTS.register("cheese_power", ()->
-            new BakeriesMobEffect(MobEffectCategory.BENEFICIAL, -13312).addAttributeModifier(Attributes.ATTACK_DAMAGE,Identifier.withDefaultNamespace("effect.cheese_power"),5.0,  AttributeModifier.Operation.ADD_VALUE));
+            new CocoaManiaMobEffect().addAttributeModifier(Attributes.ATTACK_DAMAGE,Identifier.withDefaultNamespace("effect.cheese_power"),5.0,  AttributeModifier.Operation.ADD_VALUE));
 
-    public static final Holder<MobEffect> ENJOY = EFFECTS.register("enjoy", ()-> new BakeriesMobEffect(MobEffectCategory.BENEFICIAL, -13312));
-
-    public static final Holder<MobEffect> SOFT = EFFECTS.register("soft", ()-> new BakeriesMobEffect(MobEffectCategory.BENEFICIAL, -3972305).addAttributeModifier(Attributes.KNOCKBACK_RESISTANCE,Identifier.withDefaultNamespace("effect.cheese_power"),0.5,AttributeModifier.Operation.ADD_VALUE).addAttributeModifier(Attributes.ARMOR,Identifier.withDefaultNamespace("effect.cheese_power"),5,AttributeModifier.Operation.ADD_VALUE));
+    public static final Holder<MobEffect> ENJOY = EFFECTS.register("enjoy", EnjoyMobEffect::new);
 
 }

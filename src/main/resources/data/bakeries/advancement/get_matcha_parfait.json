@@ -1,0 +1,33 @@
+{
+  "display": {
+    "icon": {
+      "id": "bakeries:matcha_parfait",
+      "count": 1
+    },
+    "title": {
+      "translate": "advancements.bakeries.get_matcha_parfait.title"
+    },
+    "description": {
+      "translate": "advancements.bakeries.get_matcha_parfait.descr"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "sieving": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "bakeries:matcha_parfait"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "parent": "bakeries:root"
+}

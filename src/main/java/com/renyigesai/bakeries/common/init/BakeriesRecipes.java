@@ -54,5 +54,10 @@ public class BakeriesRecipes {
 
     public static class JEI {
         public static final IRecipeType<RecipeHolder<BlenderRecipe>> BLENDER = IRecipeType.create(BLENDER_TYPE.get());
+        public static final IRecipeType<RecipeHolder<OvenRecipe>> OVEN = IRecipeType.create(OVEN_TYPE.get());
+        public static final IRecipeType<RecipeHolder<DoughCraftingTableRecipe>> DOUGH_CRAFTING_TABLE = IRecipeType.create(DOUGH_CRAFTING_TABLE_TYPE.get());
+        public static final IRecipeType<RecipeHolder<BreadKnifeRecipe>> BREAD_KNIFE = IRecipeType.create(BREAD_KNIFE_TYPE.get());
+        public static final IRecipeType<RecipeHolder<DrinkRecipe>> DRINK = IRecipeType.create(DRINK_TYPE.get());
+        public static final IRecipeType<RecipeHolder<FlourSieveRecipe>> FLOUR_SIEVE = IRecipeType.create(FLOUR_SIEVE_TYPE.get());
     }
 }

@@ -8,7 +8,7 @@
   ],
   "key": {
     "a":"minecraft:quartz_slab",
-    "b":"minecraft:logs_that_burn"
+    "b":"#minecraft:logs_that_burn"
   },
   "result": {
     "id": "bakeries:cupboard",

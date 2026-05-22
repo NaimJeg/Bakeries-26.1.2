@@ -7,63 +7,37 @@ import com.renyigesai.bakeries.common.init.BakeriesRecipes;
 import com.renyigesai.bakeries.common.recipe.blender.BlenderRecipe;
 import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
-import mezz.jei.api.gui.drawable.IDrawable;
+import mezz.jei.api.gui.ingredient.IRecipeSlotsView;
 import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeIngredientRole;
 import mezz.jei.api.recipe.category.AbstractRecipeCategory;
-import mezz.jei.api.recipe.category.IRecipeCategory;
-import mezz.jei.api.recipe.types.IRecipeType;
+import mezz.jei.common.gui.elements.DrawableResource;
+import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.core.NonNullList;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeHolder;
-import net.minecraft.world.item.crafting.display.RecipeDisplay;
-import org.jspecify.annotations.Nullable;
 
-public class BlenderRecipeCategory implements IRecipeCategory<RecipeHolder<BlenderRecipe>> {
+public class BlenderRecipeCategory extends AbstractRecipeCategory<RecipeHolder<BlenderRecipe>> {
 
-    public final static Identifier UID = ResourceLocation.fromNamespaceAndPath(BakeriesMod.MODID, "blender");
     public static final Identifier TEXTURE = ResourceLocation.fromNamespaceAndPath(BakeriesMod.MODID, "textures/gui/jei_blender_gui.png");
-    private final IDrawable icon;
+    public static final DrawableResource DRAWABLE = new DrawableResource(TEXTURE,0,0,90,69,0,0,0,0,256,256);
 
     public BlenderRecipeCategory(IGuiHelper helper) {
-        this.icon = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK,new ItemStack(BakeriesItems.BLENDER.get()));
+        super(BakeriesRecipes.JEI.BLENDER, Component.translatable("container.bakeries.blender"), helper.createDrawableIngredient(VanillaTypes.ITEM_STACK,new ItemStack(BakeriesItems.BLENDER.get())), 90, 69);
     }
 
     @Override
-    public IRecipeType<RecipeHolder<BlenderRecipe>> getRecipeType() {
-        return BakeriesRecipes.JEI.BLENDER;
-    }
-
-    @Override
-    public Component getTitle() {
-        return Component.literal("Blender");
-    }
-
-    @Override
-    public int getWidth() {
-        return 90;
-    }
-
-    @Override
-    public int getHeight() {
-        return 69;
-    }
-
-    @Override
-    public @Nullable IDrawable getIcon() {
-        return icon;
+    public void draw(RecipeHolder<BlenderRecipe> recipe, IRecipeSlotsView recipeSlotsView, GuiGraphicsExtractor guiGraphics, double mouseX, double mouseY) {
+        DRAWABLE.draw(guiGraphics);
     }
 
     @Override
     public void setRecipe(IRecipeLayoutBuilder builder, RecipeHolder<BlenderRecipe> recipe, IFocusGroup focuses) {
-        BakeriesMod.LOGGER.debug("setRecipe");
         NonNullList<Ingredient> recipeIngredients = recipe.value().getInputItems();
-        BlenderRecipe value = recipe.value();
-        RecipeDisplay display = value.display().getFirst();
         int borderSlotSize = 18;
         //x��y��ĳ�ʼ���꣬ȡֵΪgui��ͼ��x,y��ʼλ�ü�һ
         int x = 4;

@@ -1,5 +1,7 @@
 package com.renyigesai.bakeries.common.init;
 
+import com.google.common.collect.Lists;
+import com.renyigesai.bakeries.BakeriesMod;
 import com.renyigesai.bakeries.common.client.model.BlenderModel;
 import com.renyigesai.bakeries.common.client.model.GlassBreadRackDoorModel;
 import com.renyigesai.bakeries.common.client.model.MokaPotModel;
@@ -9,13 +11,21 @@ import com.renyigesai.bakeries.common.client.renderer.blockentity.bread_rack.Bre
 import com.renyigesai.bakeries.common.client.renderer.blockentity.mix_block.MixBlockRender;
 import com.renyigesai.bakeries.common.client.renderer.blockentity.moka_pot.MokaPotRender;
 import com.renyigesai.bakeries.common.client.renderer.blockentity.oven.OvenRender;
+import com.renyigesai.bakeries.common.recipe.blender.BlenderRecipe;
+import net.minecraft.world.item.crafting.RecipeHolder;
+import net.minecraft.world.item.crafting.RecipeMap;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
+import net.neoforged.neoforge.client.event.RecipesReceivedEvent;
 
-@EventBusSubscriber(value = Dist.CLIENT)
+import java.util.ArrayList;
+import java.util.List;
+
+@EventBusSubscriber(value = Dist.CLIENT,modid = BakeriesMod.MODID)
 public class BakeriesClientHandler {
+    public static List<RecipeHolder<BlenderRecipe>> BLENDERS;
     @SubscribeEvent
     public static void onRenders(EntityRenderersEvent.RegisterRenderers event){
         event.registerBlockEntityRenderer(BakeriesBlocks.Entities.MIX_BLOCK_ENTITY.get(), MixBlockRender::new);
@@ -34,5 +44,11 @@ public class BakeriesClientHandler {
         event.registerLayerDefinition(GlassBreadRackDoorModel.LAYER_LOCATION, GlassBreadRackDoorModel::createBodyLayer);
         event.registerLayerDefinition(MokaPotModel.LAYER_LOCATION, MokaPotModel::createBodyLayer);
 //        event.registerLayerDefinition(GlassBreadRackDoorModel.LAYER_LOCATION, GlassBreadRackDoorModel::createBodyLayer);
+    }
+
+    @SubscribeEvent
+    public static void on(RecipesReceivedEvent event){
+        RecipeMap recipeMap = event.getRecipeMap();
+        BLENDERS = Lists.newArrayList(recipeMap.byType(BakeriesRecipes.BLENDER_TYPE.get()));
     }
 }

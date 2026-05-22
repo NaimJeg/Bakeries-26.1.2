@@ -2,35 +2,17 @@ package com.renyigesai.bakeries.common.utils;//package com.renyigesai.bakeries.c
 //
 import com.renyigesai.bakeries.BakeriesMod;
 import net.minecraft.advancements.AdvancementHolder;
-import net.minecraft.core.BlockPos;
 import net.minecraft.core.NonNullList;
-import net.minecraft.core.SectionPos;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.Identifier;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.ItemStackWithSlot;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.*;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.chunk.status.ChunkStatus;
 import net.minecraft.world.level.storage.ValueInput;
 import net.minecraft.world.level.storage.ValueOutput;
-import net.minecraft.world.level.storage.loot.LootParams;
-import net.minecraft.world.level.storage.loot.LootTable;
-import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
-import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
-import net.minecraft.world.phys.Vec3;
-import net.neoforged.neoforge.capabilities.BlockCapability;
 import net.neoforged.neoforge.items.ItemStackHandler;
-import org.jetbrains.annotations.Contract;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class WorldUtils {
 //    /**
@@ -138,22 +120,22 @@ public class WorldUtils {
 //        return stacks;
 //    }
 //
-//    public static boolean isDoneAdvancement(Player player, Level level, ResourceLocation resourceLocation){
-//        if (player instanceof ServerPlayer serverPlayer && level instanceof ServerLevel) {
-//            try {
-//                AdvancementHolder advancementHolder = serverPlayer.server.getAdvancements().get(resourceLocation);
-//                if (advancementHolder == null){
-//                    return false;
-//                }
-//                return serverPlayer.getAdvancements().getOrStartProgress(advancementHolder).isDone();
-//            }catch (Exception e){
-//                BakeriesMod.LOGGER.error("Failed to check advancement {} for player {}", resourceLocation, player.getName(), e);
-//                return false;
-//            }
-//
-//        }
-//        return false;
-//    }
+    public static boolean isDoneAdvancement(Player player, Level level, Identifier resourceLocation){
+        if (player instanceof ServerPlayer serverPlayer && level instanceof ServerLevel) {
+            try {
+                AdvancementHolder advancementHolder = serverPlayer.server.getAdvancements().get(resourceLocation);
+                if (advancementHolder == null){
+                    return false;
+                }
+                return serverPlayer.getAdvancements().getOrStartProgress(advancementHolder).isDone();
+            }catch (Exception e){
+                BakeriesMod.LOGGER.error("Failed to check advancement {} for player {}", resourceLocation, player.getName(), e);
+                return false;
+            }
+
+        }
+        return false;
+    }
 
     public static void saveAllItems(ValueOutput output, NonNullList<ItemStack> itemStacks,String name) {
         ValueOutput.TypedOutputList<ItemStackWithSlot> itemsOutput = output.list(name, ItemStackWithSlot.CODEC);

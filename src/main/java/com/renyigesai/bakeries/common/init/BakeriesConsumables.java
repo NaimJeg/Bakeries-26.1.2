@@ -25,9 +25,6 @@ public class BakeriesConsumables {
     public static final Consumable DIRTY_CHOCO_CROISSANT;
     public static final Consumable TOMATO_CHEESE_CROISSANT_SANDWICH;
     public static final Consumable BERRY_BAGEL;
-    public static final Consumable CUP_CAKE;
-    public static final Consumable CAKE_ROLL;
-    public static final Consumable CREAM_CAKE_CUBE;
     public static final Consumable CHEESE_CREAM_BREAD;
     public static final Consumable EGG_TART;
     public static final Consumable PINEAPPLE_OIL;
@@ -35,7 +32,6 @@ public class BakeriesConsumables {
     public static final Consumable TARO_SALT_YOLK_BREAD;
     public static final Consumable TARO_MILK;
     public static final Consumable RICE_BREAD;
-//    public static final Consumable RICE_BREAD_FARMERSDELIGHT;
     public static final Consumable ORANGE_AMERICAN;
     public static final Consumable GARLIC_FLAVORED_BAGUETTE;
 
@@ -83,13 +79,6 @@ public class BakeriesConsumables {
 
         TOMATO_CHEESE_CROISSANT_SANDWICH = defaultEffectFood(new MobEffectInstance(BakeriesMobEffects.ENJOY, 6000, 2)).build();
         BERRY_BAGEL = defaultEffectFood(new MobEffectInstance(MobEffects.REGENERATION, 1200)).build();
-        CUP_CAKE = defaultEffectFood(new MobEffectInstance(BakeriesMobEffects.SOFT, 1200)).build();
-        CAKE_ROLL = defaultEffectFood(new MobEffectInstance(BakeriesMobEffects.SOFT, 1200)).build();
-
-        CREAM_CAKE_CUBE = Consumables.defaultFood()
-                .onConsume(new ApplyStatusEffectsConsumeEffect(new MobEffectInstance(BakeriesMobEffects.SOFT, 1200)))
-                .onConsume(new ApplyStatusEffectsConsumeEffect(new MobEffectInstance(MobEffects.REGENERATION, 1200)))
-                .build();
 
         CHEESE_CREAM_BREAD = defaultEffectFood(new MobEffectInstance(BakeriesMobEffects.CHEESE_POWER, 1200)).build();
         EGG_TART = defaultEffectFood(new MobEffectInstance(MobEffects.INSTANT_HEALTH, 1)).build();

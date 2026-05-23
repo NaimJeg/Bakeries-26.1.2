@@ -2,7 +2,8 @@
   "type": "bakeries:blender",
   "container": {
     "count": 1,
-    "id": "minecraft:glass_bottle"
+    "id": "minecraft:glass_bottle",
+    "components": {}
   },
   "ingredients": [
     "#c:foods/milk"

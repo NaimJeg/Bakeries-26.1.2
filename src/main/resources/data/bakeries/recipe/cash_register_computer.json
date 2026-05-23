@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aaa",
+    "abd",
+    "acd"
+  ],
+  "key": {
+    "a":"minecraft:iron_ingot",
+    "b":"minecraft:redstone",
+    "c":"minecraft:quartz",
+    "d":"minecraft:glass"
+  },
+  "result": {
+    "id": "bakeries:cash_register_computer",
+    "count": 1
+  }
+}

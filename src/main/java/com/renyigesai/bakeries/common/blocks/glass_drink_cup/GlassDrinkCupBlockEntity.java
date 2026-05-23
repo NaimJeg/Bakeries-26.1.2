@@ -8,6 +8,7 @@ import com.renyigesai.bakeries.common.utils.ItemUtils;
 import com.renyigesai.bakeries.common.utils.WorldUtils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
@@ -18,7 +19,9 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.item.crafting.RecipeManager;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.LiquidBlockContainer;
 import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.ListBackedContainer;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.storage.ValueInput;
 import net.minecraft.world.level.storage.ValueOutput;
@@ -29,7 +32,7 @@ import java.util.List;
 import java.util.Optional;
 
 @SuppressWarnings("removal")
-public class GlassDrinkCupBlockEntity extends BlockEntity {
+public class GlassDrinkCupBlockEntity extends BlockEntity implements ListBackedContainer {
     protected ItemStackHandler inventory = new ItemStackHandler(5);
     public int stage;
 
@@ -67,12 +70,29 @@ public class GlassDrinkCupBlockEntity extends BlockEntity {
         return inventory;
     }
 
+    @Override
+    public NonNullList<ItemStack> getItems() {
+        NonNullList<ItemStack> items = NonNullList.withSize(4,ItemStack.EMPTY);
+        for (int i = 0; i < this.inventory.getSlots() - 1; i++) {
+            ItemStack stackInSlot = this.inventory.getStackInSlot(i);
+            if (stackInSlot.getCraftingRemainder() == null){
+                items.set(i,stackInSlot);
+            }
+        }
+        return items;
+    }
+
     public boolean isEmpty(){
         for (int i = 0; i < inventory.getSlots()-1; i++) {
             if (inventory.getStackInSlot(i).isEmpty()){
                 return true;
             }
         }
+        return false;
+    }
+
+    @Override
+    public boolean stillValid(Player player) {
         return false;
     }
 

@@ -139,6 +139,7 @@ public class MixBlock extends BaseEntityBlock {
     }
 
 
+
 //    @Override
 //    public void onRemove(BlockState state, Level world, BlockPos pos, BlockState newState, boolean isMoving) {
 //        if (state.getBlock() != newState.getBlock()) {
@@ -150,6 +151,7 @@ public class MixBlock extends BaseEntityBlock {
 //            super.onRemove(state, world, pos, newState, isMoving);
 //        }
 //    }
+
 
     @Override
     public ItemStack getCloneItemStack(LevelReader level, BlockPos pos, BlockState state, boolean includeData, Player player) {

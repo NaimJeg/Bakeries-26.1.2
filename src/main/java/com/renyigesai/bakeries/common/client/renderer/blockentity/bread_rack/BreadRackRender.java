@@ -9,9 +9,12 @@ import com.renyigesai.bakeries.common.blocks.bread_rack.BreadRackBlockEntity;
 import com.renyigesai.bakeries.common.blocks.bread_rack.GlassBreadRackBlock;
 import com.renyigesai.bakeries.common.client.model.GlassBreadRackDoorModel;
 import com.renyigesai.bakeries.common.client.renderer.blockentity.BlockEntityItemRenderer;
+import it.unimi.dsi.fastutil.HashCommon;
 import net.minecraft.client.renderer.SubmitNodeCollector;
 import net.minecraft.client.renderer.block.BlockModelRenderState;
+import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
+import net.minecraft.client.renderer.blockentity.state.BlockEntityRenderState;
 import net.minecraft.client.renderer.feature.ModelFeatureRenderer;
 import net.minecraft.client.renderer.item.ItemStackRenderState;
 import net.minecraft.client.renderer.state.level.CameraRenderState;
@@ -20,6 +23,8 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.NonNullList;
 import net.minecraft.resources.Identifier;
+import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
@@ -52,6 +57,29 @@ public class BreadRackRender extends BlockEntityItemRenderer<BreadRackBlockEntit
     @Override
     public NonNullList<ItemStack> items(BreadRackBlockEntity blockEntity) {
         return blockEntity.getInventory().getItems();
+    }
+
+    @Override
+    public void extractRenderState(BreadRackBlockEntity blockEntity, @NotNull BreadRackRenderState state, float partialTicks, Vec3 cameraPosition, ModelFeatureRenderer.CrumblingOverlay breakProgress) {
+        BlockEntityRenderState.extractBase(blockEntity,state,breakProgress);
+        NonNullList<ItemStack> items = items(blockEntity);
+        int seed = HashCommon.long2int(blockEntity.getBlockPos().asLong());
+        for (int slot = 0; slot < items.size(); ++slot) {
+            ItemStack itemStack = items.get(slot);
+            if (itemStack.isEmpty()) {
+                itemStack = ItemStack.EMPTY;
+            }
+            ItemStackRenderState itemStackRenderState = new ItemStackRenderState();
+            BlockModelRenderState blockModelRenderState = new BlockModelRenderState();
+            this.itemModelResolver.updateForTopItem(itemStackRenderState, itemStack, ItemDisplayContext.ON_SHELF, level(blockEntity), blockEntity, seed + slot);
+            state.items[slot] = itemStackRenderState;
+            if (itemStack.getItem() instanceof BlockItem blockItem){
+                this.blockModelResolver.update(blockModelRenderState, blockItem.getBlock().defaultBlockState(), BLOCK_DISPLAY_CONTEXT);
+                state.blockStates[slot] = blockModelRenderState;
+            }
+        }
+        state.blockPos = blockEntity.getBlockPos();
+        extract(blockEntity, state, partialTicks, cameraPosition, breakProgress);
     }
 
     @Override

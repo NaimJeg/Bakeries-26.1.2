@@ -5,7 +5,7 @@
     "#c:foods/milk",
     "#c:matcha"
   ],
-  "output": {
+  "result": {
     "count": 1,
     "id": "bakeries:matcha_latte"
   }

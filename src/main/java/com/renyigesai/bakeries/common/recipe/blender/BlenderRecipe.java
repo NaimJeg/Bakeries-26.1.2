@@ -9,12 +9,14 @@ import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ItemStackTemplate;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.Level;
 import net.neoforged.neoforge.common.util.RecipeMatcher;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class BlenderRecipe implements Recipe<BlenderInput> {
     public static final MapCodec<BlenderRecipe> MAP_CODEC = blenderMapCodec(BlenderRecipe::new);
@@ -22,13 +24,13 @@ public class BlenderRecipe implements Recipe<BlenderInput> {
     public static final RecipeSerializer<BlenderRecipe> SERIALIZER = new RecipeSerializer<>(MAP_CODEC, STREAM_CODEC);
     private final NonNullList<Ingredient> inputItems;
     private final ItemStackTemplate result;
-    private final ItemStack container;
+    private final Optional<ItemStackTemplate>  container;
 
     public BlenderRecipe(NonNullList<Ingredient> ingredients,
-                         ItemStackTemplate result, ItemStack container) {
+                         ItemStackTemplate result, Optional<ItemStackTemplate> container) {
         this.inputItems = ingredients;
         this.result = result;
-        this.container = container.isEmpty() ? ItemStack.EMPTY : container;
+        this.container = container;
     }
 
 
@@ -58,7 +60,11 @@ public class BlenderRecipe implements Recipe<BlenderInput> {
     }
 
     public ItemStack getContainer() {
-        return container.copy();
+        return container.map(ItemStackTemplate::create).orElse(ItemStack.EMPTY);
+    }
+
+    private Optional<ItemStackTemplate> containerTemplate() {
+        return container;
     }
 
     public NonNullList<Ingredient> getInputItems() {
@@ -105,7 +111,7 @@ public class BlenderRecipe implements Recipe<BlenderInput> {
                                 ArrayList::new
                         ).fieldOf("ingredients").forGetter(BlenderRecipe::getInputItems),
                         ItemStackTemplate.CODEC.fieldOf("result").forGetter(BlenderRecipe::result),
-                        ItemStack.CODEC.optionalFieldOf("container", ItemStack.EMPTY).forGetter(BlenderRecipe::getContainer)
+                        ItemStackTemplate.CODEC.optionalFieldOf("container").forGetter(BlenderRecipe::containerTemplate)
                 ).apply(i, factory::create)
         );
     }
@@ -116,8 +122,8 @@ public class BlenderRecipe implements Recipe<BlenderInput> {
                 BlenderRecipe::getInputItems,
                 ItemStackTemplate.STREAM_CODEC,
                 BlenderRecipe::result,
-                ItemStack.OPTIONAL_STREAM_CODEC,
-                BlenderRecipe::getContainer,
+                ByteBufCodecs.optional(ItemStackTemplate.STREAM_CODEC),
+                BlenderRecipe::containerTemplate,
                 factory::create
         );
     }
@@ -127,7 +133,7 @@ public class BlenderRecipe implements Recipe<BlenderInput> {
         T create(
                 NonNullList<Ingredient> ingredients,
                 ItemStackTemplate result,
-                ItemStack container
+                Optional<ItemStackTemplate> container
         );
     }
 }

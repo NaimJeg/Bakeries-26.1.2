@@ -1,9 +1,9 @@
 package com.renyigesai.bakeries.common.blocks.bread_rack;
 
-import com.renyigesai.bakeries.api.ItemStackHandler;
 import com.renyigesai.bakeries.common.blocks.HorizontalConnectBlock;
 import com.renyigesai.bakeries.common.utils.ItemUtils;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
@@ -17,6 +17,7 @@ import net.minecraft.world.level.block.RenderShape;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
@@ -49,43 +50,72 @@ public class BreadRackBlock extends HorizontalConnectBlock implements EntityBloc
         BlockEntity blockEntity = level.getBlockEntity(pos);
         if (blockEntity instanceof BreadRackBlockEntity rackBlock){
             if (player.isShiftKeyDown()){
-                return take(rackBlock,state,level,pos,player);
+                return take(rackBlock,state,level,pos,player,hitResult);
             }else {
-                return put(rackBlock,state,level,pos,itemInHand);
+                return put(rackBlock,state,level,pos,itemInHand,hitResult);
             }
         }
         return super.useItemOn(stack, state, level, pos, player, hand, hitResult);
     }
 
-    public InteractionResult put(BreadRackBlockEntity rackBlock,BlockState pState, Level pLevel, BlockPos pPos, ItemStack itemInHand){
-        ItemStackHandler items = rackBlock.getInventory();
-        boolean flag = false;
-        for (int i = 0; i < items.getSlots(); i++) {
-            ItemStack item = items.getStackInSlot(i);
-            if (item.isEmpty()){
-                ItemStack copy = itemInHand.copy();
-                itemInHand.shrink(1);
-                copy.setCount(1);
-                flag = rackBlock.setItem(i,copy);
-                break;
-            }
+    public InteractionResult put(BreadRackBlockEntity rackBlock,BlockState pState, Level pLevel, BlockPos pPos, ItemStack itemInHand,BlockHitResult hitResult){
+        int slotFromHit = getSlotFromHit(hitResult.getLocation(), pPos, pState.getValue(FACING), hitResult.getDirection().getOpposite());
+        if (slotFromHit == -1){
+            return InteractionResult.FAIL;
         }
-        if (flag){
+        ItemStack copy = itemInHand.copy();
+        copy.setCount(1);
+        if (rackBlock.putItem(slotFromHit,copy)){
+            itemInHand.shrink(1);
             pLevel.playSound(null,pPos, SoundEvents.ITEM_FRAME_ADD_ITEM, SoundSource.BLOCKS);
             return InteractionResult.SUCCESS;
         }
         return InteractionResult.FAIL;
     }
 
-    public InteractionResult take(BreadRackBlockEntity rackBlock,BlockState pState, Level pLevel, BlockPos pPos,Player player){
+    public InteractionResult take(BreadRackBlockEntity rackBlock,BlockState pState, Level pLevel, BlockPos pPos,Player player,BlockHitResult hitResult){
         if (rackBlock.isEmpty()){
             return InteractionResult.FAIL;
         }
-        int itemsCount = rackBlock.getItemsCount();
-        ItemUtils.givePlayerItem(player,rackBlock.getItem(itemsCount-1).copy());
-        rackBlock.setItem(itemsCount-1,ItemStack.EMPTY);
-        pLevel.playSound(null,pPos, SoundEvents.ITEM_FRAME_REMOVE_ITEM, SoundSource.BLOCKS);
-        return InteractionResult.SUCCESS;
+        int slotFromHit = getSlotFromHit(hitResult.getLocation(), pPos, pState.getValue(FACING), hitResult.getDirection().getOpposite());
+        if (slotFromHit == -1){
+            return InteractionResult.FAIL;
+        }
+        ItemStack itemStack = rackBlock.getItems().get(slotFromHit);
+        if (!itemStack.isEmpty()){
+            ItemUtils.givePlayerItem(player,itemStack.copy());
+            rackBlock.setItem(slotFromHit,ItemStack.EMPTY);
+            pLevel.playSound(null,pPos, SoundEvents.ITEM_FRAME_REMOVE_ITEM, SoundSource.BLOCKS);
+            return InteractionResult.SUCCESS;
+        }
+        return InteractionResult.FAIL;
+    }
+
+    public static int getSlotFromHit(Vec3 hitPos, BlockPos blockPos, Direction facing, Direction hitFace) {
+        if (hitFace == Direction.UP || hitFace == Direction.DOWN || hitFace != facing) {
+            return -1;
+        }
+        double relX = hitPos.x - blockPos.getX();
+        double relY = hitPos.y - blockPos.getY();
+        double relZ = hitPos.z - blockPos.getZ();
+        float u, v;
+        switch (facing) {
+            case NORTH -> { u = 1f - (float) relX;  v = (float) relY; }
+            case SOUTH -> { u = (float) relX;        v = (float) relY; }
+            case WEST  -> { u = (float) relZ;        v = (float) relY; }
+            case EAST  -> { u = 1f - (float) relZ;  v = (float) relY; }
+            default    -> { return -1; }
+        }
+        if (u < 0.5f && v < 0.5f){
+            return 0;
+        }
+        if (u >= 0.5f && v < 0.5f){
+            return 1;
+        }
+        if (u < 0.5f && v >= 0.5f){
+            return 2;
+        }
+        return 3;
     }
 
     @Nullable

@@ -43,6 +43,8 @@ public class BakeriesCreativeModeTabs {
                         output.accept(BakeriesItems.SOFA_RED);
                         output.accept(BakeriesItems.SOFA_LIGHT_GRAY);
 
+                        output.accept(BakeriesItems.CASH_REGISTER_COMPUTER);
+
                         output.accept(BakeriesItems.BREAD_KNIFE);
                         output.accept(BakeriesItems.FLOUR_SIEVE);
                         output.accept(BakeriesItems.MOULD);

@@ -118,6 +118,7 @@ public class BakeriesItems {
     public static final DeferredItem<Item> SOFA_LIGHT_GRAY;
 
     public static final DeferredItem<Item> WOOD_COUNTER;
+    public static final DeferredItem<Item> CASH_REGISTER_COMPUTER;
 
     public static final DeferredItem<Item> BAGEL;
     public static final DeferredItem<Item> WHOLE_WHEAT_BAGEL;
@@ -272,7 +273,7 @@ public class BakeriesItems {
         MASHED_TARO = foodItem("mashed_taro",BakeriesFoodProperties.MASHED_TARO);
 
 
-        WOOD_TRAY = block(BakeriesBlocks.WOOD_TRAY);
+        WOOD_TRAY = item("wood_tray");
 
         COFFEE_TABLE = block(BakeriesBlocks.COFFEE_TABLE);
 
@@ -290,6 +291,8 @@ public class BakeriesItems {
                 builder.accept(Component.translatable("tooltips.bakeries.wood_counter").withStyle(ChatFormatting.GRAY));
             }
         });
+
+        CASH_REGISTER_COMPUTER = block(BakeriesBlocks.CASH_REGISTER_COMPUTER);
 
         BAGEL = foodBreadBlock(BakeriesBlocks.BAGEL,BakeriesFoodProperties.BAGEL);
         WHOLE_WHEAT_BAGEL = foodBreadBlock(BakeriesBlocks.WHOLE_WHEAT_BAGEL,FoodData.create(BakeriesFoodProperties.WHOLE_WHEAT_BAGEL,BakeriesConsumables.WHOLE_WHEAT_BAGEL));

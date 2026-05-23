@@ -27,24 +27,6 @@ import org.jetbrains.annotations.NotNull;
 public class OvenRender extends BlockEntityItemRenderer<OvenBlockEntity,OvenRenderState> {
     private final OvenModel model;
     public static final Identifier TEXTURE = ResourceLocation.fromNamespaceAndPath("bakeries","textures/entity/oven/oven.png");
-    private static final float ADD = 0.225f;
-    public static final Vec2[] VEC2S_1 = new Vec2[]{
-            new Vec2(0.5f - ADD,0.5f),
-            new Vec2(0.5f,0.5f),
-            new Vec2(0.5f + ADD,0.5f),
-            new Vec2(0.5f - ADD,0.5f),
-            new Vec2(0.5f,0.5f),
-            new Vec2(0.5f + ADD,0.5f)
-    };
-
-    public static final Vec2[] VEC2S_2 = new Vec2[]{
-            new Vec2(0.5f ,0.5f - ADD),
-            new Vec2(0.5f,0.5f),
-            new Vec2(0.5f,0.5f + ADD),
-            new Vec2(0.5f ,0.5f - ADD),
-            new Vec2(0.5f,0.5f),
-            new Vec2(0.5f,0.5f + ADD)
-    };
 
     public static final float SUB = 0.03125f;
     private static final float[] SLOT_X_POSITIONS = {

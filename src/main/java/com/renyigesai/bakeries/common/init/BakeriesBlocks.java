@@ -46,7 +46,6 @@ import java.util.function.Supplier;
 public class BakeriesBlocks {
     public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(BakeriesMod.MODID);
 
-    public static final DeferredBlock<Block> WOOD_TRAY;
     public static final DeferredBlock<MixBlock> MIX_BLOCK;
     public static final DeferredBlock<Block> BLENDER;
     public static final DeferredBlock<Block> DOUGH_CRAFTING_TABLE;
@@ -77,6 +76,8 @@ public class BakeriesBlocks {
     public static final DeferredBlock<SofaBlock> SOFA_LIGHT_GRAY;
 
     public static final DeferredBlock<Block> WOOD_COUNTER;
+
+    public static final DeferredBlock<Block> CASH_REGISTER_COMPUTER;
 
 
     /*???????*/
@@ -172,7 +173,8 @@ public class BakeriesBlocks {
 
         WOOD_COUNTER = BLOCKS.register("wood_counter",WoodCounterBlock::new);
 
-        WOOD_TRAY = BLOCKS.register("wood_tray",()-> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS).setId(ResourceKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath("bakeries","wood_tray")))));
+        CASH_REGISTER_COMPUTER = BLOCKS.register("cash_register_computer",CashRegisterComputerBlock::new);
+
         MIX_BLOCK = BLOCKS.register("mix_block", MixBlock::new);
         BLENDER = BLOCKS.register("blender", BlenderBlock::new);
         DOUGH_CRAFTING_TABLE = BLOCKS.register("dough_crafting_table", DoughCraftingTableBlock::new);

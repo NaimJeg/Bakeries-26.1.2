@@ -26,7 +26,7 @@ public class OvenScreen extends AbstractContainerScreen<OvenMenu>{
     public OvenScreen(OvenMenu ovenMenu, Inventory inventory, Component text) {
         super(ovenMenu, inventory, text);
         this.ovenBlockEntity = ovenMenu.getBlockEntity();
-        this.titleLabelY = 4;//设置GUI标题高度
+        this.titleLabelY -= 2;
 
     }
     private static final Identifier TEXTURE = Identifier.fromNamespaceAndPath(BakeriesMod.MODID,"textures/gui/oven_gui.png");

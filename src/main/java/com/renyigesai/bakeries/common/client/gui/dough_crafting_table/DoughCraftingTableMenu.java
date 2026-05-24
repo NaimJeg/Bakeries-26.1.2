@@ -4,6 +4,7 @@ import com.renyigesai.bakeries.common.init.BakeriesBlocks;
 import com.renyigesai.bakeries.common.init.BakeriesMenuType;
 import com.renyigesai.bakeries.common.init.BakeriesRecipes;
 import com.renyigesai.bakeries.common.recipe.DoughCraftingTableRecipe;
+import com.renyigesai.bakeries.integration.jei.JeiRecipeManager;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -152,14 +153,22 @@ public class DoughCraftingTableMenu extends AbstractContainerMenu {
     private void setupRecipeList(ItemStack item) {
         this.selectedRecipeIndex.set(-1);
         this.resultSlot.set(ItemStack.EMPTY);
+        this.recipesForInput.clear();
         if (!item.isEmpty()) {
             // 从 RecipeManager 获取所有 DoughCraftingTableRecipe 并过滤
-            List<RecipeHolder<DoughCraftingTableRecipe>> recipes = getAllDoughCraftingTableRecipe();
-            recipes.forEach(holder -> {
+            List<RecipeHolder<DoughCraftingTableRecipe>> recipes = JeiRecipeManager.DOUGH_CRAFTING_TABLES;
+            for (int i = 0; i < recipes.size(); i++) {
+                RecipeHolder<DoughCraftingTableRecipe> holder = recipes.get(i);
                 if (holder.value().matches(new SingleRecipeInput(item),level)){
                     this.recipesForInput.add(holder);
                 }
-            });
+            }
+//            System.out.println(recipes);
+//            recipes.forEach(holder -> {
+//                if (holder.value().matches(new SingleRecipeInput(item),level)){
+//                    this.recipesForInput.add(holder);
+//                }
+//            });
 //            if (level.recipeAccess() instanceof RecipeManager manager){
 //                List<RecipeHolder<DoughCraftingTableRecipe>> recipes = manager.getRecipes().stream().filter(holder -> holder.value().getType() == BakeriesRecipes.DOUGH_CRAFTING_TABLE_TYPE.get()).map(holder -> (RecipeHolder<DoughCraftingTableRecipe>) holder).toList();
 //                recipes.forEach(holder -> {
@@ -169,7 +178,7 @@ public class DoughCraftingTableMenu extends AbstractContainerMenu {
 //                });
 //            }
         } else {
-            this.recipesForInput = List.of();
+            this.recipesForInput = new ArrayList<>();
         }
     }
 
@@ -193,7 +202,7 @@ public class DoughCraftingTableMenu extends AbstractContainerMenu {
 
     @Override
     public MenuType<?> getType() {
-        return MenuType.STONECUTTER; // 发布时应替换为自己的 MenuType
+        return BakeriesMenuType.DOUGH_CRAFTING_TABLE_MENU.get(); // 发布时应替换为自己的 MenuType
     }
 
     public void registerUpdateListener(Runnable slotUpdateListener) {
@@ -257,10 +266,7 @@ public class DoughCraftingTableMenu extends AbstractContainerMenu {
     }
 
     public List<RecipeHolder<DoughCraftingTableRecipe>> getAllDoughCraftingTableRecipe(){
-        if (level.recipeAccess() instanceof RecipeManager manager){
-            return manager.getRecipes().stream().filter(holder -> holder.value().getType() == BakeriesRecipes.DOUGH_CRAFTING_TABLE_TYPE.get()).map(holder -> (RecipeHolder<DoughCraftingTableRecipe>) holder).toList();
-        }
-        return List.of();
+        return JeiRecipeManager.DOUGH_CRAFTING_TABLES;
     }
 
     private boolean acceptsInput(ItemStack stack) {

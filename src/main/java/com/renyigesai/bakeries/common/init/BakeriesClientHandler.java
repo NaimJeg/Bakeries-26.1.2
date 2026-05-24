@@ -9,6 +9,7 @@ import com.renyigesai.bakeries.common.client.model.MokaPotModel;
 import com.renyigesai.bakeries.common.client.model.OvenModel;
 import com.renyigesai.bakeries.common.client.renderer.blockentity.blender.BlenderRender;
 import com.renyigesai.bakeries.common.client.renderer.blockentity.bread_rack.BreadRackRender;
+import com.renyigesai.bakeries.common.client.renderer.blockentity.luminous_light_sign.LuminousLightSignRender;
 import com.renyigesai.bakeries.common.client.renderer.blockentity.mix_block.MixBlockRender;
 import com.renyigesai.bakeries.common.client.renderer.blockentity.moka_pot.MokaPotRender;
 import com.renyigesai.bakeries.common.client.renderer.blockentity.oven.OvenRender;
@@ -38,6 +39,7 @@ public class BakeriesClientHandler {
         event.registerBlockEntityRenderer(BakeriesBlocks.Entities.MOKA_POT_ENTITY.get(), MokaPotRender::new);
         event.registerBlockEntityRenderer(BakeriesBlocks.Entities.TOASTER_ENTITY.get(), ToasterRender::new);
 //        event.registerBlockEntityRenderer(BakeriesBlocks.Entities.MENU_ENTITY.get(), MenuRender::new);
+        event.registerBlockEntityRenderer(BakeriesBlocks.Entities.LUMINOUS_LIGHT_SIGN_ENTITY.get(), LuminousLightSignRender::new);
     }
 
     @SubscribeEvent

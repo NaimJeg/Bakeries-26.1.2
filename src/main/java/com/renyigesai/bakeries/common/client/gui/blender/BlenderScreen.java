@@ -35,11 +35,11 @@ public class BlenderScreen extends AbstractContainerScreen<BlenderMenu> {
     @Override
     public void init() {
         super.init();
-        this.titleLabelX = (this.imageWidth - this.font.width(this.title)) / 2;
         ImageButton filtration = new ImageButton(this.leftPos + 15, this.topPos + 30, 24, 24, new WidgetSprites(ResourceLocation.fromNamespaceAndPath(BakeriesMod.MODID, "blender/blender_filtration_button_0"), ResourceLocation.fromNamespaceAndPath(BakeriesMod.MODID, "blender/blender_filtration_button_1")), e -> {
             this.isFiltration = !this.isFiltration;
         });
         this.addRenderableWidget(filtration);
+        this.titleLabelY -= 2;
     }
 
     @Override

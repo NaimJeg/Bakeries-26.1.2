@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "a a",
+    "bcb"
+  ],
+  "key": {
+    "a":"minecraft:iron_ingot",
+    "b":"minecraft:glass",
+    "c":"minecraft:glowstone"
+  },
+  "result": {
+    "id": "bakeries:luminous_light_sign",
+    "count": 2
+  }
+}

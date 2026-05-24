@@ -4,6 +4,8 @@ import com.renyigesai.bakeries.BakeriesMod;
 import com.renyigesai.bakeries.common.blocks.*;
 import com.renyigesai.bakeries.common.blocks.blander.BlenderBlock;
 import com.renyigesai.bakeries.common.blocks.blander.BlenderBlockEntity;
+import com.renyigesai.bakeries.common.blocks.bread_basket.BreadBasketBlock;
+import com.renyigesai.bakeries.common.blocks.bread_basket.BreadBasketBlockEntity;
 import com.renyigesai.bakeries.common.blocks.bread_rack.BreadRackBlock;
 import com.renyigesai.bakeries.common.blocks.bread_rack.BreadRackBlockEntity;
 import com.renyigesai.bakeries.common.blocks.bread_rack.GlassBreadRackBlock;
@@ -14,6 +16,8 @@ import com.renyigesai.bakeries.common.blocks.dough_crafting_table.DoughCraftingT
 import com.renyigesai.bakeries.common.blocks.fluid.SaltWaterFluidsBlock;
 import com.renyigesai.bakeries.common.blocks.glass_drink_cup.GlassDrinkCupBlock;
 import com.renyigesai.bakeries.common.blocks.glass_drink_cup.GlassDrinkCupBlockEntity;
+import com.renyigesai.bakeries.common.blocks.luminous_light_sign.LuminousLightSignBlock;
+import com.renyigesai.bakeries.common.blocks.luminous_light_sign.LuminousLightSignBlockEntity;
 import com.renyigesai.bakeries.common.blocks.mix_block.MixBlock;
 import com.renyigesai.bakeries.common.blocks.mix_block.MixBlockEntity;
 import com.renyigesai.bakeries.common.blocks.moka_pot.MokaPotBlock;
@@ -56,6 +60,8 @@ public class BakeriesBlocks {
     public static final DeferredBlock<Block> MOKA_POT;
     public static final DeferredBlock<Block> DRINK_CUP;
     public static final DeferredBlock<Block> TOASTER;
+    public static final DeferredBlock<Block> LUMINOUS_LIGHT_SIGN;
+    public static final DeferredBlock<Block> BREAD_BASKET;
 
 
     /**?????*/
@@ -78,6 +84,9 @@ public class BakeriesBlocks {
     public static final DeferredBlock<Block> WOOD_COUNTER;
 
     public static final DeferredBlock<Block> CASH_REGISTER_COMPUTER;
+
+    public static final DeferredBlock<Block> WHOLE_WHEAT_FLOUR_BAG;
+    public static final DeferredBlock<Block> FLOUR_BAG;
 
 
     /*???????*/
@@ -175,6 +184,9 @@ public class BakeriesBlocks {
 
         CASH_REGISTER_COMPUTER = BLOCKS.register("cash_register_computer",CashRegisterComputerBlock::new);
 
+        WHOLE_WHEAT_FLOUR_BAG = BLOCKS.register("whole_wheat_flour_bag",()-> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.WHITE_WOOL).setId(modBlockId("whole_wheat_flour_bag"))));
+        FLOUR_BAG = BLOCKS.register("flour_bag",()-> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.WHITE_WOOL).setId(modBlockId("flour_bag"))));
+
         MIX_BLOCK = BLOCKS.register("mix_block", MixBlock::new);
         BLENDER = BLOCKS.register("blender", BlenderBlock::new);
         DOUGH_CRAFTING_TABLE = BLOCKS.register("dough_crafting_table", DoughCraftingTableBlock::new);
@@ -185,6 +197,8 @@ public class BakeriesBlocks {
         MOKA_POT = BLOCKS.register("moka_pot", MokaPotBlock::new);
         DRINK_CUP = BLOCKS.register("drink_cup", GlassDrinkCupBlock::new);
         TOASTER = BLOCKS.register("toaster", ToasterBlock::new);
+        LUMINOUS_LIGHT_SIGN = BLOCKS.register("luminous_light_sign", LuminousLightSignBlock::new);
+        BREAD_BASKET = BLOCKS.register("bread_basket", BreadBasketBlock::new);
 
         /*???????*/
         BAGEL = BLOCKS.register("bagel", BreadBlock::new);
@@ -261,6 +275,8 @@ public class BakeriesBlocks {
         public static final Supplier<BlockEntityType<MokaPotBlockEntity>> MOKA_POT_ENTITY = REGISTER.register("moka_pot", () -> new BlockEntityType<>(MokaPotBlockEntity::new, MOKA_POT.get()));
         public static final Supplier<BlockEntityType<GlassDrinkCupBlockEntity>> DRINK_CUP_ENTITY = REGISTER.register("drink_cup", () -> new BlockEntityType<>(GlassDrinkCupBlockEntity::new, DRINK_CUP.get()));
         public static final Supplier<BlockEntityType<ToasterBlockEntity>> TOASTER_ENTITY = REGISTER.register("toaster", () -> new BlockEntityType<>(ToasterBlockEntity::new, TOASTER.get()));
+        public static final Supplier<BlockEntityType<LuminousLightSignBlockEntity>> LUMINOUS_LIGHT_SIGN_ENTITY = REGISTER.register("luminous_light_sign", () -> new BlockEntityType<>(LuminousLightSignBlockEntity::new, LUMINOUS_LIGHT_SIGN.get()));
+        public static final Supplier<BlockEntityType<BreadBasketBlockEntity>> BREAD_BASKET_ENTITY = REGISTER.register("bread_basket", () -> new BlockEntityType<>(BreadBasketBlockEntity::new, BREAD_BASKET.get()));
     }
 
 

@@ -1,6 +1,7 @@
 package com.renyigesai.bakeries.common.client.gui.dough_crafting_table;
 
 import com.mojang.blaze3d.platform.cursor.CursorTypes;
+import com.renyigesai.bakeries.BakeriesMod;
 import com.renyigesai.bakeries.common.recipe.DoughCraftingTableRecipe;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
@@ -26,7 +27,7 @@ public class DoughCraftingTableScreen extends AbstractContainerScreen<DoughCraft
     private static final Identifier RECIPE_SELECTED_SPRITE = Identifier.withDefaultNamespace("container/stonecutter/recipe_selected");
     private static final Identifier RECIPE_HIGHLIGHTED_SPRITE = Identifier.withDefaultNamespace("container/stonecutter/recipe_highlighted");
     private static final Identifier RECIPE_SPRITE = Identifier.withDefaultNamespace("container/stonecutter/recipe");
-    private static final Identifier BG_LOCATION = Identifier.withDefaultNamespace("textures/gui/container/stonecutter.png");
+    private static final Identifier BG_LOCATION = Identifier.fromNamespaceAndPath(BakeriesMod.MODID,"textures/gui/container/dough_crafting_table_gui.png");
     private static final int SCROLLER_WIDTH = 12;
     private static final int SCROLLER_HEIGHT = 15;
     private static final int RECIPES_COLUMNS = 4;

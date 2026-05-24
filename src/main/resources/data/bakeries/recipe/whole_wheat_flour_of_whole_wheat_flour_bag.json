@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "bakeries:whole_wheat_flour_bag"
+  ],
+  "result": {
+    "id": "bakeries:whole_wheat_flour",
+    "count": 9
+  }
+}

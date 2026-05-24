@@ -115,7 +115,7 @@ public class OvenBlockEntity extends BaseContainerBlockEntity implements ItemOwn
 
     @Override
     protected Component getDefaultName() {
-        return Component.translatable("");
+        return Component.translatable("container.bakeries.oven");
     }
 
     @Override

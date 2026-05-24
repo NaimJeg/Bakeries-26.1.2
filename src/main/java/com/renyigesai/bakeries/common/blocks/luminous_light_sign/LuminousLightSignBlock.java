@@ -3,7 +3,6 @@ package com.renyigesai.bakeries.common.blocks.luminous_light_sign;
 import com.renyigesai.bakeries.BakeriesMod;
 import com.renyigesai.bakeries.common.blocks.HorizontalConnectBlock;
 import com.renyigesai.bakeries.common.utils.ItemUtils;
-import com.renyigesai.bakeries.common.utils.TextUtils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.component.DataComponents;

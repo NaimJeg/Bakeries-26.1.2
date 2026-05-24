@@ -4,7 +4,6 @@ import com.google.common.collect.Lists;
 import com.mojang.datafixers.util.Pair;
 import com.renyigesai.bakeries.BakeriesMod;
 import net.minecraft.ChatFormatting;
-import net.minecraft.client.Minecraft;
 import net.minecraft.core.Holder;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.CommonComponents;
@@ -15,22 +14,17 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffectUtil;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
-import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.component.Consumable;
 import net.minecraft.world.item.component.ItemAttributeModifiers;
 import net.minecraft.world.item.consume_effects.ApplyStatusEffectsConsumeEffect;
 import net.minecraft.world.item.consume_effects.ConsumeEffect;
-import net.minecraft.world.item.consume_effects.RemoveStatusEffectsConsumeEffect;
 
 import java.util.Iterator;
 import java.util.List;
 import java.util.function.Consumer;
 
-//By Farmer's Delight
-
 public class TextUtils {
-    private static final MutableComponent NO_EFFECTS = Component.translatable("effect.none").withStyle(ChatFormatting.GRAY);
 
     public static MutableComponent getTranslation(String key, Object... args) {
         return Component.translatable(BakeriesMod.MODID + "." + key, args);
@@ -99,37 +93,6 @@ public class TextUtils {
             }
 
         }
-    }
-
-    public static int getLength(String string,int maxLength){
-        if (string == null || maxLength == 0){
-            throw new IllegalArgumentException("Text cannot be null or Max width must be positive");
-        }
-        int width = 0;
-        int length = 0;
-        Minecraft mc = Minecraft.getInstance();
-        for (int i = 0; i < string.length(); i++) {
-            char _char = string.charAt(i);
-            width += mc.font.width(String.valueOf(_char));
-            length ++;
-            if (width > maxLength){
-                return length - 1;
-            }
-        }
-        return maxLength;
-    }
-
-    public static int getLength(String string){
-        if (string == null){
-            throw new IllegalArgumentException("Text cannot be null or Max width must be positive");
-        }
-        int width = 0;
-        Minecraft mc = Minecraft.getInstance();
-        for (int i = 0; i < string.length(); i++) {
-            char _char = string.charAt(i);
-            width += mc.font.width(String.valueOf(_char));
-        }
-        return width;
     }
 
     private static List<MobEffectInstance> getConsumeEffect(ConsumeEffect consumeEffect){

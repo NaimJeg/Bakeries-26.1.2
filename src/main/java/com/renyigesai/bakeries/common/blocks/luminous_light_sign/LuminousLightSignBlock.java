@@ -1,5 +1,6 @@
 package com.renyigesai.bakeries.common.blocks.luminous_light_sign;
 
+import com.renyigesai.bakeries.BakeriesMod;
 import com.renyigesai.bakeries.common.blocks.HorizontalConnectBlock;
 import com.renyigesai.bakeries.common.utils.ItemUtils;
 import com.renyigesai.bakeries.common.utils.TextUtils;
@@ -57,7 +58,12 @@ public class LuminousLightSignBlock extends HorizontalConnectBlock implements En
         if (itemInHand.getItem() instanceof NameTagItem){
             if (blockEntity instanceof LuminousLightSignBlockEntity sign){
                 Component hoverName = itemInHand.getHoverName();
-                int length = TextUtils.getLength(hoverName.getString(), 45);
+                int length = BakeriesMod.textMeasurer.getLength(hoverName.getString(), 45);
+//                if (level.isClientSide()){
+//                    length = TextUtils.getLength(hoverName.getString(), 45);
+//                }else {
+//                    length = 0;
+//                }
                 String string = hoverName.getString(length);
                 sign.setText(string);
                 return InteractionResult.SUCCESS;

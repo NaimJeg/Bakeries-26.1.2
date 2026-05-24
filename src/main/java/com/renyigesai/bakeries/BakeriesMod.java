@@ -4,14 +4,17 @@ import com.mojang.logging.LogUtils;
 import com.renyigesai.bakeries.common.blocks.fluid.BakeriesFluidTypes;
 import com.renyigesai.bakeries.common.blocks.fluid.BakeriesFluids;
 import com.renyigesai.bakeries.common.init.*;
+import com.renyigesai.bakeries.common.utils.ClientTextMeasurer;
+import com.renyigesai.bakeries.common.utils.ITextMeasurer;
+import com.renyigesai.bakeries.common.utils.ServerTextMeasurer;
 import net.minecraft.client.Minecraft;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.neoforged.fml.loading.FMLEnvironment;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
 import org.slf4j.Logger;
 
@@ -22,6 +25,7 @@ public class BakeriesMod {
     public static final String MODID = "bakeries";
     // Directly reference a slf4j logger
     public static final Logger LOGGER = LogUtils.getLogger();
+    public static ITextMeasurer textMeasurer;
     public BakeriesMod(IEventBus modEventBus) {
         BakeriesDataComponents.DATA_COMPONENT_TYPE.register(modEventBus);
         BakeriesMobEffects.EFFECTS.register(modEventBus);
@@ -36,6 +40,7 @@ public class BakeriesMod {
         BakeriesCreativeModeTabs.REGISTER.register(modEventBus);
         BakeriesSounds.REGISTRY.register(modEventBus);
         modEventBus.addListener(this::commonSetup);
+        initTextMeasurer();
 //        modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
     }
 
@@ -46,6 +51,14 @@ public class BakeriesMod {
 //        if (Config.logDirtBlock) LOGGER.info("DIRT BLOCK >> {}", BuiltInRegistries.BLOCK.getKey(Blocks.DIRT));
 //        LOGGER.info(Config.magicNumberIntroduction + Config.magicNumber);
 //        Config.items.forEach((item) -> LOGGER.info("ITEM >> {}", item.toString()));
+    }
+
+    public void initTextMeasurer(){
+        if (FMLEnvironment.getDist().isClient()) {
+            textMeasurer = new ClientTextMeasurer();
+        } else {
+            textMeasurer = new ServerTextMeasurer();
+        }
     }
 
     // Add the example block item to the building blocks tab

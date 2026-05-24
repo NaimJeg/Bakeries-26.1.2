@@ -1,5 +1,6 @@
 package com.renyigesai.bakeries.common.client.gui.overlay;
 
+import com.renyigesai.bakeries.BakeriesMod;
 import com.renyigesai.bakeries.common.blocks.toaster.ToasterBlock;
 import com.renyigesai.bakeries.common.blocks.toaster.ToasterBlockEntity;
 import com.renyigesai.bakeries.common.utils.TextUtils;
@@ -35,7 +36,7 @@ public class ToasterOverlay implements ILookOverlay<ToasterBlockEntity>{
         List<FormattedCharSequence> tooltip = List.of(Component.literal(text).getVisualOrderText());
         List<ClientTooltipComponent> collect = tooltip.stream().map(ClientTooltipComponent::create).toList();
         if (!text.isEmpty()){
-            int length = TextUtils.getLength(text);
+            int length = BakeriesMod.textMeasurer.getLength(text);
             tooltip(guiGraphics,mc.font,collect,w - length / 2 - 8,h + 64);
         }
     }

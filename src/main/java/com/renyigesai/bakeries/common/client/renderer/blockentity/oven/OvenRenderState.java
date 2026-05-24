@@ -6,6 +6,7 @@ import net.minecraft.core.Direction;
 public class OvenRenderState extends BlockEntityRenderItemState {
     public float open;
     public Direction facing;
+    public boolean lit;
     public OvenRenderState(int count) {
         super(count);
         this.facing = Direction.NORTH;

@@ -28,7 +28,6 @@ public class BakeriesCreativeModeTabs {
 
                         output.accept(BakeriesItems.FERMENTATION_TANK);
                         output.accept(BakeriesItems.YEAST_TANK);
-                        output.accept(BakeriesItems.MILK_TANK);
                         output.accept(BakeriesItems.CHEESE_TANK);
 
                         output.accept(BakeriesItems.DRINK_CUP);

@@ -13,6 +13,8 @@ import net.minecraft.client.renderer.block.BlockModelRenderState;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.client.renderer.feature.ModelFeatureRenderer;
 import net.minecraft.client.renderer.item.ItemStackRenderState;
+import net.minecraft.client.renderer.rendertype.RenderType;
+import net.minecraft.client.renderer.rendertype.RenderTypes;
 import net.minecraft.client.renderer.state.level.CameraRenderState;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.core.Direction;
@@ -26,7 +28,10 @@ import org.jetbrains.annotations.NotNull;
 
 public class OvenRender extends BlockEntityItemRenderer<OvenBlockEntity,OvenRenderState> {
     private final OvenModel model;
+    private final OvenModel glow;
     public static final Identifier TEXTURE = ResourceLocation.fromNamespaceAndPath("bakeries","textures/entity/oven/oven.png");
+    public static final Identifier TEXTURE_LIT = ResourceLocation.fromNamespaceAndPath("bakeries","textures/entity/oven/oven_lit.png");
+    public static final Identifier TEXTURE_GLOW =ResourceLocation.fromNamespaceAndPath("bakeries","textures/entity/oven/oven_glow.png");
 
     public static final float SUB = 0.03125f;
     private static final float[] SLOT_X_POSITIONS = {
@@ -43,6 +48,7 @@ public class OvenRender extends BlockEntityItemRenderer<OvenBlockEntity,OvenRend
     public OvenRender(BlockEntityRendererProvider.Context context) {
         super(context);
         this.model = new OvenModel(context.bakeLayer(OvenModel.OVEN));
+        this.glow = model;
     }
 
     @Override
@@ -55,6 +61,7 @@ public class OvenRender extends BlockEntityItemRenderer<OvenBlockEntity,OvenRend
         super.extract(blockEntity, state, partialTicks, cameraPosition, breakProgress);
         state.open = blockEntity.getProgress(partialTicks);
         state.facing = blockEntity.getBlockState().getValue(OvenBlock.FACING).getOpposite();
+        state.lit = blockEntity.getBlockState().getValue(OvenBlock.LIT);
     }
 
     @Override
@@ -72,7 +79,10 @@ public class OvenRender extends BlockEntityItemRenderer<OvenBlockEntity,OvenRend
         poseStack.mulPose(Axis.YP.rotationDegrees(state.facing.toYRot()));
         poseStack.scale(0.9995F, 0.9995F, 0.9995F);
 
-        submitNodeCollector.submitModel(model,state.open,poseStack, TEXTURE,state.lightCoords, OverlayTexture.NO_OVERLAY,0,state.breakProgress);
+        submitNodeCollector.submitModel(model,state.open,poseStack, state.lit ? TEXTURE_LIT : TEXTURE,state.lightCoords, OverlayTexture.NO_OVERLAY,0,state.breakProgress);
+        if (state.lit){
+            submitNodeCollector.submitModel(glow,state.open,poseStack, RenderTypes.eyes(TEXTURE_GLOW),state.lightCoords, OverlayTexture.NO_OVERLAY,0,state.breakProgress);
+        }
         poseStack.popPose();
 
         renderItem(itemStackRenderStates, blockModelRenderStates, state, submitNodeCollector, poseStack);

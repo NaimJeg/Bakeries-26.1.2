@@ -79,4 +79,9 @@ public class OvenModel extends Model<Float> {
 	public ModelPart getButton2() {
 		return button_2;
 	}
+
+	@Override
+	public void setupAnim(Float state) {
+		door.xRot = (float) Math.toRadians(state * 75);
+	}
 }

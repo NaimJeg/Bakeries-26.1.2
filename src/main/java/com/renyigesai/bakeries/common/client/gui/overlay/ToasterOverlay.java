@@ -34,7 +34,7 @@ public class ToasterOverlay implements ILookOverlay<ToasterBlockEntity>{
         List<FormattedCharSequence> tooltip = List.of(Component.literal(text).getVisualOrderText());
         List<ClientTooltipComponent> collect = tooltip.stream().map(ClientTooltipComponent::create).toList();
         if (!text.isEmpty()){
-            int length = BakeriesMod.textMeasurer.getLength(text);
+            int length = BakeriesMod.clientUtilsMeasurer.getLength(text);
             tooltip(guiGraphics,mc.font,collect,w - length / 2 - 8,h + 64);
         }
     }

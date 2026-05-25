@@ -7,6 +7,9 @@ import com.renyigesai.bakeries.common.init.*;
 import com.renyigesai.bakeries.common.utils.ClientTextMeasurer;
 import com.renyigesai.bakeries.common.utils.ITextMeasurer;
 import com.renyigesai.bakeries.common.utils.ServerTextMeasurer;
+import com.renyigesai.bakeries.common.utils.measurer.ClientUtilsMeasurer;
+import com.renyigesai.bakeries.common.utils.measurer.IClientUtilsMeasurer;
+import com.renyigesai.bakeries.common.utils.measurer.ServerUtilsMeasurer;
 import net.minecraft.client.Minecraft;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -26,6 +29,7 @@ public class BakeriesMod {
     // Directly reference a slf4j logger
     public static final Logger LOGGER = LogUtils.getLogger();
     public static ITextMeasurer textMeasurer;
+    public static IClientUtilsMeasurer clientUtilsMeasurer;
     public BakeriesMod(IEventBus modEventBus) {
         BakeriesDataComponents.DATA_COMPONENT_TYPE.register(modEventBus);
         BakeriesMobEffects.EFFECTS.register(modEventBus);
@@ -41,6 +45,7 @@ public class BakeriesMod {
         BakeriesSounds.REGISTRY.register(modEventBus);
         modEventBus.addListener(this::commonSetup);
         initTextMeasurer();
+        initClientUtilsMeasurer();
 //        modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
     }
 
@@ -58,6 +63,14 @@ public class BakeriesMod {
             textMeasurer = new ClientTextMeasurer();
         } else {
             textMeasurer = new ServerTextMeasurer();
+        }
+    }
+
+    public void initClientUtilsMeasurer(){
+        if (FMLEnvironment.getDist().isClient()) {
+            clientUtilsMeasurer = new ClientUtilsMeasurer();
+        } else {
+            clientUtilsMeasurer = new ServerUtilsMeasurer();
         }
     }
 

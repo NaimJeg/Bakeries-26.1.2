@@ -57,12 +57,7 @@ public class LuminousLightSignBlock extends HorizontalConnectBlock implements En
         if (itemInHand.getItem() instanceof NameTagItem){
             if (blockEntity instanceof LuminousLightSignBlockEntity sign){
                 Component hoverName = itemInHand.getHoverName();
-                int length = BakeriesMod.textMeasurer.getLength(hoverName.getString(), 45);
-//                if (level.isClientSide()){
-//                    length = TextUtils.getLength(hoverName.getString(), 45);
-//                }else {
-//                    length = 0;
-//                }
+                int length = BakeriesMod.clientUtilsMeasurer.getLength(hoverName.getString(), 45);
                 String string = hoverName.getString(length);
                 sign.setText(string);
                 return InteractionResult.SUCCESS;

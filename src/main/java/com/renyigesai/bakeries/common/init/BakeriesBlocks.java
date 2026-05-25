@@ -18,6 +18,8 @@ import com.renyigesai.bakeries.common.blocks.glass_drink_cup.GlassDrinkCupBlock;
 import com.renyigesai.bakeries.common.blocks.glass_drink_cup.GlassDrinkCupBlockEntity;
 import com.renyigesai.bakeries.common.blocks.luminous_light_sign.LuminousLightSignBlock;
 import com.renyigesai.bakeries.common.blocks.luminous_light_sign.LuminousLightSignBlockEntity;
+import com.renyigesai.bakeries.common.blocks.menu.MenuBlock;
+import com.renyigesai.bakeries.common.blocks.menu.MenuBlockEntity;
 import com.renyigesai.bakeries.common.blocks.mix_block.MixBlock;
 import com.renyigesai.bakeries.common.blocks.mix_block.MixBlockEntity;
 import com.renyigesai.bakeries.common.blocks.moka_pot.MokaPotBlock;
@@ -62,6 +64,7 @@ public class BakeriesBlocks {
     public static final DeferredBlock<Block> TOASTER;
     public static final DeferredBlock<Block> LUMINOUS_LIGHT_SIGN;
     public static final DeferredBlock<Block> BREAD_BASKET;
+    public static final DeferredBlock<Block> MENU;
 
 
     /**?????*/
@@ -87,6 +90,8 @@ public class BakeriesBlocks {
 
     public static final DeferredBlock<Block> WHOLE_WHEAT_FLOUR_BAG;
     public static final DeferredBlock<Block> FLOUR_BAG;
+
+    public static final DeferredBlock<Block> BLACK_WHITE_CONCRETE;
 
 
     /*???????*/
@@ -186,6 +191,7 @@ public class BakeriesBlocks {
 
         WHOLE_WHEAT_FLOUR_BAG = BLOCKS.register("whole_wheat_flour_bag",()-> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.WHITE_WOOL).setId(modBlockId("whole_wheat_flour_bag"))));
         FLOUR_BAG = BLOCKS.register("flour_bag",()-> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.WHITE_WOOL).setId(modBlockId("flour_bag"))));
+        BLACK_WHITE_CONCRETE = BLOCKS.register("black_white_concrete", () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.WHITE_CONCRETE).setId(modBlockId("black_white_concrete"))));
 
         MIX_BLOCK = BLOCKS.register("mix_block", MixBlock::new);
         BLENDER = BLOCKS.register("blender", BlenderBlock::new);
@@ -199,6 +205,7 @@ public class BakeriesBlocks {
         TOASTER = BLOCKS.register("toaster", ToasterBlock::new);
         LUMINOUS_LIGHT_SIGN = BLOCKS.register("luminous_light_sign", LuminousLightSignBlock::new);
         BREAD_BASKET = BLOCKS.register("bread_basket", BreadBasketBlock::new);
+        MENU = BLOCKS.register("menu", MenuBlock::new);
 
         /*???????*/
         BAGEL = BLOCKS.register("bagel", BreadBlock::new);
@@ -277,6 +284,7 @@ public class BakeriesBlocks {
         public static final Supplier<BlockEntityType<ToasterBlockEntity>> TOASTER_ENTITY = REGISTER.register("toaster", () -> new BlockEntityType<>(ToasterBlockEntity::new, TOASTER.get()));
         public static final Supplier<BlockEntityType<LuminousLightSignBlockEntity>> LUMINOUS_LIGHT_SIGN_ENTITY = REGISTER.register("luminous_light_sign", () -> new BlockEntityType<>(LuminousLightSignBlockEntity::new, LUMINOUS_LIGHT_SIGN.get()));
         public static final Supplier<BlockEntityType<BreadBasketBlockEntity>> BREAD_BASKET_ENTITY = REGISTER.register("bread_basket", () -> new BlockEntityType<>(BreadBasketBlockEntity::new, BREAD_BASKET.get()));
+        public static final Supplier<BlockEntityType<MenuBlockEntity>> MENU_ENTITY = REGISTER.register("menu", () -> new BlockEntityType<>(MenuBlockEntity::new, MENU.get()));
     }
 
 

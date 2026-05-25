@@ -107,6 +107,7 @@
   "block.bakeries.whole_wheat_flour_bag": "Whole Wheat Flour Bag",
   "block.bakeries.wood_counter": "Wood Counter",
   "block.bakeries.luminous_light_sign": "Luminous Light Sign",
+  "block.bakeries.black_white_concrete": "Black White Concrete",
   "item.bakeries.wood_tray": "Wood Tray",
   "block.bakeries.yeast_tank": "Yeast Tank",
   "block.bakeries.raw_coffee_bean": "Raw Coffee Bean",
@@ -280,5 +281,6 @@
   "tooltips.bakeries.toaster_0": "Right-click with your left hand to start baking",
   "tooltips.bakeries.toaster_1": "%s and right-click to retrieve the item",
   "tooltips.bakeries.wood_counter": "Use Bowl to Change State",
-  "tooltips.bakeries.raw_item_perfect_temperature": "Perfect %s°c"
+  "tooltips.bakeries.raw_item_perfect_temperature": "Perfect %s°c",
+  "tooltips.bakeries.pile_item_place": "可放置"
 }

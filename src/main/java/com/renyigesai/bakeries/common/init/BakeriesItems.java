@@ -50,6 +50,7 @@ public class BakeriesItems {
     public static final DeferredItem<Item> DRINK_CUP;
     public static final DeferredItem<Item> WHOLE_WHEAT_FLOUR_BAG;
     public static final DeferredItem<Item> FLOUR_BAG;
+    public static final DeferredItem<Item> BLACK_WHITE_CONCRETE;
     public static final DeferredItem<Item> FERMENTATION_TANK;
     public static final DeferredItem<Item> YEAST_TANK;
     public static final DeferredItem<Item> MILK_TANK;
@@ -123,6 +124,7 @@ public class BakeriesItems {
     public static final DeferredItem<Item> CASH_REGISTER_COMPUTER;
     public static final DeferredItem<Item> LUMINOUS_LIGHT_SIGN;
     public static final DeferredItem<Item> BREAD_BASKET;
+    public static final DeferredItem<Item> MENU;
 
     public static final DeferredItem<Item> BAGEL;
     public static final DeferredItem<Item> WHOLE_WHEAT_BAGEL;
@@ -229,6 +231,7 @@ public class BakeriesItems {
         DRINK_CUP = block(BakeriesBlocks.DRINK_CUP);
         WHOLE_WHEAT_FLOUR_BAG = block(BakeriesBlocks.WHOLE_WHEAT_FLOUR_BAG);
         FLOUR_BAG = block(BakeriesBlocks.FLOUR_BAG);
+        BLACK_WHITE_CONCRETE = block(BakeriesBlocks.BLACK_WHITE_CONCRETE);
 
         FERMENTATION_TANK = block(BakeriesBlocks.FERMENTATION_TANK);
         YEAST_TANK = block(BakeriesBlocks.YEAST_TANK);
@@ -301,6 +304,7 @@ public class BakeriesItems {
         CASH_REGISTER_COMPUTER = block(BakeriesBlocks.CASH_REGISTER_COMPUTER);
         LUMINOUS_LIGHT_SIGN = block(BakeriesBlocks.LUMINOUS_LIGHT_SIGN);
         BREAD_BASKET = block(BakeriesBlocks.BREAD_BASKET);
+        MENU = block(BakeriesBlocks.MENU);
 
         BAGEL = foodBreadBlock(BakeriesBlocks.BAGEL,BakeriesFoodProperties.BAGEL);
         WHOLE_WHEAT_BAGEL = foodBreadBlock(BakeriesBlocks.WHOLE_WHEAT_BAGEL,FoodData.create(BakeriesFoodProperties.WHOLE_WHEAT_BAGEL,BakeriesConsumables.WHOLE_WHEAT_BAGEL));

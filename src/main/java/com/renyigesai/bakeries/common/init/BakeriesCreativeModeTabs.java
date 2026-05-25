@@ -31,6 +31,7 @@ public class BakeriesCreativeModeTabs {
                         output.accept(BakeriesItems.CHEESE_TANK);
 
                         output.accept(BakeriesItems.DRINK_CUP);
+                        output.accept(BakeriesItems.MENU);
                         output.accept(BakeriesItems.WHOLE_WHEAT_FLOUR_BAG);
                         output.accept(BakeriesItems.FLOUR_BAG);
 
@@ -39,6 +40,7 @@ public class BakeriesCreativeModeTabs {
                         output.accept(BakeriesItems.COFFEE_TABLE);
                         output.accept(BakeriesItems.BREAD_RACK);
                         output.accept(BakeriesItems.GLASS_BREAD_RACK);
+                        output.accept(BakeriesItems.BLACK_WHITE_CONCRETE);
 
                         output.accept(BakeriesItems.SOFA_WHITE);
                         output.accept(BakeriesItems.SOFA_RED);

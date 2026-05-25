@@ -282,5 +282,5 @@
   "tooltips.bakeries.toaster_1": "%s and right-click to retrieve the item",
   "tooltips.bakeries.wood_counter": "Use Bowl to Change State",
   "tooltips.bakeries.raw_item_perfect_temperature": "Perfect %s°c",
-  "tooltips.bakeries.pile_item_place": "可放置"
+  "tooltips.bakeries.pile_item_place": "Place"
 }

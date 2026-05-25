@@ -30,9 +30,11 @@ import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.function.ToIntFunction;
+
 public class LuminousLightSignBlock extends HorizontalConnectBlock implements EntityBlock {
     public LuminousLightSignBlock(Identifier identifier) {
-        super(Properties.ofFullCopy(Blocks.GLASS).setId(ResourceKey.create(Registries.BLOCK,identifier)));
+        super(Properties.ofFullCopy(Blocks.GLASS).lightLevel(litBlockEmission(15)).setId(ResourceKey.create(Registries.BLOCK,identifier)));
     }
 
     @Override
@@ -98,5 +100,9 @@ public class LuminousLightSignBlock extends HorizontalConnectBlock implements En
     @Override
     public BlockEntity newBlockEntity(BlockPos pPos, BlockState pState) {
         return new LuminousLightSignBlockEntity(pPos,pState);
+    }
+
+    private static ToIntFunction<BlockState> litBlockEmission(int lightValue) {
+        return value -> lightValue;
     }
 }

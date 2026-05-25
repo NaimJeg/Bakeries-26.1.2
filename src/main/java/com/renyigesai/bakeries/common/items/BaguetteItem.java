@@ -41,4 +41,5 @@ public class BaguetteItem extends RepeatEatItem {
                 .add(Attributes.ATTACK_SPEED,new AttributeModifier(BASE_ATTACK_SPEED_ID,-3d,AttributeModifier.Operation.ADD_VALUE),EquipmentSlotGroup.MAINHAND)
                 .build();
     }
+
 }

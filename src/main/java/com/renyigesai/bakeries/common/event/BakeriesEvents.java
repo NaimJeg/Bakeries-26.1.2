@@ -7,6 +7,7 @@ import com.renyigesai.bakeries.api.items.PileItem;
 import com.renyigesai.bakeries.common.client.LookBlockEntityRegistries;
 import com.renyigesai.bakeries.common.init.BakeriesItems;
 import com.renyigesai.bakeries.common.init.BakeriesRecipes;
+import com.renyigesai.bakeries.common.items.FlourSieveItem;
 import com.renyigesai.bakeries.common.utils.WorldUtils;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import net.minecraft.advancements.AdvancementHolder;
@@ -18,6 +19,7 @@ import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.context.UseOnContext;
@@ -45,7 +47,7 @@ public class BakeriesEvents {
     private static int onPlayerLookBlockTime;
 
     @SubscribeEvent
-    public static void onRightClickBlock(PlayerInteractEvent.RightClickBlock event) {
+    public static void onPileItemUseOn(PlayerInteractEvent.RightClickBlock event) {
         Player player = event.getEntity();
         Level level = event.getLevel();
         ItemStack handItem = event.getItemStack();
@@ -65,6 +67,19 @@ public class BakeriesEvents {
         InteractionResult result = pileItem.pileUseOn(context);
         if (result == InteractionResult.PASS) {
 
+        }
+    }
+
+    @SubscribeEvent
+    public static void onFlourSieveUse(PlayerInteractEvent.RightClickBlock event) {
+        Player player = event.getEntity();
+        Level level = event.getLevel();
+        if (level.isClientSide()){
+            return;
+        }
+        if (player.getOffhandItem().getItem() instanceof FlourSieveItem && player.getMainHandItem().getItem() instanceof BlockItem){
+            event.setCanceled(true);
+            player.startUsingItem(InteractionHand.OFF_HAND);
         }
     }
 

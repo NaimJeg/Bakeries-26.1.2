@@ -1,9 +1,6 @@
 package com.renyigesai.bakeries.common.items;
 
 
-import com.renyigesai.bakeries.BakeriesMod;
-import com.renyigesai.bakeries.api.ResourceLocation;
-import com.renyigesai.bakeries.common.init.BakeriesItems;
 import com.renyigesai.bakeries.common.init.BakeriesRecipes;
 import com.renyigesai.bakeries.common.recipe.FlourSieveRecipe;
 import com.renyigesai.bakeries.common.utils.ItemUtils;
@@ -53,7 +50,7 @@ public class FlourSieveItem extends Item {
             if (recipeFor.isEmpty()) {
                 pPlayer.getCooldowns().addCooldown(this.getDefaultInstance(), 20);
                 pPlayer.sendOverlayMessage(Component.translatable(getFlourSieveRandomText()));
-                return super.use(pLevel, pPlayer, pUsedHand);
+                return InteractionResult.FAIL;
             }
             pPlayer.startUsingItem(pUsedHand);
             return InteractionResult.PASS;
@@ -82,14 +79,10 @@ public class FlourSieveItem extends Item {
     }
 
     private String getFlourSieveRandomText(){
-        return "tooltips.bakeries.flour_sieve_" + getRandom();
+        return "tooltips.bakeries.flour_sieve_" + random(3,1);
     }
 
-    public static int getRandom(){
-        return random(3,1);
-    }
-
-    public static Integer random(int max, int min) {
+    private Integer random(int max, int min) {
         Random rand = new Random();
         int value = 0;
         for (int i = 0; i < max; i++) {

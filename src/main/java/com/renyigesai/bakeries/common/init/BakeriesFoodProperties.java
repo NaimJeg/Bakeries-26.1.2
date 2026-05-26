@@ -91,7 +91,7 @@ public class BakeriesFoodProperties {
 
         CIABATTA = new FoodProperties.Builder().nutrition(4).saturationModifier(0.4f).build();
 
-        MEAT_FLOSS_BREAD = new FoodProperties.Builder().nutrition(7).saturationModifier(0.75f).build();
+        MEAT_FLOSS_BREAD = new FoodProperties.Builder().nutrition(7).saturationModifier(0.75f).alwaysEdible().build();
 
         FOCACCIA = new FoodProperties.Builder().nutrition(8).saturationModifier(1f).build();
 
@@ -117,11 +117,11 @@ public class BakeriesFoodProperties {
 
         DIRTY_CHOCO_CROISSANT = new FoodProperties.Builder().nutrition(6).saturationModifier(1f).build();
 
-        BAGUETTE_WITH_FILLING = new FoodProperties.Builder().nutrition(13).saturationModifier(0.4f).build();
+        BAGUETTE_WITH_FILLING = new FoodProperties.Builder().nutrition(13).saturationModifier(0.4f).alwaysEdible().build();
 
-        TOMATO_CHEESE_CROISSANT_SANDWICH = new FoodProperties.Builder().nutrition(10).saturationModifier(0.9f).build();
+        TOMATO_CHEESE_CROISSANT_SANDWICH = new FoodProperties.Builder().nutrition(10).saturationModifier(0.9f).alwaysEdible().build();
 
-        BERRY_BAGEL = new FoodProperties.Builder().nutrition(8).saturationModifier(0.625f).build();
+        BERRY_BAGEL = new FoodProperties.Builder().nutrition(8).saturationModifier(0.625f).alwaysEdible().build();
 
         HONEY_BUTTER_SPREAD_TOAST = new FoodProperties.Builder().nutrition(8).saturationModifier(0.5f).alwaysEdible().build();
 
@@ -139,15 +139,15 @@ public class BakeriesFoodProperties {
 
         CREAM_CAKE_CUBE = new FoodProperties.Builder().nutrition(5).saturationModifier(0.4f).alwaysEdible().build();
 
-        CHEESE_CREAM_BREAD = new FoodProperties.Builder().nutrition(6).saturationModifier(1f).build();
+        CHEESE_CREAM_BREAD = new FoodProperties.Builder().nutrition(6).saturationModifier(1f).alwaysEdible().build();
 
-        BAGEL_FILLED_SAUCE = new FoodProperties.Builder().nutrition(12).saturationModifier(0.4f).build();
+        BAGEL_FILLED_SAUCE = new FoodProperties.Builder().nutrition(12).saturationModifier(0.4f).alwaysEdible().build();
 
         EGG_TART = new FoodProperties.Builder().nutrition(8).saturationModifier(0.5f).build();
 
         PINEAPPLE_OIL = new FoodProperties.Builder().nutrition(8).saturationModifier(1.5f).alwaysEdible().build();
 
-        FLAT_CROISSANT = new FoodProperties.Builder().nutrition(6).saturationModifier(1f).build();
+        FLAT_CROISSANT = new FoodProperties.Builder().nutrition(6).saturationModifier(1f).alwaysEdible().build();
 
         COOKED_TARO = new FoodProperties.Builder().nutrition(6).saturationModifier(0.6f).build();
 

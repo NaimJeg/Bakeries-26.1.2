@@ -313,7 +313,7 @@ public class BakeriesItems {
         CHEESE_CREAM_BREAD = foodBreadBlock(BakeriesBlocks.CHEESE_CREAM_BREAD, defaultFoodBread(FoodData.create(BakeriesFoodProperties.CHEESE_CREAM_BREAD,BakeriesConsumables.CHEESE_CREAM_BREAD)).rarity(BakeriesRarity.getAdvanced()));
         BROWN_SUGAR_ROLL = foodBreadBlock(BakeriesBlocks.BROWN_SUGAR_ROLL,FoodData.create(BakeriesFoodProperties.BROWN_SUGAR_ROLL,BakeriesConsumables.BROWN_SUGAR_ROLL));
         PINEAPPLE_BUN = foodBreadBlock(BakeriesBlocks.PINEAPPLE_BUN,FoodData.create(BakeriesFoodProperties.PINEAPPLE_BUN,BakeriesConsumables.PINEAPPLE_BUN));
-        PINEAPPLE_OIL = foodBreadBlock(BakeriesBlocks.PINEAPPLE_OIL,FoodData.create(BakeriesFoodProperties.PINEAPPLE_OIL,BakeriesConsumables.PINEAPPLE_OIL));
+        PINEAPPLE_OIL = foodBreadBlock(BakeriesBlocks.PINEAPPLE_OIL,defaultFoodBread(FoodData.create(BakeriesFoodProperties.PINEAPPLE_OIL,BakeriesConsumables.PINEAPPLE_OIL)).rarity(BakeriesRarity.getAdvanced()));
         MEAT_FLOSS_BREAD_ROLL = foodBreadBlock(BakeriesBlocks.MEAT_FLOSS_BREAD_ROLL, defaultFoodBread(FoodData.create(BakeriesFoodProperties.MEAT_FLOSS_BREAD)).rarity(BakeriesRarity.getAdvanced()));
         CROISSANT = foodBreadBlock(BakeriesBlocks.CROISSANT, FoodData.create(BakeriesFoodProperties.CROISSANT,BakeriesConsumables.CROISSANT));
         DIRTY_CHOCO_CROISSANT = foodBreadBlock(BakeriesBlocks.DIRTY_CHOCO_CROISSANT, FoodData.create(BakeriesFoodProperties.DIRTY_CHOCO_CROISSANT,BakeriesConsumables.DIRTY_CHOCO_CROISSANT));

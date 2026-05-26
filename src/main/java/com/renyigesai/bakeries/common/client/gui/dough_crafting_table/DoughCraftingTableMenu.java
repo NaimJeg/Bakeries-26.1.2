@@ -17,6 +17,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.item.crafting.RecipeManager;
+import net.minecraft.world.item.crafting.RecipeMap;
 import net.minecraft.world.item.crafting.SingleRecipeInput;
 import net.minecraft.world.level.Level;
 
@@ -155,28 +156,21 @@ public class DoughCraftingTableMenu extends AbstractContainerMenu {
         this.resultSlot.set(ItemStack.EMPTY);
         this.recipesForInput.clear();
         if (!item.isEmpty()) {
-            // 从 RecipeManager 获取所有 DoughCraftingTableRecipe 并过滤
-            List<RecipeHolder<DoughCraftingTableRecipe>> recipes = JeiRecipeManager.DOUGH_CRAFTING_TABLES;
-            for (int i = 0; i < recipes.size(); i++) {
-                RecipeHolder<DoughCraftingTableRecipe> holder = recipes.get(i);
-                if (holder.value().matches(new SingleRecipeInput(item),level)){
-                    this.recipesForInput.add(holder);
+            List<RecipeHolder<DoughCraftingTableRecipe>> recipes = null;
+            if (level.isClientSide()){
+                recipes = JeiRecipeManager.DOUGH_CRAFTING_TABLES;
+            }else {
+                if (level.recipeAccess() instanceof RecipeManager manager){
+                    recipes = manager.getRecipes().stream().filter(holder -> holder.value().getType() == BakeriesRecipes.DOUGH_CRAFTING_TABLE_TYPE.get()).map(holder -> (RecipeHolder<DoughCraftingTableRecipe>) holder).toList();
                 }
             }
-//            System.out.println(recipes);
-//            recipes.forEach(holder -> {
-//                if (holder.value().matches(new SingleRecipeInput(item),level)){
-//                    this.recipesForInput.add(holder);
-//                }
-//            });
-//            if (level.recipeAccess() instanceof RecipeManager manager){
-//                List<RecipeHolder<DoughCraftingTableRecipe>> recipes = manager.getRecipes().stream().filter(holder -> holder.value().getType() == BakeriesRecipes.DOUGH_CRAFTING_TABLE_TYPE.get()).map(holder -> (RecipeHolder<DoughCraftingTableRecipe>) holder).toList();
-//                recipes.forEach(holder -> {
-//                    if (holder.value().matches(new SingleRecipeInput(item),level)){
-//                        this.recipesForInput.add(holder);
-//                    }
-//                });
-//            }
+            if (recipes != null){
+                for (RecipeHolder<DoughCraftingTableRecipe> holder : recipes) {
+                    if (holder.value().matches(new SingleRecipeInput(item), level)) {
+                        this.recipesForInput.add(holder);
+                    }
+                }
+            }
         } else {
             this.recipesForInput = new ArrayList<>();
         }

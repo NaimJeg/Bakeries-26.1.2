@@ -2,7 +2,7 @@
 license="BSD-3-Clause + CC BY-NC-SA 4.0"
 [[mods]]
 modId="bakeries"
-version="1.21.1-NeoForge-1.0.0-beta"
+version="1.21.1-NeoForge-1.0.0"
 displayName="Bakeries"
 authors="Renyigesai,1-weibai-1"
 enumExtensions="META-INF/enumextensions.json"

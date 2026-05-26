@@ -9,9 +9,7 @@ import com.renyigesai.bakeries.common.init.BakeriesItems;
 import com.renyigesai.bakeries.common.init.BakeriesRecipes;
 import com.renyigesai.bakeries.common.items.FlourSieveItem;
 import com.renyigesai.bakeries.common.utils.WorldUtils;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import net.minecraft.advancements.AdvancementHolder;
-import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
@@ -21,22 +19,13 @@ import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.item.context.UseOnContext;
-import net.minecraft.world.item.trading.ItemCost;
-import net.minecraft.world.item.trading.MerchantOffer;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.HitResult;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
-import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.OnDatapackSyncEvent;
-import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
-import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 
 import java.util.List;
 import java.util.Map;
@@ -124,13 +113,14 @@ public class BakeriesEvents {
         BlockPos blockPos = event.getBlockPos();
         BlockEntity blockEntity = level.getBlockEntity(blockPos);
         if (blockEntity != null){
-            LookBlockEntityRegistries.setBlocks(player,blockEntity);
-            return;
+            LookBlockEntityRegistries.setFlag(player,blockPos);
+        }else {
+            LookBlockEntityRegistries.removeFlag(player);
         }
-        Map<UUID, BlockEntity> blocks = LookBlockEntityRegistries.getBlocks();
-        if (blocks.get(player.getUUID()) != null){
-            blocks.remove(player.getUUID());
-        }
+//        Map<UUID, BlockPos> blocks = LookBlockEntityRegistries.getBlocks();
+//        if (blocks.get(player.getUUID()) != null){
+//            blocks.remove(player.getUUID());
+//        }
     }
 
 

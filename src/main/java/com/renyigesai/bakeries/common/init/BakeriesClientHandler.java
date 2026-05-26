@@ -18,13 +18,11 @@ import com.renyigesai.bakeries.common.client.renderer.blockentity.mix_block.MixB
 import com.renyigesai.bakeries.common.client.renderer.blockentity.moka_pot.MokaPotRender;
 import com.renyigesai.bakeries.common.client.renderer.blockentity.oven.OvenRender;
 import com.renyigesai.bakeries.common.client.renderer.blockentity.toaster.ToasterRender;
-import com.renyigesai.bakeries.common.recipe.blender.BlenderRecipe;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.FluidModel;
 import net.minecraft.client.resources.model.sprite.Material;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
@@ -33,13 +31,12 @@ import net.minecraft.world.phys.HitResult;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.client.event.ClientPlayerNetworkEvent;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 import net.neoforged.neoforge.client.event.RegisterFluidModelsEvent;
 import net.neoforged.neoforge.client.event.RenderGuiEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
-
-import java.util.List;
 
 @EventBusSubscriber(value = Dist.CLIENT,modid = BakeriesMod.MODID)
 public class BakeriesClientHandler {
@@ -100,14 +97,25 @@ public class BakeriesClientHandler {
         if (localPlayer == null){
             return;
         }
-        BlockEntity blockEntity = LookBlockEntityRegistries.getBlocks().get(localPlayer.getUUID());
-        if (blockEntity != null){
-            ILookOverlay iLookOverlay = LookBlockEntityRegistries.getRegister().get(blockEntity.getClass());
-            if (iLookOverlay != null) {
-                if (iLookOverlay.isOverlay(blockEntity,localPlayer,mc)) {
-                    iLookOverlay.create(event, blockEntity, localPlayer, mc);
+        BlockPos blockPos = LookBlockEntityRegistries.getBlocks().get(localPlayer.getUUID());
+        if (blockPos != null){
+            BlockEntity blockEntity = localPlayer.level().getBlockEntity(blockPos);
+            if (blockEntity != null){
+                ILookOverlay iLookOverlay = LookBlockEntityRegistries.getRegister().get(blockEntity.getClass());
+                if (iLookOverlay != null) {
+                    if (iLookOverlay.isOverlay(blockEntity,localPlayer,mc)) {
+                        iLookOverlay.create(event, blockEntity, localPlayer, mc);
+                    }
                 }
             }
+        }
+    }
+
+    @SubscribeEvent
+    public static void onClientLogout(ClientPlayerNetworkEvent.LoggingOut event) {
+        Player player = event.getPlayer();
+        if (player != null) {
+            LookBlockEntityRegistries.removeFlag(player);
         }
     }
 

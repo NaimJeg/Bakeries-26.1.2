@@ -1,12 +1,12 @@
 package com.renyigesai.bakeries.common.client;
 
 import com.renyigesai.bakeries.BakeriesMod;
-import com.renyigesai.bakeries.common.blocks.glass_drink_cup.GlassDrinkCupBlock;
 import com.renyigesai.bakeries.common.blocks.glass_drink_cup.GlassDrinkCupBlockEntity;
 import com.renyigesai.bakeries.common.blocks.toaster.ToasterBlockEntity;
 import com.renyigesai.bakeries.common.client.gui.overlay.GlassDrinkCupOverlay;
 import com.renyigesai.bakeries.common.client.gui.overlay.ILookOverlay;
 import com.renyigesai.bakeries.common.client.gui.overlay.ToasterOverlay;
+import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.neoforged.api.distmarker.Dist;
@@ -19,17 +19,21 @@ import java.util.Map;
 import java.util.UUID;
 
 public class LookBlockEntityRegistries {
-    public static final Map<UUID, BlockEntity> BLOCKS = new HashMap<>();
+    public static final Map<UUID, BlockPos> BLOCKS = new HashMap<>();
     private static final Map<Class<? extends BlockEntity>,ILookOverlay<? extends BlockEntity>> REGISTER = new HashMap<>();
 
-    public static Map<UUID, BlockEntity> getBlocks() {
+    public static Map<UUID, BlockPos> getBlocks() {
         return BLOCKS;
     }
 
-    public static void setBlocks(Player player, BlockEntity entity) {
+    public static void setFlag(Player player, BlockPos pos) {
         if (player.level().isClientSide()) {
-            BLOCKS.put(player.getUUID(), entity);
+            BLOCKS.put(player.getUUID(), pos);
         }
+    }
+
+    public static void removeFlag(Player player) {
+        BLOCKS.remove(player.getUUID());
     }
 
     public static Map<Class<? extends BlockEntity>, ILookOverlay<? extends BlockEntity>> getRegister() {
@@ -44,7 +48,6 @@ public class LookBlockEntityRegistries {
     public static class ClientSetup{
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
-//            LookBlockEntityRegistries.put(GlassDrinkCupBlockEntity.class,new GlassDrinkCupOverlay());
             LookBlockEntityRegistries.put(ToasterBlockEntity.class,new ToasterOverlay());
             LookBlockEntityRegistries.put(GlassDrinkCupBlockEntity.class,new GlassDrinkCupOverlay());
         }

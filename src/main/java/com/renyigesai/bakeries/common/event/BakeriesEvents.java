@@ -5,6 +5,7 @@ import com.renyigesai.bakeries.api.event.AnvilLandingEvent;
 import com.renyigesai.bakeries.api.event.PlayerLookBlockEvent;
 import com.renyigesai.bakeries.api.items.PileItem;
 import com.renyigesai.bakeries.common.client.LookBlockEntityRegistries;
+import com.renyigesai.bakeries.common.init.BakeriesBlocks;
 import com.renyigesai.bakeries.common.init.BakeriesItems;
 import com.renyigesai.bakeries.common.init.BakeriesRecipes;
 import com.renyigesai.bakeries.common.items.FlourSieveItem;
@@ -24,8 +25,11 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.capabilities.Capabilities;
+import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
 import net.neoforged.neoforge.event.OnDatapackSyncEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
+import net.neoforged.neoforge.transfer.item.VanillaContainerWrapper;
 
 import java.util.List;
 import java.util.Map;
@@ -117,10 +121,23 @@ public class BakeriesEvents {
         }else {
             LookBlockEntityRegistries.removeFlag(player);
         }
-//        Map<UUID, BlockPos> blocks = LookBlockEntityRegistries.getBlocks();
-//        if (blocks.get(player.getUUID()) != null){
-//            blocks.remove(player.getUUID());
-//        }
+    }
+    @SubscribeEvent
+    public static void registerCapabilities(RegisterCapabilitiesEvent event) {
+        // Register Oven
+        event.registerBlockEntity(
+                Capabilities.Item.BLOCK,
+                BakeriesBlocks.Entities.OVEN_ENTITY.get(),
+                (blockEntity, side) -> VanillaContainerWrapper.of(blockEntity)
+        );
+
+        // Register Blender
+        event.registerBlockEntity(
+                Capabilities.Item.BLOCK,
+                BakeriesBlocks.Entities.BLENDER_ENTITY.get(),
+                (blockEntity, side) -> VanillaContainerWrapper.of(blockEntity)
+        );
+
     }
 
 

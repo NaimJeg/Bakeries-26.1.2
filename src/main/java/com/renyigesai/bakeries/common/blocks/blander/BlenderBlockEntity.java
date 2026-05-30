@@ -16,6 +16,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.Mth;
+import net.minecraft.world.Container;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
@@ -204,15 +205,6 @@ public class BlenderBlockEntity extends BaseContainerBlockEntity {
             inventory.setStackInSlot(i, ItemStack.EMPTY);
         }
     }
-
-//    @Override
-//    public CompoundTag getUpdateTag(HolderLookup.Provider registries) {
-//        CompoundTag tag = new CompoundTag();
-//        tag.put("Items",getHandlerInventory().serialize())
-//        return super.getUpdateTag(registries);
-//    }
-
-
 
     @Override
     protected void loadAdditional(ValueInput input) {
@@ -414,6 +406,11 @@ public class BlenderBlockEntity extends BaseContainerBlockEntity {
             }
         }
         return false;
+    }
+
+    @Override
+    public boolean canTakeItem(Container into, int slot, ItemStack itemStack) {
+        return slot == OUTPUT_SLOT;
     }
 
     public enum State {

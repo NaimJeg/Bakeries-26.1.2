@@ -136,5 +136,10 @@ public class OvenMenu extends AbstractContainerMenu{
         {
             return 1;
         }
+
+        @Override
+        public int getContainerSlot() {
+            return 6;
+        }
     }
 }

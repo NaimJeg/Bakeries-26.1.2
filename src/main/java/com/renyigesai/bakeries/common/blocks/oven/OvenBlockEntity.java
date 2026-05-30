@@ -453,6 +453,11 @@ public class OvenBlockEntity extends BaseContainerBlockEntity implements ItemOwn
     }
 
     @Override
+    public int getMaxStackSize(ItemStack itemStack) {
+        return 1;
+    }
+
+    @Override
     public Level level() {
         return this.level;
     }

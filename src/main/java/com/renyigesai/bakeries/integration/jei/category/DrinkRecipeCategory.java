@@ -37,7 +37,7 @@ public class DrinkRecipeCategory extends AbstractRecipeCategory<RecipeHolder<Dri
     public static final DrawableResource DRAWABLE = new DrawableResource(TEXTURE,0,0,109, 21,0,0,0,0,256,256);
 
     public DrinkRecipeCategory(IGuiHelper helper) {
-        super(BakeriesRecipes.JEI.DRINK, Component.translatable("container.bakeries.drink"), helper.createDrawableIngredient(VanillaTypes.ITEM_STACK,new ItemStack(BakeriesItems.OVEN.get())), 109, 21);
+        super(BakeriesRecipes.JEI.DRINK, Component.translatable("container.bakeries.drink"), helper.createDrawableIngredient(VanillaTypes.ITEM_STACK,new ItemStack(BakeriesItems.DRINK_CUP.get())), 109, 21);
     }
 
     @Override
@@ -49,17 +49,17 @@ public class DrinkRecipeCategory extends AbstractRecipeCategory<RecipeHolder<Dri
     public void setRecipe(IRecipeLayoutBuilder builder, RecipeHolder<DrinkRecipe> recipe, IFocusGroup focuses) {
         NonNullList<Ingredient> recipeIngredients = recipe.value().getInputItems();
         int borderSlotSize = 18;
-        //xºÍyÖáµÄ³õÊ¼×ø±ê£¬È¡ÖµÎªguiÌùÍ¼µÄx,y³õÊ¼Î»ÖÃ¼õÒ»
+        //xï¿½ï¿½yï¿½ï¿½Ä³ï¿½Ê¼ï¿½ï¿½ï¿½ê£¬È¡ÖµÎªguiï¿½ï¿½Í¼ï¿½ï¿½x,yï¿½ï¿½Ê¼Î»ï¿½Ã¼ï¿½Ò»
         int x = 2;
         int y = 2;
-        //Ìí¼ÓÔ­ÁÏ²Û
+        //ï¿½ï¿½ï¿½Ô­ï¿½Ï²ï¿½
         for (int row = 0; row < 4; ++row) {
             if (row < recipeIngredients.size()) {
                 builder.addSlot(RecipeIngredientRole.INPUT, x + (row * borderSlotSize) + 1, y)
                         .add(recipeIngredients.get(row));
             }
         }
-        //Ìí¼ÓÊä³ö²Û
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         builder.addSlot(RecipeIngredientRole.OUTPUT,99,1).add(recipe.value().result());
     }
 }

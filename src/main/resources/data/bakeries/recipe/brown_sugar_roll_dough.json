@@ -2,13 +2,15 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
+    "#c:butter",
+    "bakeries:brown_sugar_cube",
     "bakeries:round_bread_dough",
     "bakeries:round_bread_dough",
     "bakeries:round_bread_dough",
-    "bakeries:mould"
+    "bakeries:round_bread_dough"
   ],
   "result": {
-    "id": "bakeries:mould_toast_dough",
+    "id": "bakeries:brown_sugar_roll_dough",
     "count": 4
   }
 }

@@ -1,14 +1,13 @@
 {
-  "type": "minecraft:crafting_shaped",
+  "type": "minecraft:crafting_shapeless",
   "category": "misc",
-  "pattern": [
-    "ab ",
-    "aaa"
+  "ingredients": [
+    "#c:salt",
+    "bakeries:croissant_dough",
+    "bakeries:croissant_dough",
+    "bakeries:croissant_dough",
+    "bakeries:croissant_dough"
   ],
-  "key": {
-    "a":"bakeries:croissant_dough",
-    "b":"#c:salt"
-  },
   "result": {
     "id": "bakeries:salt_croissant_dough",
     "count": 4

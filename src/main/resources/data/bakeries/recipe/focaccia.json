@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "bakeries:olive",
+    "bakeries:olive_oil",
+    "#c:crops/tomato",
+    "bakeries:salted_dough"
+  ],
+  "result": {
+    "id": "bakeries:focaccia_dough",
+    "count": 4
+  }
+}

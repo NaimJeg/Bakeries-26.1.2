@@ -1,18 +1,17 @@
 {
-  "type": "minecraft:crafting_shaped",
+  "type": "minecraft:crafting_shapeless",
   "category": "misc",
-  "pattern": [
-    "aba",
-    "dde"
+  "ingredients": [
+    "#c:cheese",
+    "#c:cheese",
+    "minecraft:cocoa_beans",
+    "bakeries:round_bread_dough",
+    "bakeries:cocoa_dough",
+    "bakeries:mould",
+    "bakeries:mould"
   ],
-  "key": {
-    "a":"#c:cheese",
-    "b":"bakeries:cocoa_dough",
-    "d":"bakeries:mould",
-    "e":"minecraft:cocoa_beans"
-  },
   "result": {
     "id": "bakeries:mould_cheese_cocoa_toast_dough",
-    "count": 1
+    "count": 2
   }
 }

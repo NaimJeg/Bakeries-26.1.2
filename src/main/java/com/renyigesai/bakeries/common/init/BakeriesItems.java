@@ -125,6 +125,7 @@ public class BakeriesItems {
     public static final DeferredItem<Item> LUMINOUS_LIGHT_SIGN;
     public static final DeferredItem<Item> BREAD_BASKET;
     public static final DeferredItem<Item> MENU;
+    public static final DeferredItem<Item> LETTER_TILE;
 
     public static final DeferredItem<Item> BAGEL;
     public static final DeferredItem<Item> WHOLE_WHEAT_BAGEL;
@@ -305,6 +306,7 @@ public class BakeriesItems {
         LUMINOUS_LIGHT_SIGN = block(BakeriesBlocks.LUMINOUS_LIGHT_SIGN);
         BREAD_BASKET = block(BakeriesBlocks.BREAD_BASKET);
         MENU = block(BakeriesBlocks.MENU);
+        LETTER_TILE = block(BakeriesBlocks.LETTER_TILE);
 
         BAGEL = foodBreadBlock(BakeriesBlocks.BAGEL,BakeriesFoodProperties.BAGEL);
         WHOLE_WHEAT_BAGEL = foodBreadBlock(BakeriesBlocks.WHOLE_WHEAT_BAGEL,FoodData.create(BakeriesFoodProperties.WHOLE_WHEAT_BAGEL,BakeriesConsumables.WHOLE_WHEAT_BAGEL));

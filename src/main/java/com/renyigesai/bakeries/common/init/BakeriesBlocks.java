@@ -16,6 +16,8 @@ import com.renyigesai.bakeries.common.blocks.dough_crafting_table.DoughCraftingT
 import com.renyigesai.bakeries.common.blocks.fluid.SaltWaterFluidsBlock;
 import com.renyigesai.bakeries.common.blocks.glass_drink_cup.GlassDrinkCupBlock;
 import com.renyigesai.bakeries.common.blocks.glass_drink_cup.GlassDrinkCupBlockEntity;
+import com.renyigesai.bakeries.common.blocks.letter_tile.LetterTileBlock;
+import com.renyigesai.bakeries.common.blocks.letter_tile.LetterTileBlockEntity;
 import com.renyigesai.bakeries.common.blocks.luminous_light_sign.LuminousLightSignBlock;
 import com.renyigesai.bakeries.common.blocks.luminous_light_sign.LuminousLightSignBlockEntity;
 import com.renyigesai.bakeries.common.blocks.menu.MenuBlock;
@@ -65,6 +67,7 @@ public class BakeriesBlocks {
     public static final DeferredBlock<Block> LUMINOUS_LIGHT_SIGN;
     public static final DeferredBlock<Block> BREAD_BASKET;
     public static final DeferredBlock<Block> MENU;
+    public static final DeferredBlock<Block> LETTER_TILE;
 
 
     /**?????*/
@@ -206,6 +209,7 @@ public class BakeriesBlocks {
         LUMINOUS_LIGHT_SIGN = BLOCKS.register("luminous_light_sign", LuminousLightSignBlock::new);
         BREAD_BASKET = BLOCKS.register("bread_basket", BreadBasketBlock::new);
         MENU = BLOCKS.register("menu", MenuBlock::new);
+        LETTER_TILE = BLOCKS.register("letter_tile", LetterTileBlock::new);
 
         /*???????*/
         BAGEL = BLOCKS.register("bagel", BreadBlock::new);
@@ -285,6 +289,7 @@ public class BakeriesBlocks {
         public static final Supplier<BlockEntityType<LuminousLightSignBlockEntity>> LUMINOUS_LIGHT_SIGN_ENTITY = REGISTER.register("luminous_light_sign", () -> new BlockEntityType<>(LuminousLightSignBlockEntity::new, LUMINOUS_LIGHT_SIGN.get()));
         public static final Supplier<BlockEntityType<BreadBasketBlockEntity>> BREAD_BASKET_ENTITY = REGISTER.register("bread_basket", () -> new BlockEntityType<>(BreadBasketBlockEntity::new, BREAD_BASKET.get()));
         public static final Supplier<BlockEntityType<MenuBlockEntity>> MENU_ENTITY = REGISTER.register("menu", () -> new BlockEntityType<>(MenuBlockEntity::new, MENU.get()));
+        public static final Supplier<BlockEntityType<LetterTileBlockEntity>> LETTER_TILE_ENTITY = REGISTER.register("letter_tile", () -> new BlockEntityType<>(LetterTileBlockEntity::new, LETTER_TILE.get()));
     }
 
 

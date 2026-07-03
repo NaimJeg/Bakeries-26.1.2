@@ -42,7 +42,7 @@
 		{
 			"name": "cube_outline",
 			"from": [12.65, 1.4, 8.65],
-			"to": [9.25, 0, 5.25],
+			"to": [9.35, 0.1, 5.35],
 			"rotation": {"angle": 0, "axis": "y", "origin": [9.5, -0.75, 4.5]},
 			"faces": {
 				"north": {"uv": [9, 9, 10.5, 9.5], "texture": "#0"},
@@ -160,7 +160,7 @@
 		{
 			"name": "cube_outline",
 			"from": [6.65, 1.4, 10.65],
-			"to": [3.25, 0, 7.25],
+			"to": [3.35, 0.1, 7.35],
 			"rotation": {"angle": 0, "axis": "y", "origin": [3.5, -0.75, 6.5]},
 			"faces": {
 				"north": {"uv": [9, 9, 10.5, 9.5], "texture": "#0"},
